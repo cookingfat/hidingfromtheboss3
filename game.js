@@ -277,16 +277,16 @@ const endScene = {
       text: "Buy me a coffee?",
       
       action: () => {
-        window.location.assign('https://www.buymeacoffee.com/peterharpham');
+        window.open('https://www.buymeacoffee.com/peterharpham');
       },
-      update: "yes"
+      update: "no"
     },
     {
       text: "Visit my other website",      
       action: () => {
-        window.location.assign('https://www.memorymoons.com');
+        window.open('https://www.memorymoons.com');
       },
-      update: "yes"
+      update: "no"
     },
   ]
 };
