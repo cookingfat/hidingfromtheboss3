@@ -238,7 +238,7 @@ const walkoffScene = {
 };
 const toiletScene = {
   title: "In the toilet",
-  text: "You go into personal and walk to the toilet. nobody else is here, so you pull out your mod and take a huge vape. Clouds of vapour come out through the door and fill the call centre.  Everyone thinks there is a fire and Tony comes in and finds you. You do the walk of shame back to your desk and get a sneaky feeling you are going to get another file note for this",
+  text: "You go into personal and walk to the toilet. Nobody else is here, so you pull out your mod and take a huge vape. Clouds of vapour come out through the door and fill the call centre.  Everyone thinks there is a fire and Tony comes in and finds you. You do the walk of shame back to your desk and get a sneaky feeling you are going to get another file note for this",
   choices: [
     {
       text: "Go back to your desk",
@@ -901,13 +901,15 @@ const maindoorScene = {
       update: "yes"
     },
     {
-      text: "Tell him you went to buy him a coffee",  // need to only show this option if you have the coffee
+      text: "Tell him you went to buy him a coffee",
       nextScene: 'bribe',
       action: NoAction,
-      update: "yes"
+      update: "yes",
+      visible: HasCoffeeItem
     },
   ]
 };
+
 
 const skiveScene = {
   title: "The confession",
@@ -942,7 +944,10 @@ const bribeScene = {
     {
       text: "Continue",
       nextScene: 'end',
-      action: NoAction,
+      action: () => {
+        HasCoffeeItem = false;
+        currentScene = 'end';
+      },
       update: "yes"
     }
   ]
@@ -1303,10 +1308,10 @@ const scenes = {
   breakroom: breakroomScene,
   stairs: stairsScene,
   fireexit: fireexitScene,
-  barriers : barrierScene,
-  carpark : carparkScene,
-  fagshed : fagshedScene,
-  bush : bushScene,
+  barriers: barrierScene,
+  carpark: carparkScene,
+  fagshed: fagshedScene,
+  bush: bushScene,
   lift: liftScene,
   alarm: alarmScene,
   waitsteve: waitsteveScene,
@@ -1328,7 +1333,7 @@ const scenes = {
   vending: vendingScene,
   crisps: crispsScene,
   coffee: coffeeScene,
-  nomoney : nomoneyScene,
+  nomoney: nomoneyScene,
   maindoor: maindoorScene,
   cinema: cinemaScene,
   TakeACall: TakeACallScene,
@@ -1633,7 +1638,7 @@ function RemoveMoney() {
       // Display the nomoney scene if the player doesn't have enough money
       currentScene = nomoneyScene;
     }
-    
+
   }
 }
 // I added this to try and check if the player has the money item in their inventory and return true if they do
