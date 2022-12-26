@@ -275,9 +275,16 @@ const endScene = {
     },
     {
       text: "Buy me a coffee?",
-      nextScene: 'start',
+      
       action: () => {
         window.location.assign('https://www.buymeacoffee.com/peterharpham');
+      },
+      update: "yes"
+    },
+    {
+      text: "Visit my other website",      
+      action: () => {
+        window.location.assign('https://www.memorymoons.com');
       },
       update: "yes"
     },
@@ -901,11 +908,13 @@ const maindoorScene = {
       update: "yes"
     },
     {
-      text: "Tell him you went to buy him a coffee",
+      text: "Tell him you went to buy him a coffee",  // need to only show this option if you have the coffee
       nextScene: 'bribe',
-      action: NoAction,
-      update: "yes",
-      visible: HasCoffeeItem
+      action: () => {
+        HasCoffeeItem = false;
+        updateInventoryDisplay();
+      },
+      update: "yes"
     },
   ]
 };
@@ -944,12 +953,11 @@ const bribeScene = {
     {
       text: "Continue",
       nextScene: 'end',
-      action: () => {
-        HasCoffeeItem = false;
-        currentScene = 'end';
-      },
+      action: NoAction,
       update: "yes"
-    }
+
+    },
+
   ]
 };
 
@@ -1669,6 +1677,13 @@ function RemoveCoffee() {
   }
 }
 
+function updateInventoryDisplay() {
+  if (HasCoffeeItem) {
+    // show the coffee item in the inventory
+  } else {
+    // hide the coffee item in the inventory
+  }
+}
 
 
 
