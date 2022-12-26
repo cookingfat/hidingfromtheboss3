@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>A call centre</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<!--Main Heading -->
+<div id="MainHeader">
+  <section class="MainHeader">
+    <h1>Hiding from the Boss</h1>
+  </section>
+</div>
+
+<div id="title-box"></div>
+
+
+
+<body>
+ <!-- Iventory box-->
+  <div id="inventory-box">
+    <div id="inventory-title">Inventory</div>
+
+  </div>
+
+
+  <!-- Main Game Scene-->
+  <div id="scene"> </div>
+
+
+  <!-- File Note Container-->
+  <div id="file-notes-container">
+    File Notes: <span id="file-notes">0</span>
+  </div>
+
+
+  <!--Wrap Container-->
+  <div id="Wrap-Container">
+    Wrap: <span id="Wrap">0</span>
+  </div>
+
+
+  <!-- Dev Menu -->
+  <div id="popup" style="display: none;">
+    <input type="text" id="inputField" placeholder="">
+    <div id="devMenu" style="display: none;">
+      <a id="devMenuLink" href="#">Dev menu</a>
+    </div>
+  </div>
+
+  <button id="helpButton">I need help!</button>
+
+  <div id="helpPage" style="visibility: hidden;">
+    <p>IMPORTANT</p>
+    <p>You will need to ask Pete for a pin which is unique to you and only for this game. If you get fail the game then the pin will not work on the next game you play. This will allow you to reset your wrap OR file notes. If you dont have any wrap or filenotes then you will waste this precious option! </p>
+    <label for="pin">Pin:</label>
+    <input type="pb" id="pin">
+    <button id="ConfirmPin">Confirm Pin</button>
+    <button id="closeButton">Close</button>
+  </div>
+  
+  
+
+  <script src="game.js"></script>
+</body>
+
+</html>
+
+

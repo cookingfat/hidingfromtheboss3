@@ -1,0 +1,321 @@
+/* old stuff */
+@media (max-width: 768px) {
+  #file-notes-container,
+  #Wrap-Container {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+button {
+  display: flex; /* changed from fixed */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(12, 148, 148, 0.808);
+  font-family: monospace;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 5px;
+  box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  width: auto; /* changed from fixed width */
+  height: auto; /* changed from fixed height */
+}
+
+
+
+button:hover {
+  background-color: rgb(15, 80, 165);
+}
+
+
+body {
+  background-image: url('https://i.ibb.co/vqgdMSj/DALL-E-2022-12-17-01-02-19-a-detailed-photo-realistic-scene-of-a-male-ginger-haired-call-centre-work.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  font-family: Courier;
+  text-align: center;
+}
+
+
+
+
+#file-notes-container,
+#Wrap-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 40%;
+  max-width: 140px;
+  border: 1px solid black;
+  background-color: rgba(129, 129, 129, 0.75);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: aliceblue;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+#file-notes-container {
+  font-family: monospace;
+  font-size: 20px;
+  /* remove float: left; */
+}
+
+#Wrap-Container {
+  font-family: monospace;
+  font-size: 20px;
+  /* remove float: right; and clear: both; */
+}
+#helpButton {
+  background-color: rgba(12, 148, 148, 0.808);
+  font-size: 24px;
+  position: inline-block;
+  /* remove top and right properties */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+  margin-top: 20px; /* add margin-top to space the button below the container */
+}
+
+#MainHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80%;
+  max-width: 800px;
+  border: 1px solid black;
+  background-color: rgba(129, 129, 129, 0.75);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: aliceblue;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+#title-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: auto; /* changed from fixed width */
+  max-width: 800px;
+  border: 1px solid black;
+  background-color: rgba(12, 148, 148, 0.808);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 35px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.808);
+  color: aliceblue;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  font-family: monospace;
+  font-size: 20px;
+}
+
+
+
+
+#scene {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80%;
+  max-width: 800px;
+  border: 1px solid black;
+  background-color: rgba(129, 129, 129, 0.75);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px;
+  font-family: monospace;
+font-size: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: aliceblue;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  color: white;
+  padding: 10px;
+}
+#inputField {
+  width: 100%;
+  color: white;
+}
+#devMenu {
+  background-color: lightgrey;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 10px;
+  display: grid;
+  align-items: center;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);  /* 10 columns with 50px width */
+  grid-template-rows: repeat(10, 50px);  /* 10 rows with 50px height */
+  grid-gap: 20px;
+  grid-template-areas: 
+    "a a a a a a a a a a"
+    "b b b b b b b b b b"
+    "c c c c c c c c c c"
+    "d d d d d d d d d d"
+    "e e e e e e e e e e"
+    "f f f f f f f f f f"
+    "g g g g g g g g g g"
+    "h h h h h h h h h h"
+    "i i i i i i i i i i"
+    "j j j j j j j j j j";
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.611);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+
+#inventory-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 500px;
+  border: 1px solid black;
+  background-color: rgba(129, 129, 129, 0.75);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px;
+  color: aliceblue;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+#inventory-title {
+  font-size: 24px;
+  color: aliceblue;
+  font-weight: bold;
+  justify-content: top;
+  text-align: center;
+
+}
+
+a {
+  color: #00ffe5; /* Set the color to a shade of green */
+  font-family: monospace;
+  font-size: 20px;
+
+}
+
+
+
+
+#helpPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  visibility: hidden;
+  text-align: center;
+}
+
+#helpPage label,
+#helpPage input {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 20px auto;
+}
+
+#helpPage label {
+  font-size: 20px;
+  font-family: sans-serif;
+  color: white;
+  margin-right: 10px;
+}
+
+#helpPage input {
+  font-size: 20px;
+  font-family: sans-serif;
+  color: rgb(0, 0, 0);
+  width: 250px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#helpPage p {
+  font-size: 18px;
+  font-family: sans-serif;
+  color: white;
+  margin: 50px 0;
+}
+
+#closeButton {
+  display: block;
+  margin: 20px auto;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(12, 148, 148, 0.808);
+
+}
+
+#ConfirmPin {
+  display: block;
+  margin: 20px auto;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(12, 148, 148, 0.808);
+
+}
+
