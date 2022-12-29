@@ -1,8 +1,13 @@
+const names = {};
+
+
+console.log("start of code name thing : " + names.yourname)
+
 //#region Chapters
+
 const startScene = {
   title: "Your day begins...",
-  text: "Another day at the office..... You sit at your desk contemplating life and trying to think of a way to skive off work. You've had an awful day and Tony is coming to check on you. What do you do?",
-  typed: "yes",
+  text: `Another day at the office.....  You sit at your desk contemplating life and trying to think of a way to skive off work. You've had an awful day and Tony is coming to check on you. What do you do?`,
   choices: [
     {
       text: "Hide under the desk",
@@ -68,12 +73,12 @@ const desk2Scene = {
 
 const underdeskScene = {
   title: "Under the desk",
-  text: "Thinking that no one can see you, you casually get off your chair, and crawl under the desk and hide.  Tony walks right up to you and sees you under the desk. Do you really think he is that stupid?",
+  text: "Thinking that no one can see you, you casually get off your chair, and crawl under the desk and hide.  Tony walks right up to you and sees you under the desk. Do you really think they are that stupid?",
   choices: [
     {
       text: "Go back to your desk",
       nextScene: 'start',
-      action: NoAction,
+      action: incrementWrapLow,
       update: "yes"
 
     }
@@ -82,12 +87,12 @@ const underdeskScene = {
 
 const onbreakScene = {
   title: "Nice try....",
-  text: "Tony wonders where you are going, goes back to his desk and checks Verint and realises your break is not due for another 45 minutes!",
+  text: "Tony wonders where you are going, goes back to their desk and checks Verint and realises your break is not due for another 45 minutes!",
   choices: [
     {
       text: "Go back to your desk",
       nextScene: 'desk2',
-      action: NoAction,
+      action: incrementWrapLow,
       update: "yes"
 
     }
@@ -108,7 +113,7 @@ const mateScene = {
     {
       text: "Go back to your desk",
       nextScene: 'desk2',
-      action: NoAction,
+      action: incrementWrapLow,
       update: "yes"
 
     }
@@ -129,7 +134,7 @@ const mate2Scene = {
     {
       text: "Go back to your desk",
       nextScene: 'desk2',
-      action: NoAction,
+      action: incrementWrapLow,
       update: "yes"
 
     }
@@ -150,7 +155,7 @@ const mate3Scene = {
     {
       text: "Go back to your desk",
       nextScene: 'desk2',
-      action: NoAction,
+      action: incrementWrapLow,
       update: "yes"
 
     }
@@ -171,7 +176,7 @@ const mate4Scene = {
     {
       text: "Go back to your desk",
       nextScene: 'desk2',
-      action: NoAction,
+      action: incrementWrapLow,
       update: "yes"
 
     }
@@ -262,36 +267,6 @@ const breakroomScene = {
     }
   ]
 };
-
-const endScene = {
-  title: "Escape!!!",
-  text: `That was a close one!  Good job you didn't drink the coffee!  You go through the main door, scan your pass and leave the call centre and have a huge vape. That's the end of Chapter 1, and currently the end of the game.  The game is still in development, so please check back soon for more chapters!`,
-  choices: [
-    {
-      text: "Play again?",
-      nextScene: 'start',
-      action: reload,
-      update: "yes"
-    },
-    {
-      text: "Buy me a coffee?",
-      
-      action: () => {
-        window.open('https://www.buymeacoffee.com/peterharpham');
-      },
-      update: "no"
-    },
-    {
-      text: "Visit my other website",      
-      action: () => {
-        window.open('https://www.memorymoons.com');
-      },
-      update: "no"
-    },
-  ]
-};
-
-
 const stairsScene = {
   title: "In the stairwell?",
   text: "As the stairwell is closest to your desk, you figure that will be the best escape route.  You sneak off and start walking down the stairs and wonder if you could risk it and use the fire exit for an even quicker escape. What do you do?",
@@ -311,7 +286,6 @@ const stairsScene = {
     }
   ]
 };
-
 const fireexitScene = {
   title: "You're free!",
   text: "You push the bar on the fire exit door and it opens. You're free at last!  Where now?",
@@ -358,7 +332,7 @@ const barrierScene = {
 };
 const fagshedScene = {
   title: "Up to the fag shed.",
-  text: "You look round and no one seemed to see you come out of the fire exit.  You really need a vape, so you walk up to the fag shelter.  You walk round the corner and Steve the security guard is waiting for you.  He was alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
+  text: "You look round and no one seemed to see you come out of the fire exit.  You really need a vape, so you walk up to the fag shelter.  You walk round the corner and Steve the security guard is waiting for you.  They were alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
   choices: [
     {
       text: "Go back to your desk",
@@ -371,7 +345,7 @@ const fagshedScene = {
 };
 const carparkScene = {
   title: "Down to the carpark.",
-  text: "You wisely walk down towards the car park as you are much less likely to be seen there.  You turn the corner and are greeted by Steve the security guard.   He was alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
+  text: "You wisely walk down towards the car park as you are much less likely to be seen there.  You turn the corner and are greeted by Steve the security guard.  He was alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
   choices: [
     {
       text: "Go back to your desk",
@@ -395,8 +369,6 @@ const bushScene = {
     }
   ]
 };
-
-
 const liftScene = {
   title: "In the lift",
   text: "You step into the lift, press the button for the first floor and wait for the doors to close. It looks like no one noticed and you let out a sigh of relief. As you descend in the lift, suddenly you hear a groan from the lift shaft and an awful sound of metal on metal.  The lift grinds to a halt and a wave of panic washes over you. What do you do?",
@@ -416,7 +388,6 @@ const liftScene = {
     }
   ]
 };
-
 const alarmScene = {
   title: "You press the emergency button....",
   text: `"... and hear a loud "Dring".  You wait for what seems like eternity and just as you are about to give it another press, you suddenly hear a voice saying "hello?" You recognise Steve's voice and feel relieved that he is there.  He asks you what is wrong and you tell him that the lift has stopped.  He says he will be right there and you wait for him to arrive.`,
@@ -443,7 +414,6 @@ const waitsteveScene = {
 
   ]
 };
-
 const wait1Scene = {
   title: "Still in the lift",
   text: "You wait and wait, but the lift doesn't start moving again.  You start to panic and wonder what to do.  You could press the emergency button, but you don't want to waste the Fire Brigade's time.  What do you do?",
@@ -463,7 +433,6 @@ const wait1Scene = {
     }
   ]
 };
-
 const wait2Scene = {
   title: "You wait longer..",
   text: "You carry on waiting and waiting, but the lift doesn't start moving again.  You really want to get out of here.  What do you do?",
@@ -483,7 +452,6 @@ const wait2Scene = {
     }
   ]
 };
-
 const wait3Scene = {
   title: "still waiting......",
   text: "You carry on waiting and waiting, and waiting, but the lift is not budging.  You start to feel a bit claustrophobic and you can't help but think that you should have taken the stairs.  Do you press the emergency button?",
@@ -504,7 +472,6 @@ const wait3Scene = {
     }
   ]
 };
-
 const wait4Scene = {
   title: "still waiting......",
   text: "You carry on waiting and waiting, and waiting, and waiting, but the lift is STILL not budging.  You are really worried now.  the claustrophobia is getting worse and your wrap is just increasing.  Do you press the emergency button?",
@@ -524,7 +491,6 @@ const wait4Scene = {
     }
   ]
 };
-
 const wait5Scene = {
   title: "still waiting......",
   text: "Sat on the floor of the lift, you almost fall asleep when suddenly you hear a loud bang and the lift starts moving again.  It creaks and groans until you hit the bottom with a thud and miraculously, the doors open.  You are so relieved that you almost cry.  The lift doors make a noise, then slowly creak open....",
@@ -538,7 +504,6 @@ const wait5Scene = {
     },
   ]
 };
-
 const floor1Scene = {
   title: "Into Sitel territory...",
   text: "You are on the first floor.  Mick the cleaner is coming towards you and looks like he wants to tell you something. What do you do next?",
@@ -566,10 +531,15 @@ const floor1Scene = {
       nextScene: 'maindoor',
       action: incrementWrapLow,
       update: "yes"
+    },
+    {
+      text: "Go Back To Your Desk.",
+      nextScene: 'desk2',
+      action: incrementWrapLow,
+      update: "yes"
     }
   ]
 };
-
 const floor1alt2Scene = {
   title: "Into Sitel territory...",
   text: "You were tempted to sneak off through the fire exit, but you carry on through the stairwell, through the door and onto the first floor. Mick the cleaner is coming towards you and looks like he wants to tell you something. What do you do next?",
@@ -597,13 +567,19 @@ const floor1alt2Scene = {
       nextScene: 'maindoor',
       action: incrementWrapLow,
       update: "yes"
+    },
+    {
+      text: "Go back to your desk",
+      nextScene: 'start',
+      action: NoAction,
+      update: "yes"
+
     }
   ]
 };
-
 const mickScene = {
   title: "You talk to Mick, the cleaner",
-  text: "You talk to Mick and he tells you all about his day and the scum that work downstairs in Sitel.  He tells you that he has been working there for 20 years and he hates it.  He says that he is going to retire in 2 years and he is going to go and live in Spain.  He says that he is going to buy a house with a pool and he is going to spend his days drinking beer and eating tapas.  He says that he is going to get a dog and he is going to call it 'Paco'.  He says that he is going to get a motorbike and he is going to ride it around the mountains.  He says that he is going to get a girlfriend and he is going to take her to the beach.  He says that he is going to get a job as a waiter and he is going to serve people tapas.  He says that he is going to get a job as a taxi driver and he is going to drive people around the mountains.  He says that he is going to get a job as a lifeguard and he is going to save people from drowning.  He says that he is going to get a job as a policeman and he is going to catch people who are speeding.  He says that he is going to get a job as a fireman and he is going to put out fires.  He says that he is going to get a job as a doctor and he is going to save people's lives.  He says that he is going to get a job as a teacher and he is going to teach people how to read and write.  He says that he is going to get a job as a builder and he is going to build houses.  He says that he is going to get a job as a plumber and he is going to fix people's pipes.  He says that he is going to get a job as a gardener and he is going to plant flowers.  He says that he is going to get a job as a postman and he is going to deliver letters.  He says that he is going to get a job as a bus driver and he is going to drive people around.  He says that he is going to get a job as a train driver and he is going to drive people around.  He says that he is going to get a job as a pilot and he is going to fly people around.  He says that he is going to get a job as a chef and he is going to cook people",
+  text: "You talk to Mick and he tells you all about his day and the scum that work downstairs in Sitel.  He tells you that he has been working there for 20 years and he hates it.  He says that he is going to retire in 2 years and he is going to go and live in Spain.  Mick tells you that he is going to buy a house with a pool and he is going to spend his days lounging by the pool and flirting with the ladies. He says that he is going to get a dog and he is going to call it 'Paco'. He says that he is going to get a motorbike and he is going to take it out for occasional rides. He says that he is going to get a girlfriend, but he isn't sure if he wants to settle down yet. He says that he is going to take up golf and join a local club. He says that he is going to start a small business selling handmade crafts online. He says that he is going to learn to speak Spanish fluently so he can impress the local ladies and say the first number is FIRST NUMBER. He says that he is going to visit all the major cities in Spain, but he's not sure if he wants to do any sightseeing. He says that he is going to start a book club, but only if it's full of attractive women. He says that he is going to join a local football team, but only if they have a good chance of winning and the second number is SECOND NUMBER. He says that he is going to take up yoga and meditation classes, but only if the instructor is attractive. He says that he is going to learn how to surf, but if the third number is THIRD NUMBER only if there are plenty of cute beach babes around. He says that he is going to visit the local wineries and learn about wine making, but only if there's a chance to meet some interesting women. He says that he is going to start a small business teaching English as a second language, but only if he can find some attractive students. He says that he is going to join a local gardening group, but only if there are some attractive green thumbs around. He says that he is going to visit all the local museums and art galleries, but only if there are some interesting ladies to chat with. He says that if the last number is LAST NUMBER he is going to take up scuba diving lessons and explore the Mediterranean Sea, but only if there are some cute fish to swim with.",
   choices: [
     {
       text: "carry on talking to Mick",
@@ -619,7 +595,6 @@ const mickScene = {
     },
   ]
 };
-
 const mick2Scene = {
   title: "You carry on talking to Mick...",
   text: "Mick waffles on about everything and anything and you are starting to get bored.  What do you do next?",
@@ -638,7 +613,6 @@ const mick2Scene = {
     },
   ]
 };
-
 const mick3Scene = {
   title: "You carry on talking to Mick...",
   text: "You feel like you have no choice but to stand there and carry on listening to Mick,  when he suddenly stops telling you the story of the phantom shitter and pull out of his pocket a piece of paper and hands it to you.   I got this from Ollie,  it's an IT Ticket.  Apparently you can use this to say you had IT issues and they just clear your wrap.",
@@ -651,8 +625,6 @@ const mick3Scene = {
     },
   ]
 };
-
-
 const floor1altScene = {
   title: "still waiting......",
   text: "Feeling exhausted after your conversation with Mick, You realise you wrap has gone up massively and you still haven't been out for a vape.  What do you do next?",
@@ -674,6 +646,12 @@ const floor1altScene = {
       nextScene: 'maindoor',
       action: incrementWrapLow,
       update: "yes"
+    },
+    {
+      text: "Go back to your desk",
+      nextScene: 'start',
+      action: incrementWrapLow,
+      update: "yes"
     }
   ]
 };
@@ -689,7 +667,6 @@ const cinemaScene = {
     },
   ]
 };
-
 const zzzScene = {
   title: "Dreaming....",
   text: "Suddenly, you wake up to the sound of the cinema room door opening and you open your eyes and see Tony stood in the doorway with his arms folded.  He doesn't look happy as he tells you you've been gone for 4 hours!!  You've really gone and done it this time...",
@@ -836,13 +813,13 @@ const vendingScene = {
     {
       text: "Buy some crisps",
       nextScene: 'crisps',
-      action: RemoveMoney,
+      action: AddCrispsItem,
       update: "yes"
     },
     {
       text: "Buy a coffee",
       nextScene: 'coffee',
-      action: RemoveMoney,
+      action: AddCoffeeItem,
       update: "yes"
     },
     {
@@ -889,8 +866,6 @@ const nomoneyScene = {
     },
   ]
 };
-
-
 const maindoorScene = {
   title: "You head towards the exit",
   text: "You put your head down and walk past the canteen and towards the main exit.  As you turn the corner you bump into Tony.  He asks what you've been doing....",
@@ -912,7 +887,6 @@ const maindoorScene = {
       nextScene: 'bribe',
       action: () => {
         HasCoffeeItem = false;
-        updateInventoryDisplay();
       },
       update: "yes"
     },
@@ -945,22 +919,240 @@ const excuseScene = {
     }
   ]
 };
-
 const bribeScene = {
   title: "The bribe",
   text: `As you look at Tony, you feel the hot coffee in your hand and have a genius plan. "Just went to get you a coffee, Boss..." you proudly say as you thrust out your hand and pass Tony the coffee that you just bought from the canteen. `,
   choices: [
     {
       text: "Continue",
-      nextScene: 'end',
-      action: NoAction,
+      nextScene: 'afterbribe',
+      action: RemoveCoffee,
       update: "yes"
-
+    },
+  ]
+};
+const afterbribeScene = {
+  title: "The bribe",
+  text: `Tony takes the coffee and goes back upstairs leaving you to it.  That was a close one!`,
+  choices: [
+    {
+      text: "Carry on",
+      nextScene: 'hallway',
+      action: incrementWrapLow,
+      update: "yes"
     },
 
   ]
 };
+const hallwayScene = {
+  title: "In the hallway",
+  text: `You are in the hallway near the main exit.  You can see the main door and the door to Mick's cleaning cupboard.`,
+  choices: [
+    {
+      text: "Try Mick's cleaning cupboard",
+      nextScene: 'CleaningCupboard',
+      action: incrementWrapLow,
+      update: "yes"
+    },
+    {
+      text: "Head Outside",
+      nextScene: 'outside',
+      action: incrementWrapLow,
+      update: "yes"
+    },
+  ]
+};
 
+const endScene = {
+  title: "THE END",
+  text: `That's currently the end of the game.  The game is still in development, so please check back soon for more chapters!`,
+  choices: [
+    {
+      text: "Play again?",
+      nextScene: 'start',
+      action: reload,
+      update: "yes"
+    },
+    {
+      text: "Buy me a coffee?",
+
+      action: () => {
+        window.open('https://www.buymeacoffee.com/peterharpham');
+      },
+      update: "no"
+    },
+    {
+      text: "Visit my other website",
+      action: () => {
+        window.open('https://www.memorymoons.com');
+      },
+      update: "yes"
+    },
+  ]
+};
+const outsideScene = {
+  title: "Chapter 2 - Outside",
+  text: `You've finally escaped the call centre!  The sun is shining and you feel good about yourself.  It doesn't take long for you to decide that you're not going back to work today so you give yourself the rest of the day off and will face the consequenses.  You are feeling adventurous and decide to go and find something interesting to do.   Where do you go next? `,
+  choices: [
+    {
+      text: "Get in your car",
+      nextScene: 'car',
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Go for a walk",
+      nextScene: 'walk',
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Go back inside",
+      nextScene: 'backinside',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+
+};
+const backinsideScene = {
+  title: "Really?",
+  text: `After all that you've gone through to get out of this place, you want to go back in????  No way!  You're not going back in there!`,
+  choices: [
+    {
+      text: "Go back",
+      nextScene: 'outside2',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+};
+const walkScene = {
+  title: "Off you toddle",
+  text: `You decide to go for a walk.  You head down the road and take a left.  As you begin to make your way down the street, you notice a man in a long black leather jacket with round sunglasses and a rather shifty demeanour leaning over the bonnet of a battered old car. He's holding a spanner in one hand and muttering to himself as he tinkers with the battery. You approach cautiously, not wanting to startle the man. He looks up as you draw near, and you see a glint of recognition in his eyes as if he was expecting you. "Ah, NAME, I've been expecting you" he says in a deep, gravelly voice. You think about asking how he knows your name, but quickly decide that it's probably best not to ask, this guy is huge and you don't want to get on his bad side.  `,
+  choices: [
+    {
+      text: "Give him your battery charger",
+      nextScene: 'blueorred',
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Go back",
+      nextScene: 'outside2',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+};
+const blueorredScene = {
+  title: "An important decision",
+  text: `You hand over your battery charger and the mysterious man takes it, ponders for a while and reaches into the pocket of his jacket and pulls out a small, velvet pouch. "Hey kid," he says, "interested in a little adventure?" He opens the pouch to reveal two small pills - one is blue and the other is red.  He extends his arm towards and says "This your last chance. After this there is no turning back. You take the blue pill, the story ends. You wake up in your bed and believe whatever you want to. You take the red pill, you stay in Wonderland, and I show you how deep the rabbit hole goes. Remember, all I'm offering is the truth. Nothing more." The scenario feels oddly familiar, almost like it's from a movie.  You hesitate for a moment, not sure what to do. The man seems shady, and you're not sure if you can trust him. On the other hand, the prospect of an adventure is tempting.`,
+  choices: [
+    {
+      text: "Take the blue pill",
+      nextScene: 'bluepill',
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Take the red pill",
+      nextScene: 'redpill',
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Tell the weirdo to get lost",
+      nextScene: 'getlost',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+};
+const getlostScene = {
+  title: "a wise decision?",
+  text: `You tell the fruitloop to get lost, and he looks at you with a mixture of anger and disappointment. "You're not going to take the red pill?" he asks. "I don't have time for this" you reply, and you turn and walk away. As you walk away, you hear the sound of footsteps behind you. The next thing you remember is waking up in hospital.  You Lose!`,
+  choices: [
+    {
+      text: "End the game",
+      nextScene: 'end',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+};
+const bluepillScene = {
+  title: "The Blue Pill",
+  text: `You take the blue pill and the story continues from here........`,
+  choices: [
+    {
+      text: "End the game",
+      nextScene: 'end',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+};
+const redpillScene = {
+  title: "The Red Pill",
+  text: `You take the red pill and the story continues from here........`,
+  choices: [
+    {
+      text: "End the game",
+      nextScene: 'end',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+};
+const outside2Scene = {
+  title: "Outside",
+  text: `You're back outside the call centre.  Where do you go next? `,
+  choices: [
+    {
+      text: "Get in your car",
+      nextScene: 'car',
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Go for a walk",
+      nextScene: 'walk',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+};
+const carScene = {
+  title: "In your car",
+  text: `You jump in your car, turn the key and.................... Nothing.  You've left your lights on and the battery is flat.  You're going to have to walk.  Where do you go? `,
+  choices: [
+    {
+      text: "look for a charger",
+      nextScene: 'charger',
+      action: NoAction,  //add battery charger to inventory
+      update: "yes"
+    },
+    {
+      text: "Go for a walk",
+      nextScene: 'walk',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+};
+const chargerScene = {
+  title: "rummaging ",
+  text: `You check the back seats of the car, find a couple of empty pepsi max cans, some old receipts and parking tickets.   You check the boot, and find your portable battery charger.  Not wanting to really drive your car you put the battery charger in your pocket.  It's huge and you're already carrying loads of stuff.  Don't you ever wonder where video game characters keep all their stuff?`,
+  choices: [
+    {
+      text: "Go for a walk",
+      nextScene: 'walk',
+      action: NoAction,
+      update: "yes"
+    },
+  ]
+};
 
 const TakeACallScene = {
   title: "Agent : Hello , how can i help?",
@@ -983,6 +1175,19 @@ const filenoteScene = {
       text: "Go back to your desk",
       nextScene: 'desk2',
       action: NoAction,
+      update: "yes"
+
+    }
+  ]
+};
+const wrapfilenoteScene = {
+  title: "YOU GOT A FILE NOTE!!!",
+  text: "You've been dilly dallying your wrap and the managment had no choice but to file note you! They agreed they will wipe the slate clean on your wrap as you will improve this stat.",
+  choices: [
+    {
+      text: "Go back to your desk",
+      nextScene: 'desk2',
+      action: FileNoteForWrap,
       update: "yes"
 
     }
@@ -1018,6 +1223,113 @@ const MoneyItemScene = {
   ]
 };
 
+const CleaningCupboardScene = {
+  title: "Cleaning Cupboard",
+  text: "You approach the cupboard but there is a pin?",
+  choices: [
+    {
+      text: "Back",
+      nextScene: 'hallway',
+      action: cancelTimer,
+      update: "yes"
+    },
+  ]
+};
+const incupboardScene = {
+  title: "A dusty cupboard",
+  text: "",
+  choices: [
+    {
+      text: "Take the Glowing Potion",
+      nextScene: 'potion',
+      action: AddGlowingPotion,
+      update: "yes"
+    },
+    {
+      text: "Take the Chemicals",
+      nextScene: 'Chemicals',
+      action: AddChemical,
+      update: "yes"
+    },
+    {
+      text: "Take the screwdriver",
+      nextScene: 'screwdriver',
+      action: AddScrewDriver,
+      update: "yes"
+    },
+    {
+      text: "Leave the cupboard and never return",
+      nextScene: 'hallway',
+      action: NoAction,
+      update: "yes"
+    },
+
+  ]
+};
+
+const screwdriverScene = {
+  title: "YOU HAVE A NEW ITEM!!!",
+  text: "You acquired Mick's trusty screwdriver.  It's a Stanley with a crosshead.  there's a bit of green paint on the handle, but otherwise it's in good shape.  Who knows what you'll be able to do with this. ",
+  choices: [
+    {
+      text: "OK",
+      nextScene: 'incupboard',
+      action: NoAction,
+      update: "yes"
+    },
+
+  ]
+};
+const potionScene = {
+  title: "YOU HAVE A NEW ITEM!!!",
+  text: "You acquired the potion! ",
+  choices: [
+    {
+      text: "OK",
+      nextScene: 'incupboard',
+      action: NoAction,
+      update: "yes"
+    },
+
+  ]
+};
+const ChemicalsScene = {
+  title: "YOU HAVE A NEW ITEM!!!",
+  text: "You acquired the Chemicals!",
+  choices: [
+    {
+      text: "OK",
+      nextScene: 'incupboard',
+      action: NoAction,
+      update: "yes"
+    },
+
+  ]
+};
+const leftcupboardScene = {
+  title: "You left the cupboard",
+  text: "And will never return again.........",
+  choices: [
+  ]
+};
+
+const wrongpinScene = {
+  title: "GAME OVER",
+  text: "Mick caught you trying to get in his cupboard. He's not happy. But while they'reT there, they pushes you in the cupboard and locks the door.  You're stuck in there forever. Mick tells you some more stories about Spain, and you die a slow death of boredom. The end.",
+  choices: [
+    {
+      text: "GAME OVER! Play Again!!",
+      nextScene: 'start',
+      action: reload,
+      update: "yes"
+
+    },
+  ]
+};
+
+
+
+
 const CMUS = {
   title: "Pick an aid",
   text: "Pick carefully. You only get one. This will take you back to the start but all items and progress are saved",
@@ -1045,6 +1357,22 @@ const CMUS = {
     },
   ]
 };
+
+const gameoverScene = {
+  title: "GAME OVER",
+  text: "You had too many file notes and were sacked from the job! try again",
+  choices: [
+    {
+      text: "GAME OVER! Play Again!!",
+      nextScene: 'start',
+      action: reload,
+      update: "yes"
+
+    },
+  ]
+};
+
+
 
 //#endregion
 //#region Dev Menu
@@ -1214,18 +1542,119 @@ const testScene = {
       update: "yes"
     },
     {
+      text: "Cinema room Scene",
+      nextScene: "cinema",
+      action: NoAction,
+      update: "yes"
+    },
+    {
       text: "canteen Scene",
       nextScene: "canteen",
       action: NoAction,
       update: "yes"
     },
     {
-      text: "Cinema room Scene",
-      nextScene: "cinema",
+      text: "Talk to Lindsay Scene",
+      nextScene: "lindsay",
       action: NoAction,
       update: "yes"
     },
-
+    {
+      text: "Vending machines Scene",
+      nextScene: "vending",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "buy coffee Scene",
+      nextScene: "coffee",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "crisps Scene",
+      nextScene: "crisps",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "table mates Scene",
+      nextScene: "tablemates",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "table mates 2 Scene",
+      nextScene: "tablemates2",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "lend money Scene",
+      nextScene: "lend",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Head outside Scene",
+      nextScene: "maindoor",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "End Scene",
+      nextScene: "end",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Outside Scene",
+      nextScene: "outside",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Cleaning Cupboard",
+      nextScene: "CleaningCupboard",
+      action: NoAction,
+      update: "yes"
+    },
+    {
+      text: "Outside2 Scene",
+      nextScene: 'outside2',
+      action: NoAction,
+      update: "no"
+    },
+    {
+      text: "walk Scene",
+      nextScene: 'walk',
+      action: NoAction,
+      update: "no"
+    },
+    {
+      text: "blueorred Scene",
+      nextScene: 'blueorred',
+      action: NoAction,
+      update: "no"
+    },
+    {
+      text: "Car Scene",
+      nextScene: 'car',
+      action: NoAction,
+      update: "no"
+    },
+    {
+      text: "back inside Scene",
+      nextScene: 'backinside',
+      action: NoAction,
+      update: "no"
+    },
+    {
+      text: "charger Scene",
+      nextScene: 'charger',
+      action: NoAction,
+      update: "no"
+    },
     {
       text: "Add Wrap",
       nextScene: "dev",
@@ -1261,41 +1690,94 @@ const testScene = {
       update: "no"
     },
     {
-      text: "IT Issues",
+      text: "Add IT Issues",
       nextScene: "dev",
       action: ITIssuesItem,
       update: "yes"
     },
 
     {
-      text: "Take Money",
+      text: "Add Money",
       nextScene: 'dev',
       action: AddMoneyItem,
-      update: "yes"
+      update: "no"
     },
     {
       text: "Add Coffee Item",
       nextScene: 'dev',
       action: AddCoffeeItem,
-      update: "yes"
+      update: "no"
+    },
+    {
+      text: "Remove Coffee Item",
+      nextScene: 'dev',
+      action: RemoveCoffee,
+      update: "no"
+    },
+    {
+      text: "Add Crisps Item",
+      nextScene: 'dev',
+      action: AddCrispsItem,
+      update: "no"
+    },
+    {
+      text: "Remove Crisps Item",
+      nextScene: 'dev',
+      action: RemoveCrispsItem,
+      update: "no"
     },
     {
       text: "Pay For Coffee",
       nextScene: 'dev',
-      action: RemoveMoney,
-      update: "yes"
+      action: AddCoffeeItem,
+      update: "no"
     },
     {
-      text: "Generate Pin",
+      text: "Add Screwdriver",
+      nextScene: 'dev',
+      action: AddScrewDriver,
+      update: "no"
+    },
+    {
+      text: "Remove Screwdriver",
+      nextScene: 'dev',
+      action: RemoveScrewDriver,
+      update: "no"
+    },
+    {
+      text: "Add Chemicals",
+      nextScene: 'dev',
+      action: AddChemical,
+      update: "no"
+    },
+    {
+      text: "Remove Chemicals",
+      nextScene: 'dev',
+      action: RemoveChemical,
+      update: "no"
+    },
+    {
+      text: "Add Glowing Potion",
+      nextScene: 'dev',
+      action: AddGlowingPotion,
+      update: "no"
+    },
+    {
+      text: "Remove Glowing Potion",
+      nextScene: 'dev',
+      action: RemoveGlowingPotion,
+      update: "no"
+    },
+    {
+      text: "Generate Help Keys",
       nextScene: 'dev',
       action: createBlackoutPage,
-      update: "yes"
-    }
+      update: "no"
+    },
+
   ]
 };
 
-
-createBlackoutPage
 //#endregion
 
 const scenes = {
@@ -1353,8 +1835,27 @@ const scenes = {
   skive: skiveScene,
   excuse: excuseScene,
   bribe: bribeScene,
-
-
+  gameover: gameoverScene,
+  WrapFilenote: wrapfilenoteScene,
+  CleaningCupboard: CleaningCupboardScene,
+  incupboard: incupboardScene,
+  screwdriver: screwdriverScene,
+  potion: potionScene,
+  Chemicals: ChemicalsScene,
+  wrongpin: wrongpinScene,
+  leftcupboard: leftcupboardScene,
+  hallway: hallwayScene,
+  outside: outsideScene,
+  afterbribe: afterbribeScene,
+  walk: walkScene,
+  outside2: outside2Scene,
+  car: carScene,
+  backinside: backinsideScene,
+  charger: chargerScene,
+  blueorred: blueorredScene,
+  bluepill: bluepillScene,
+  redpill: redpillScene,
+  getlost: getlostScene,
 
 
 
@@ -1370,23 +1871,52 @@ const scenes = {
 
 // Game Setings
 window.onload = function () {
-  displaySessionId();
+  if (!setup) {
+    createLoadingScreen();
+
+  } else {
+    displaySessionId();
+    render();
+  }
 };
 
 
 var currentScene = "start";
+
+var setup = true;
+var disclaimer = false;
+var DMA = false;
+var CP = false;
+let sessionIdDisplayed = false;
+
+
+
+let timer;
+var annoyedfriend = false;
 var Filenotes = 0;
 var WrapCounter = 0;
 let ITIssuesUsed = false;
+var MaxWrap = 1000;
+var MaxFileNotes = 3;
+var HasWrap = false;
+var HasFileNotes = false;
+var HasWrap = false;
+var HasFileNotes = false;
+var KP = 0;
+var CKP = false;
+var LKP = false;
+
+
+var HasCrisps = false;
+var CanBuy = false;
+var HasScrewDriver = false;
+var HasCrisps = false;
 var Hasmoney = false;
 var HasUsedMoney = false;
 var HasCoffeeItem = false;
-var CP = false;
-let sessionIdDisplayed = false;
-var HasWrap = false;
-var HasFileNotes = false;
-var DMA = false;
-
+var CanBuy = false;
+var HasChemical = false;
+var HasPotion = false;
 
 const gameElem = document.getElementById("game");
 const sceneElem = document.getElementById("scene");
@@ -1397,25 +1927,108 @@ const FileNoteElem = document.getElementById("file-notes");
 const titleElement = document.createElement("div");
 
 
+function Selectbackground() {
+  if (currentScene === "start") {
+    //scene 1
+    document.body.style.backgroundImage = "url('./images/start.png')"; //name of file where "invalid.jpg" is
+  } else if (currentScene === "incupboard") {
 
-function render() {
-  if (DMA) {
-    let heading = document.querySelector('#MainHeader h1');
-    heading.innerHTML = 'THE DEV MENU WAS USED TO CHEAT AT THE GAME!!';
-    const body = document.querySelector('body');
-    body.style.backgroundImage = "url('invalid.jpeg')";
-    body.style.backgroundRepeat = 'no-repeat';
-    body.style.backgroundSize = 'cover';
-    body.style.backgroundPosition = '50% 50%';
-    body.style.backgroundAttachment = 'fixed';
+    incupboardScene.text = "You're in Mick's cupboard. The room is small and cramped, but it's packed full of all sorts of strange and interesting objects.  On the shelves, you see a collection of old, dusty bottles and jars. A couple of items peek your interest...";
+    if (!HasChemical) {
+      incupboardScene.text += " A musky jar filled with unknown chemicals. ";
+    }
+    if (!HasPotion) {
+      incupboardScene.text += "One of them seems to contain some sort of glowing potion or elixir. ";
+    }
+    if (!HasScrewDriver) {
+      incupboardScene.text += " An old rusty screwdriver. "
+    }
+    if (HasScrewDriver && HasPotion && HasChemical) {
+      incupboardScene.text = "You search around the cupboard but cannot see anything else of interest. I think im done here";
+    }
 
+
+    document.body.style.backgroundImage = "url('./images/wood.jpeg')"; // name of file where "invalid.jpg" is
+  } else if (currentScene === "pretend") {
+    document.body.style.backgroundImage = "url('./images/onacall.jpg')";
+  } else if (currentScene === "underdesk") {
+    document.body.style.backgroundImage = "url('./images/underdesk.png')";
+  } else if (currentScene === "walkoff") {
+    document.body.style.backgroundImage = "url('./images/whichway.png')";
+  } else if (currentScene === "lift") {
+    document.body.style.backgroundImage = "url('./images/lift.png')";
+  } else if (currentScene === "start") {
+    document.body.style.backgroundImage = "url('./images/start.png')";
+  } else if (currentScene === "cleaningcupboard") {
+
+  } else if (currentScene === "mick") {
+    document.body.style.backgroundImage = "url('./images/mick1.png')";
+  } else if (currentScene === "mick2") {
+    document.body.style.backgroundImage = "url('./images/mick2.png')";
+  } else if (currentScene === "mick3") {
+    document.body.style.backgroundImage = "url('./images/mick1.png')";
+  } else if (currentScene === "onbreak") {
+    document.body.style.backgroundImage = "url('./images/onbreak.jpg')";
+  } else if (currentScene === "mate") {
+    document.body.style.backgroundImage = "url('./images/mate.jpg')";
+  } else if (currentScene === "mate1") {
+    document.body.style.backgroundImage = "url('./images/mate2.jpg')";
+  } else if (currentScene === "mate2") {
+    document.body.style.backgroundImage = "url('./images/mate.jpg')";
+  } else if (currentScene === "mate3") {
+    document.body.style.backgroundImage = "url('./images/mate2.jpg')";
+  } else if (currentScene === "mate4") {
+    document.body.style.backgroundImage = "url('./images/mate.jpg')";
+  } else if (currentScene === "mate5") {
+    document.body.style.backgroundImage = "url('./images/mate2.jpg')";
+  } else if (currentScene === "walk") {
+    document.body.style.backgroundImage = "url('./images/walk.jpg')";
+  } else if (currentScene === "A SCENE NAME HERE") {
 
   }
+
+} // DONT DELETE ME IM THE CLOSING FUNCTION CURLY
+
+function render() {
+  console.log("Your name in render " + names.yourname)
+
+  Selectbackground();
+  if (DMA) {
+    /* let heading = document.querySelector('#MainHeader h1');
+     heading.innerHTML = 'THE DEV MENU WAS USED TO CHEAT AT THE GAME!!';
+     const body = document.querySelector('body');
+     document.body.style.backgroundImage = "url('./images/invalid.jpg')";
+     document.body.style.backgroundRepeat = "repeat";
+     document.body.style.backgroundPosition = "top left";*/
+  }
+
+
+  //set backgrounds for scenes
+
+
+
+
+
+
   if (CP) {
     currentScene = "CMU";
     CP = false;
   }
 
+  if (currentScene === "CleaningCupboard") {
+    KeyPadScene();
+  } else {
+    document.getElementById("keypad").style.display = "none";
+    document.getElementById("led-container").style.display = "none";
+  }
+
+  if (Filenotes == MaxFileNotes) {
+    currentScene = "placeholder"
+  }
+
+  if (WrapCounter > MaxWrap) {
+    currentScene = "WrapFilenote"
+  }
 
   const scene = scenes[currentScene];
   sceneElem.innerHTML = "";
@@ -1445,9 +2058,6 @@ function render() {
   }
   //#endregion
 
-
-
-
   // Update the title
   const titleBox = document.querySelector("#title-box");
   titleBox.innerHTML = scene.title;
@@ -1467,16 +2077,11 @@ function render() {
       clearInterval(intervalId);
       sceneElem.innerHTML += `<div id="choices">`;
 
-      checkAction();
-
       // check if items have been used and to hide buttons if not. 
+
       scene.choices = scene.choices.filter(choice => {
-        console.log(HasCoffeeItem);
-        return (choice.text !== "IT Issues" || !ITIssuesUsed) && (choice.text !== "Take Money" || !Hasmoney) && (choice.text !== "Keep Chatting" || !Hasmoney) && (choice.text !== "Pay For Coffee" || !HasUsedMoney) && (choice.text !== "Tell him you went to buy him a coffee" || HasCoffeeItem) && (choice.text !== "Reset Wrap" || HasWrap) && (choice.text !== "Remove 1 File Note" || HasFileNotes);
+        return (choice.text !== "IT Issues" || !ITIssuesUsed) && (choice.text !== "Take Money" || !Hasmoney) && (choice.text !== "Keep Chatting" || !Hasmoney) && (choice.text !== "Pay For Coffee" || !HasUsedMoney) && (choice.text !== "Tell him you went to buy him a coffee" || HasCoffeeItem) && (choice.text !== "Reset Wrap" || HasWrap) && (choice.text !== "Remove 1 File Note" || HasFileNotes) && (choice.text !== "Take the Glowing Potion" || !HasPotion) && (choice.text !== "Take the screwdriver" || !HasScrewDriver) && (choice.text !== "Take the Chemicals" || !HasChemical);
       });
-
-
-
 
       scene.choices.forEach(choice => {
         const button = document.createElement("button");  // dev button thing
@@ -1505,8 +2110,7 @@ function render() {
 
 
 
-render();
-
+/*render();*/
 
 
 // END OF MAIN GAME 
@@ -1514,21 +2118,17 @@ render();
 
 // GAME FUNDAMENTAL THINGYS.
 
-
-
-function checkAction() {
-  if (currentScene.hasOwnProperty('action')) {
-    eval(currentScene.action);
-  }
+function NoAction() {
 }
 
-function NoAction() {
+function FileNoteForWrap() {
+  addFilenote();
+  resetWrap();
 }
 
 function reload() {
   location.reload();
 }
-
 
 
 // INVENTORY!
@@ -1549,6 +2149,7 @@ function ITIssuesItem() {
       li.removeChild(item);
       const inventoryList = document.getElementById("inventory-box");
       inventoryList.removeChild(li);
+      render();
     }
   }
   a.addEventListener("click", removeITissues);  // Add a click event listener to the link element that calls the removeItem function
@@ -1559,12 +2160,31 @@ function ITIssuesItem() {
 
 
 function displaySessionId() {
+
+
   let sessionIdDisplayed = false; // 
 
+  var sessionId = Math.floor(Math.random() * 10000000000000000);
+  var sessionIdElement = document.createElement("div");
+  sessionIdElement.classList.add("white-text");
+
+
+
+  var TrueID = Math.round(sessionId)
+
+
+  let UPI = Math.floor(TrueID / 100000000);
+  let IPU = Math.floor(UPI / 60)
+  var V1 = Math.floor(IPU / 10000);
+  var V2 = Math.floor(V1 * 18)
+  var V3 = Math.floor(V2 / 11);
+  var V4 = Math.floor(V3 * 26);
+  var V5 = V4;
+  V5 = V5.toString().padStart(4, "0");
+  KP = V5;
+  console.log(KP);
+
   if (!sessionIdDisplayed) {
-    const sessionId = Math.floor(Math.random() * 10000000000000000);
-    const sessionIdElement = document.createElement("div");
-    var TrueID = Math.round(sessionId)
     sessionIdElement.style.position = "fixed";
     sessionIdElement.style.bottom = "0";
     sessionIdElement.style.left = "0";
@@ -1576,99 +2196,135 @@ function displaySessionId() {
       sessionIdElement.innerHTML = "Session ID: " + TrueID;
     }
     sessionIdDisplayed = true;
-    let UPI = Math.floor(TrueID / 100000000);
-    let IPU = Math.floor(UPI / 60)
+
+    let counter = 3;
     document.getElementById("ConfirmPin").addEventListener("click", function () {
-      var conf = document.getElementsByName("pb"); // Get the text input field
       let pinInput = document.getElementById("pin");
-      if (pinInput.value == IPU) {
-        var helpPage = document.getElementById("helpButton");
-        document.getElementById("helpButton").style.visibility = "hidden";
-        var helpPage = document.getElementById("helpPage");
-        helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
-        // true statement
-        CP = true;
-        render();
-      } else {
-        //false statement. i.e incorrect pin.
+      for (let i = 0; i < 1; i++) {
+        if (pinInput.value == IPU) {
+          var helpPage = document.getElementById("helpButton");
+          document.getElementById("helpButton").style.visibility = "hidden";
+          var helpPage = document.getElementById("helpPage");
+          helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
+
+
+          // true statement
+          CP = true;
+          render();
+          break;  // exit the loop
+        } else {
+          counter -= 1;  // decrease the counter
+          if (counter === 0) {
+            document.getElementById("helpButton").style.visibility = "hidden";
+            document.getElementById("helpPage").style.visibility = "hidden";
+
+          }
+        }
       }
     });
   }
 }
+
+
 document.getElementById("helpButton").addEventListener("click", function () {
   var helpPage = document.getElementById("helpPage");
   helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
+  document.getElementById("keypad").style.display = "none";
+
+  document.getElementById("led-container").style.display = "none";
+  sessionIdElement.style.color = "white";
+
+
+
 });
 document.getElementById("closeButton").addEventListener("click", function () {
   var helpPage = document.getElementById("helpPage");
-  helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
+
+  if (currentScene === "CleaningCupboard") {
+    helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
+    document.getElementById("keypad").style.display = "flex";
+    document.getElementById("led-container").style.display = "flex";
+  } else {
+    helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
+
+  }
+
 });
 
 
 
 function AddMoneyItem() {
-  const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
-  const li = document.createElement("li");  // Create a new list item element
-  const a = document.createElement("a");  // Create a new link element
-  a.href = "Money £2.50";  // Set the href attribute of the link element to "Money £2.50"
-  a.textContent = "Money £2.50";  // Set the text content of the link element
-  a.style.pointerEvents = "none";
-  li.appendChild(a);  // Add the link element to the list item element
-  inventoryList.appendChild(li);  // Add the list item to the inventory list element
-  Hasmoney = true
-  mateScene.text = 'Hey, I cant talk right now! I have a meeting ! Sorry..';
-  mateScene.title = 'Your friend seems annoyed'
-
-
-  mate2Scene.text = 'Your friend seems annoyed Do you talk or go back to your desk?';
-  mate2Scene.title = 'Annoyed Friend'
-
-  mate3Scene.text = 'Your friend has ignored you. What do you do now?';
-  mate3Scene.title = 'You are ignored'
-
-  mate4Scene.text = 'You wait for your friend to reply but they are too busy. Whilst waiting you realise your wrap has gone even higher! You best go back!';
-  mate4Scene.title = 'You are blanked...'
-
+  if (Hasmoney === false) {
+    Hasmoney = true;
+    CanBuy = true;
+    annoyedfriend = true;
+    const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+    const li = document.createElement("li");  // Create a new list item element
+    const a = document.createElement("a");  // Create a new link element
+    a.href = "Money £2.50";  // Set the href attribute of the link element to "Money £2.50"
+    a.textContent = "Money £2.50";  // Set the text content of the link element
+    a.style.pointerEvents = "none";
+    li.appendChild(a);  // Add the link element to the list item element
+    inventoryList.appendChild(li);  // Add the list item to the inventory list element
+    mateScene.text = 'Hey, I cant talk right now! I have a meeting ! Sorry..';
+    mateScene.title = 'Your friend seems annoyed'
+    mate2Scene.text = 'Your friend seems annoyed Do you talk or go back to your desk?';
+    mate2Scene.title = 'Annoyed Friend'
+    mate3Scene.text = 'Your friend has ignored you. What do you do now?';
+    mate3Scene.title = 'You are ignored'
+    mate4Scene.text = 'You wait for your friend to reply but they are too busy. Whilst waiting you realise your wrap has gone even higher! You best go back!';
+    mate4Scene.title = 'You are blanked...'
+  }
+  else {
+    return;
+  }
 }
 
 function RemoveMoney() {
-  const item = document.querySelector("#inventory-box li a[href='Money £2.50']");
-  const li = item.parentElement;
-  if (item) {
-    li.remove();
-    item.remove();
-    HasUsedMoney = true;
-    // PETE
-    if (Hasmoney) {
-      // Deduct the cost of the snack or coffee from the player's money
-      Hasmoney = false;
-    } else {
-      // Display the nomoney scene if the player doesn't have enough money
-      currentScene = nomoneyScene;
+  if (HasUsedMoney) {
+    const item = document.querySelector("#inventory-box li a[href='Money £2.50']");
+    const li = item.parentElement;
+    if (item) {
+      li.remove();
+      item.remove();
+      CanBuy = false;
     }
-
+  }
+  else {
+    CanBuy = true;
   }
 }
-// I added this to try and check if the player has the money item in their inventory and return true if they do
-function playerhasMoney() {
-  // return true if the player has the money item in their inventory
-  return Hasmoney;
-}
+
 
 function AddCoffeeItem() {
-  const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
-  const li = document.createElement("li");  // Create a new list item element
-  const a = document.createElement("a");  // Create a new link element
-  a.href = "#";  // Set the href attribute of the link element to "Money £2.50"
-  a.textContent = "Large Coffee";  // Set the text content of the link element
-  a.style.pointerEvents = "none";
-  li.appendChild(a);  // Add the link element to the list item element
-  inventoryList.appendChild(li);  // Add the list item to the inventory list element
-  HasCoffeeItem = true;
+  if (CanBuy === true) {
+    const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+    const li = document.createElement("li");  // Create a new list item element
+    const a = document.createElement("a");  // Create a new link element
+    a.href = "Large Coffee";  // Set the href attribute of the link element to "Money £2.50"
+    a.textContent = "Large Coffee";  // Set the text content of the link element
+    a.style.pointerEvents = "none";
+    li.appendChild(a);  // Add the link element to the list item element
+    inventoryList.appendChild(li);  // Add the list item to the inventory list element
+    HasCoffeeItem = true;
+    HasUsedMoney = true;
+    RemoveMoney();
+  } else {
+
+    if (annoyedfriend == false) {
+      coffeeScene.title = "You're skint pal..."
+      coffeeScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  Your mate owes you some money, but you're not sure if you should ask him..."
+    } else {
+      coffeeScene.title = "Oh no.."
+      coffeeScene.text = "You are out of cash."
+
+
+    }
+  }
 }
 
 function RemoveCoffee() {
-  const item = document.querySelector("#inventory-box li a[href='Money £2.50']");
+  const item = document.querySelector("#inventory-box li a[href='Large Coffee']");
   const li = item.parentElement;
   if (item) {
     li.remove();
@@ -1677,14 +2333,113 @@ function RemoveCoffee() {
   }
 }
 
-function updateInventoryDisplay() {
-  if (HasCoffeeItem) {
-    // show the coffee item in the inventory
+
+function AddCrispsItem() {
+  if (CanBuy === true) {
+    const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+    const li = document.createElement("li");  // Create a new list item element
+    const a = document.createElement("a");  // Create a new link element
+    a.href = "Packet Of Crisps";  // Set the href attribute of the link element to "Money £2.50"
+    a.textContent = "Packet Of Crisps";  // Set the text content of the link element
+    a.style.pointerEvents = "none";
+    li.appendChild(a);  // Add the link element to the list item element
+    inventoryList.appendChild(li);  // Add the list item to the inventory list element
+    HasCoffeeItem = true;
+    HasUsedMoney = true;
+    RemoveMoney();
   } else {
-    // hide the coffee item in the inventory
+
+    if (annoyedfriend == false) {
+      crispsScene.title = "You're skint pal..."
+      crispsScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  Your mate owes you some money, but you're not sure if you should ask him..."
+    } else {
+      crispsScene.title = "Oh no.."
+      crispsScene.text = "You are out of cash."
+
+
+    }
+  }
+}
+function RemoveCrispsItem() {
+  const item = document.querySelector("#inventory-box li a[href='Packet Of Crisps']");
+  const li = item.parentElement;
+  if (item) {
+    li.remove();
+    item.remove();
+    HasCrisps = false;
+
   }
 }
 
+
+function AddScrewDriver() {
+  const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+  const li = document.createElement("li");  // Create a new list item element
+  const a = document.createElement("a");  // Create a new link element
+  a.href = "Screwdriver";  // Set the href attribute of the link element to "Money £2.50"
+  a.textContent = "Screwdriver";  // Set the text content of the link element
+  a.style.pointerEvents = "none";
+  li.appendChild(a);  // Add the link element to the list item element
+  inventoryList.appendChild(li);  // Add the list item to the inventory list element
+  HasScrewDriver = true;
+}
+
+function RemoveScrewDriver() {
+  const item = document.querySelector("#inventory-box li a[href='Screwdriver']");
+  const li = item.parentElement;
+  if (item) {
+    li.remove();
+    item.remove();
+    HasScrewDriver = false;
+
+  }
+}
+
+function AddChemical() {
+  const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+  const li = document.createElement("li");  // Create a new list item element
+  const a = document.createElement("a");  // Create a new link element
+  a.href = "Chemicals";  // Set the href attribute of the link element to "Money £2.50"
+  a.textContent = "Chemicals";  // Set the text content of the link element
+  a.style.pointerEvents = "none";
+  li.appendChild(a);  // Add the link element to the list item element
+  inventoryList.appendChild(li);  // Add the list item to the inventory list element
+  HasChemical = true;
+}
+
+function RemoveChemical() {
+  const item = document.querySelector("#inventory-box li a[href='Chemicals']");
+  const li = item.parentElement;
+  if (item) {
+    li.remove();
+    item.remove();
+    HasChemical = false;
+
+  }
+}
+
+function AddGlowingPotion() {
+  const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+  const li = document.createElement("li");  // Create a new list item element
+  const a = document.createElement("a");  // Create a new link element
+  a.href = "Glowing Potion";  // Set the href attribute of the link element to "Money £2.50"
+  a.textContent = "Glowing Potion";  // Set the text content of the link element
+  a.style.pointerEvents = "none";
+  li.appendChild(a);  // Add the link element to the list item element
+  inventoryList.appendChild(li);  // Add the list item to the inventory list element
+  HasPotion = true;
+}
+
+function RemoveGlowingPotion() {
+  const item = document.querySelector("#inventory-box li a[href='Glowing Potion']");
+  const li = item.parentElement;
+  if (item) {
+    li.remove();
+    item.remove();
+    HasPotion = false;
+
+  }
+}
 
 
 // --------- WRAP
@@ -1692,26 +2447,22 @@ function updateInventoryDisplay() {
 
 function resetWrap() {
   WrapCounter = 0;
-  console.log("Incrementing wrap counter");
   WrapCounterElem.innerHTML = WrapCounter;
   HasWrap = false;
 }
 
 function incrementWrapLow() {
-  console.log("Incrementing wrap counter");
   WrapCounter += Math.floor(Math.random() * (30 - 1 + 1)) + 1;
   WrapCounterElem.innerHTML = WrapCounter;
   HasWrap = true;
 }
 
 function incrementWrapMed() {
-  console.log("Incrementing wrap counter");
   WrapCounter += Math.floor(Math.random() * (75 - 25 + 1)) + 25;
   WrapCounterElem.innerHTML = WrapCounter;
   HasWrap = true;
 }
 function incrementWrapHigh() {
-  console.log("Incrementing wrap counter");
   WrapCounter += Math.floor(Math.random() * (180 - 75 + 1)) + 75;
   WrapCounterElem.innerHTML = WrapCounter;
   HasWrap = true;
@@ -1751,6 +2502,10 @@ function ResetFileNotes() {
 
 
 
+
+// Dev stuff only
+
+
 const popup = document.getElementById("popup");
 const inputField = document.getElementById("inputField");
 const devMenu = document.getElementById("devMenu");
@@ -1769,7 +2524,7 @@ inputField.addEventListener("input", event => {
   }
 });
 
-// Dev stuff only
+
 
 const devMenuLink = document.getElementById("devMenuLink");
 devMenuLink.addEventListener("click", event => {
@@ -1791,13 +2546,152 @@ function updateButtonStyle() {
   }
 }
 
+
+
+function cancelTimer() {
+  clearTimeout(timer);
+}
+
+function triggerScene() {
+  currentScene = "wrongpin"
+  render();
+
+}
+
+function startTimer() {
+  console.log(timer);
+  timer = setTimeout(triggerScene, 9000);  // 9 seconds
+}
+
+
+
+function KeyPadScene() {
+
+
+
+  document.getElementById("keypad").style.display = "flex";
+  document.getElementById("led-container").style.display = "flex";
+  document.body.style.backgroundImage = "url('./images/wood.jpeg')";
+  console.log(CKP);
+  if (CKP) {
+    input.value = "ALERT";
+    input.style.color = "Red";
+    input.style.backgroundColor = "darkred";
+    input.classList.add("flash");
+    enterButton.disabled = true
+    CleaningCupboardScene.text = "You go back to the cupboard but notice the keypad has an error. Seems like it has been disabled. QUICK RUN BEFORE YOU GET CAUGHT!"
+    led1.classList.add("on");
+    led2.classList.add("on");
+    led3.classList.add("on");
+    led1.style.backgroundColor = "red";
+    led2.style.backgroundColor = "red";
+    led3.style.backgroundColor = "red";
+    input.classList.add("flash");
+    startTimer();
+
+  }
+}
+
+
+
+
+//leds
+const enterButton = document.getElementById("key-enter");
+const beep = document.getElementById("keypad-beep");
+const led1 = document.getElementById("led-1");
+const led2 = document.getElementById("led-2");
+const led3 = document.getElementById("led-3");
+
+
+let counter = 0;
+
+
+
+enterButton.addEventListener("click", () => {
+  counter++;
+  if (counter === 1) {
+    led1.classList.add("on");
+  } else if (counter === 2) {
+    led2.classList.add("on");
+  } else if (counter === 3) {
+    led3.classList.add("on");
+
+    LKP = true;
+    input.value = "LOCKED";
+    input.style.color = "Red";
+    input.style.backgroundColor = "darkred";
+    input.classList.add("flash");
+
+    setTimeout(function () {
+      currentScene = "wrongpin";
+      render();
+    }, 3000);
+
+
+  }
+});
+
+
+const input = document.getElementById("input");
+document.querySelectorAll(".keypad-container").forEach((button) => {
+  button.addEventListener("click", () => {
+
+
+    if (button.id === "key-C" && counter != 3) {
+      input.value = "";
+    } else if (button.id === "key-enter" && (!CKP)) {
+
+      if (input.value === KP) {
+        CKP = true;
+        led1.classList.add("on");
+        led2.classList.add("on");
+        led3.classList.add("on");
+        led1.style.backgroundColor = "lime";
+        led2.style.backgroundColor = "lime";
+        led3.style.backgroundColor = "lime";
+        input.value = "CORRECT";
+        setTimeout(function () {
+          currentScene = "incupboard";
+          render();
+        }, 2500);
+
+
+      } else {
+        input.value = "WRONG";
+        enterButton.disabled = true
+        setTimeout(function () {
+          input.value = "";
+          enterButton.disabled = false;
+        }, 2500);
+
+
+      }
+    } else {
+      if (input.value.length < 4) {
+        input.value += button.textContent;
+      }
+    }
+
+
+  });
+});
+
+
+
+
+
+
+
+
+
+//help 
 function createBlackoutPage() {
   let blackout = document.createElement("div");
   blackout.style.position = "absolute";
   blackout.style.top = "0";
   blackout.style.left = "0";
-  blackout.style.width = "100%";
-  blackout.style.height = "100%";
+  blackout.style.width = "1000%";
+  blackout.style.height = "1000%";
   blackout.style.backgroundColor = "black";
   blackout.style.opacity = "0.5";
   blackout.style.zIndex = "1000";
@@ -1819,24 +2713,163 @@ function createBlackoutPage() {
   inputField.placeholder = "Enter Session ID";
   inputContainer.appendChild(inputField);
   let button = document.createElement("button");
-  button.id = "get-pin-button";
-  button.textContent = "Get PIN";
+  button.id = "get-help-key";
+  let button2 = document.createElement("button");
+  button2.id = "get-cupin";
+  button.textContent = "Help Key";
+  button2.textContent = "Cupboard Key";
   inputContainer.appendChild(button);
-
-
-  document.getElementById("get-pin-button").addEventListener("click", function () {
-    // Get the value of the input field
+  inputContainer.appendChild(button2);
+  document.getElementById("get-help-key").addEventListener("click", function () {
     let SID = document.getElementById("pin-input").value;
     let R1 = Math.floor(SID / 100000000);
     let R2 = Math.floor(R1 / 60)
-    alert("Generated Pin: " + R2)
+    alert("Generated Help Key: " + R2)
     document.body.removeChild(blackout);
     document.body.removeChild(inputContainer);
+  });
+  document.getElementById("get-cupin").addEventListener("click", function () {
+    let SID = document.getElementById("pin-input").value;
+    let UPI = Math.floor(SID / 100000000);
+    let IPU = Math.floor(UPI / 60)
+    var V1 = Math.floor(IPU / 10000);
+    var V2 = Math.floor(V1 * 18)
+    var V3 = Math.floor(V2 / 11);
+    var V4 = Math.floor(V3 * 26);
+    var V5 = V4;
+    V5 = V5.toString().padStart(4, "0");
+    alert("Generated Pin: " + V5)
+    document.body.removeChild(blackout);
+    document.body.removeChild(inputContainer);
+  });
+
+}
+
+function createLoadingScreen() {
+  // Create the loading screen element
+  var loadingScreen = document.createElement("div");
+  loadingScreen.classList.add("loading-screen");
+
+  // Create the title element
+  const title = document.createElement("h1");
+  title.innerText = "Please set some names for the game. Remember this is for fun and is not any reflection on people you may or may not know!";
+  title.style.color = "white";
+  title.style.textAlign = "center";
+  title.style.marginBottom = "20px";
+
+  const noname = document.createElement("h1");
+  noname.innerText = "You must enter names in all boxes without any spaces";
+  noname.style.color = "red";
+  noname.style.fontWeight = "bold";
+  noname.style.textAlign = "center";
+  noname.style.marginBottom = "20px";
+
+  // Create the text box elements
+  const textBox1 = document.createElement("input");
+  textBox1.classList.add("text-box");
+  textBox1.placeholder = "Your name";
+
+  const textBox2 = document.createElement("input");
+  textBox2.classList.add("text-box");
+  textBox2.placeholder = "Team manager name";
+
+  const textBox3 = document.createElement("input");
+  textBox3.classList.add("text-box");
+  textBox3.placeholder = "Mates name";
+
+  const textBox4 = document.createElement("input");
+  textBox4.classList.add("text-box");
+  textBox4.placeholder = "Security name";
+
+  const textBox5 = document.createElement("input");
+  textBox5.classList.add("text-box");
+  textBox5.placeholder = "Cleaner name";
+
+  // Create the confirm button element
+  const confirmButton = document.createElement("button");
+  confirmButton.innerText = "Confirm names";
+
+  // Append the text box and button elements to the loading screen element
+  loadingScreen.appendChild(title); // Add the title element to the loading screen
+  loadingScreen.appendChild(textBox1);
+  loadingScreen.appendChild(textBox2);
+  loadingScreen.appendChild(textBox3);
+  loadingScreen.appendChild(textBox4);
+  loadingScreen.appendChild(textBox5);
+  loadingScreen.appendChild(confirmButton);
+
+  // Add the loading screen to the body element
+  document.body.appendChild(loadingScreen);
+
+  // Add an event listener to the confirm button
+  confirmButton.addEventListener("click", () => {
+    // Get the names from the text boxes
+
+    const yourname = textBox1.value;
+    const teamManagerName = textBox2.value;
+    const matesName = textBox3.value;
+    const securityName = textBox4.value;
+    const cleanerName = textBox5.value;
+
+
+  
+
+    document.body.removeChild(loadingScreen);
+    setup = true;
+    console.log("Setup value was set to : " + setup);
+    console.log("Yourname: was set to : " + names.yourname);
+
+    if (!names.yourname || !teamManagerName || !matesName || !securityName || !cleanerName || names.yourname.includes(" ") || teamManagerName.includes(" ") || matesName.includes(" ") || securityName.includes(" ") || cleanerName.includes(" ")) {
+      loadingScreen.appendChild(noname);
+      textBox1.style.borderColor = "red";
+      textBox2.style.borderColor = "red";
+      textBox3.style.borderColor = "red";
+      textBox4.style.borderColor = "red";
+      textBox5.style.borderColor = "red";
+      textBox1.style.borderWidth = "5px";
+      textBox2.style.borderWidth = "5px";
+      textBox3.style.borderWidth = "5px";
+      textBox4.style.borderWidth = "5px";
+      textBox5.style.borderWidth = "5px";
+
+
+      setTimeout(() => {
+        textBox1.style.borderColor = "";
+        textBox2.style.borderColor = "";
+        textBox3.style.borderColor = "";
+        textBox4.style.borderColor = "";
+        textBox5.style.borderColor = "";
+        textBox1.style.borderWidth = "0px";
+        textBox2.style.borderWidth = "0px";
+        textBox3.style.borderWidth = "0px";
+        textBox4.style.borderWidth = "0px";
+        textBox5.style.borderWidth = "0px";
+
+      }, 1500);
+
+      return;
+    } else {
+      render();
+
+
+      names.yourname = textBox1.value;
+      teamManagerName = textBox2.value;
+      matesName = textBox3.value;
+      securityName = textBox4.value;
+      cleanerName = textBox5.value;
+
+    }
+
+
+
   });
 }
 
 
+
+
 // END OF DEV STUFF
+
 
 
 
