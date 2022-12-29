@@ -1,19 +1,24 @@
+
+
 /* old stuff */
 @media (max-width: 768px) {
+
   #file-notes-container,
   #Wrap-Container {
     width: 100%;
     flex-direction: column;
   }
 }
+@import url('https://fonts.cdnfonts.com/css/seven-segment');
 
 button {
-  display: flex; /* changed from fixed */
+  display: flex;
+  /* changed from fixed */
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 10px;
-  background-color: rgba(12, 148, 148, 0.808);
+  background-color: rgba(14, 41, 219, 0.808);
   font-family: monospace;
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -21,10 +26,11 @@ button {
   margin: 5px;
   box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5);
   font-size: 20px;
-  width: auto; /* changed from fixed width */
-  height: auto; /* changed from fixed height */
+  width: auto;
+  /* changed from fixed width */
+  height: auto;
+  /* changed from fixed height */
 }
-
 
 
 button:hover {
@@ -33,7 +39,6 @@ button:hover {
 
 
 body {
-  background-image: url('https://i.ibb.co/vqgdMSj/DALL-E-2022-12-17-01-02-19-a-detailed-photo-realistic-scene-of-a-male-ginger-haired-call-centre-work.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
@@ -75,6 +80,7 @@ body {
   font-size: 20px;
   /* remove float: right; and clear: both; */
 }
+
 #helpButton {
   background-color: rgba(12, 148, 148, 0.808);
   font-size: 24px;
@@ -84,7 +90,8 @@ body {
   align-items: center;
   justify-content: center;
   margin: 30px;
-  margin-top: 20px; /* add margin-top to space the button below the container */
+  margin-top: 20px;
+  /* add margin-top to space the button below the container */
 }
 
 #MainHeader {
@@ -92,7 +99,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: relative;
   top: 20px;
   left: 50%;
   transform: translate(-50%, 0);
@@ -117,7 +124,8 @@ body {
   top: 150px;
   left: 50%;
   transform: translate(-50%, 0);
-  width: auto; /* changed from fixed width */
+  width: auto;
+  /* changed from fixed width */
   max-width: 800px;
   border: 1px solid black;
   background-color: rgba(12, 148, 148, 0.808);
@@ -150,12 +158,11 @@ body {
   padding: 20px;
   margin: 30px;
   font-family: monospace;
-font-size: 20px;
+  font-size: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: aliceblue;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
-
 
 
 #popup {
@@ -169,10 +176,12 @@ font-size: 20px;
   color: white;
   padding: 10px;
 }
+
 #inputField {
   width: 100%;
   color: white;
 }
+
 #devMenu {
   background-color: lightgrey;
   border: 1px solid rgb(255, 255, 255);
@@ -183,10 +192,12 @@ font-size: 20px;
 
 .button-grid {
   display: grid;
-  grid-template-columns: repeat(10, 50px);  /* 10 columns with 50px width */
-  grid-template-rows: repeat(10, 50px);  /* 10 rows with 50px height */
+  grid-template-columns: repeat(10, 50px);
+  /* 10 columns with 50px width */
+  grid-template-rows: repeat(10, 50px);
+  /* 10 rows with 50px height */
   grid-gap: 20px;
-  grid-template-areas: 
+  grid-template-areas:
     "a a a a a a a a a a"
     "b b b b b b b b b b"
     "c c c c c c c c c c"
@@ -197,17 +208,17 @@ font-size: 20px;
     "h h h h h h h h h h"
     "i i i i i i i i i i"
     "j j j j j j j j j j";
-    margin: 0;
-    padding: 0;
-    border: none;
-    background: none;
-    display: inline-block;
-    font-size: 16px;
-    line-height: 1;
-    text-align: center;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.611);
-    border: 1px solid rgb(255, 255, 255);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.611);
+  border: 1px solid rgb(255, 255, 255);
 
 }
 
@@ -231,6 +242,12 @@ font-size: 20px;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
+
+
+
+
+
+
 #inventory-title {
   font-size: 24px;
   color: aliceblue;
@@ -241,7 +258,8 @@ font-size: 20px;
 }
 
 a {
-  color: #00ffe5; /* Set the color to a shade of green */
+  color: #00ffe5;
+  /* Set the color to a shade of green */
   font-family: monospace;
   font-size: 20px;
 
@@ -319,3 +337,183 @@ a {
 
 }
 
+/* these are the styles for the keypad buttons for the cleaning room  */
+.keypad-container {
+  position: relative;
+  top: 85px;
+  left: 20px;
+  /* add your custom styles here */
+  background-image: url("./images/button.png");
+  background-position: 50% 50%;
+  width: 100px;
+  height: 50px;
+  font-size: 2em;
+  border: 2px solid transparent black;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Seven Segment', courier;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 3px 3px 3px 3px rgb(75, 75, 75);
+  transform: scale(0.95) translateY(2px);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  transition: border 0.3s ease-out;
+  border: 2px solid;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+
+}
+
+.keypad-container:hover {
+
+  box-shadow: 3px 3px 3px 3px rgb(0, 0, 0);
+  transform: scale(1.05) translateY(-2px);
+  border: 2px solid #0f0f0f;
+
+
+}
+
+.keypad-button {
+  background-image: url('./images/button.png');
+  /* other styles */
+}
+
+/* this is everything that the keypad background and buttons sit in. */
+#keypad {
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 330px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  font-family: 'Seven Segment', courier;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: 40px;
+  margin-left: 30px;
+
+}
+
+
+#keypad::before {
+
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -140px;
+  bottom: -200px;
+  left: -80px;
+  background-image: url('./images/KP3.png');
+  background-size: cover;
+  z-index: -1;
+  margin-right: 20px;
+  margin-bottom: -150px;
+
+}
+
+#input {
+  display: flex;
+  width: 4in;
+  height: 1in;
+  margin-top: 50px;
+  margin-left: 40px;
+  background-color: rgb(10, 64, 10);
+  text-align: center;
+  color: lime;
+  font-family: 'seven segment';
+  font-size: 100px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  
+
+}
+
+#led-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 550px;
+  margin-left: 102px;
+  position: relative;
+}
+
+.led {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  border: none;
+  background-color: darkred;
+  border-radius: 50%;
+  pointer-events: none;
+
+}
+
+.led.on {
+  background-color: rgb(255, 0, 0);
+  pointer-events: none;
+
+}
+
+.flash {
+  animation: flash 1s  ease-out infinite;
+  
+}
+
+@keyframes flash {
+  100% {
+    color: darkred;
+    border-radius: 0%;
+    text-shadow: none;
+  }
+}
+
+.fade {
+  transition: opacity 4s linear;
+  opacity: 0;
+}
+
+.white-text {
+  color: white;
+}
+
+
+
+/* Style the loading screen */
+.loading-screen {
+  position: fixed; /* Sit on top of the page content */
+  display: flex; /* Make it a flex container */
+  flex-direction: column; /* Stack the elements vertically */
+  align-items: center; /* Center the elements horizontally */
+  justify-content: center; /* Center the elements vertically */
+  top: 0; /* Stick to the top of the page */
+  left: 0; /* Stick to the left of the page */
+  right: 0; /* Stick to the right of the page */
+  bottom: 0; /* Stick to the bottom of the page */
+  backdrop-filter: blur(40px);
+  z-index: 2; /* Sit above other elements on the page */
+}
+
+
+/* Style the text boxes */
+.text-box {
+  display: flex; /* Make it a flex container */
+  align-items: center; /* Center the contents vertically */
+  justify-content: center; /* Center the contents horizontally */
+  width: 200px; /* Set the width of the text box */
+  height: 50px; /* Set the height of the text box */
+  background-color: white; /* Make the background white */
+  border: 1px solid grey; /* Add a grey border */
+  margin: 10px; /* Add some margin around the text box */
+  font-size: 18px; /* Increase the font size */
+}
+.loading-screen h1 {
+  width: 80%; /* Set the width to 80% of the parent element */
+  text-align: center; /* Center the text */
+  white-space: normal; /* Allow the text to wrap */
+}
