@@ -2,8 +2,12 @@
 <html>
 
 <head>
+  
+                
   <title>A call centre</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.cdnfonts.com/css/seven-segment" rel="stylesheet">
+                
 </head>
 
 <!--Main Heading -->
@@ -54,13 +58,41 @@
   <div id="helpPage" style="visibility: hidden;">
     <p>IMPORTANT</p>
     <p>You will need to ask Pete for a pin which is unique to you and only for this game. If you get fail the game then the pin will not work on the next game you play. This will allow you to reset your wrap OR file notes. If you dont have any wrap or filenotes then you will waste this precious option! </p>
+    <p>You will only get 3 chances to enter the pin per game. Incorrect tries will disable this function</p>
     <label for="pin">Pin:</label>
     <input type="pb" id="pin">
     <button id="ConfirmPin">Confirm Pin</button>
     <button id="closeButton">Close</button>
   </div>
   
-  
+
+
+  <div id="keypad">
+
+    <input id="input" type="input" readonly>
+    <button class="keypad-container" id="key-1">1</button>
+    <button class="keypad-container" id="key-2">2</button>
+    <button class="keypad-container" id="key-3">3</button>
+    <button class="keypad-container" id="key-4">4</button>
+    <button class="keypad-container" id="key-5">5</button>
+    <button class="keypad-container" id="key-6">6</button>
+    <button class="keypad-container" id="key-7">7</button>
+    <button class="keypad-container" id="key-8">8</button>
+    <button class="keypad-container" id="key-9">9</button>
+    <button class="keypad-container" id="key-C">C</button>
+    <button class="keypad-container" id="key-0">0</button>
+    <button class="keypad-container" id="key-enter">ENTER</button>
+  </div>
+</div>
+
+<div id="led-container">
+  <button class="led" id="led-1" disabled></button>
+  <button class="led" id="led-2" disabled></button>
+  <button class="led" id="led-3" disabled></button>
+</div>
+
+
+
 
   <script src="game.js"></script>
 </body>
