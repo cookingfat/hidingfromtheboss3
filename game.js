@@ -2173,7 +2173,7 @@ if (!HasCoffeeItem) {
     document.getElementById("led-container").style.display = "none";
   }
 
-  if (Filenotes == MaxFileNotes) {
+  if (Filenotes >= MaxFileNotes) {
     currentScene = "gameover"
   }
 
