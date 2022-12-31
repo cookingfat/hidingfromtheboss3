@@ -1361,10 +1361,25 @@ const gameoverScene = {
   choices: [
     {
       text: "GAME OVER! Play Again!!",
-      nextScene: 'start',
+      nextScene: 'end',
       action: reload,
       update: "yes"
 
+    },
+    {
+      text: "Buy me a coffee?",
+
+      action: () => {
+        window.open('https://www.buymeacoffee.com/peterharpham');
+      },
+      update: "no"
+    },
+    {
+      text: "Visit my other website",
+      action: () => {
+        window.open('https://www.memorymoons.com');
+      },
+      update: "yes"
     },
   ]
 };
@@ -2159,7 +2174,7 @@ if (!HasCoffeeItem) {
   }
 
   if (Filenotes == MaxFileNotes) {
-    currentScene = "placeholder"
+    currentScene = "gameover"
   }
 
   if (WrapCounter > MaxWrap) {
