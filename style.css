@@ -189,25 +189,11 @@ body {
   display: grid;
   align-items: center;
 }
-
+/*
 .button-grid {
   display: grid;
   grid-template-columns: repeat(10, 50px);
-  /* 10 columns with 50px width */
-  grid-template-rows: repeat(10, 50px);
-  /* 10 rows with 50px height */
-  grid-gap: 20px;
-  grid-template-areas:
-    "a a a a a a a a a a"
-    "b b b b b b b b b b"
-    "c c c c c c c c c c"
-    "d d d d d d d d d d"
-    "e e e e e e e e e e"
-    "f f f f f f f f f f"
-    "g g g g g g g g g g"
-    "h h h h h h h h h h"
-    "i i i i i i i i i i"
-    "j j j j j j j j j j";
+  grid-template-rows: repeat(5, 50px);
   margin: 0;
   padding: 0;
   border: none;
@@ -220,18 +206,15 @@ body {
   background-color: rgba(0, 0, 0, 0.611);
   border: 1px solid rgb(255, 255, 255);
 
-}
+} */
 
 
 #inventory-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   position: absolute;
   top: 20px;
-  right: 20px;
-  width: 200px;
+  right: 0;
+  width: 80%;
+  max-width: 200px;
   height: 500px;
   border: 1px solid black;
   background-color: rgba(129, 129, 129, 0.75);
@@ -241,8 +224,6 @@ body {
   color: aliceblue;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
-
-
 
 
 
@@ -265,8 +246,11 @@ a {
 
 }
 
-
-
+/*
+body {
+  overflow: hidden;
+}
+*/
 
 #helpPage {
   position: fixed;
@@ -380,8 +364,8 @@ a {
 
 /* this is everything that the keypad background and buttons sit in. */
 #keypad {
-
   display: flex;
+  
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
@@ -392,12 +376,11 @@ a {
   background-attachment: fixed;
   font-family: 'Seven Segment', courier;
   text-align: center;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  top: 50%;
+  position: relative;
+  top: 20px;
   left: 50%;
-  margin-top: 40px;
-  margin-left: 30px;
+  transform: translate(-50%, 0);
+  
 
 }
 
@@ -438,10 +421,13 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 550px;
-  margin-left: 102px;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  top: 550px;
+  right: 88px;
+  
 }
+
 
 .led {
   display: flex;
@@ -451,6 +437,7 @@ a {
   background-color: darkred;
   border-radius: 50%;
   pointer-events: none;
+  
 
 }
 
