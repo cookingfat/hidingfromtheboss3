@@ -77,7 +77,7 @@ const underdeskScene = {
   choices: [
     {
       text: "Go back to your desk",
-      nextScene: 'start',
+      nextScene: 'desk2',
       action: incrementWrapLow,
       update: "yes"
 
@@ -100,7 +100,7 @@ const onbreakScene = {
 };
 
 const mateScene = {
-  title: "They're busy",
+  title: "Talking to your mate",
   text: "You walk over to speak to your mate.  They've just come off a call, so you talk about your day so far and what you're up to this weekend.  You should really get some work done, but you really don't feel up to it.  Do you...",
   choices: [
     {
@@ -188,7 +188,7 @@ const mate5Scene = {
   text: "You continue to chat to your mate.......   Suddenly, they remember they owe you some money for that pint you bought at the pub last week.  They reach into their pocket and pull out £2.50 and hand it to you.  Your mate has a meeting in 5 minutes, so they say they need to go.",
   choices: [
     {
-      text: "Go back to your desk",
+      text: "Take the £2.50",
       nextScene: 'moneyitem',
       action: NoAction,
       update: "yes"
@@ -403,7 +403,7 @@ const alarmScene = {
 };
 const waitsteveScene = {
   title: "You wait.....",
-  text: "After what seems like forever, Steve finally arrives with a crew of Firemen. They use their power tools to open the lift doors and you are finally free. You've been in the lift for so long that your shift has ended and you go home. You'll probably get another file note for this, but you don't care.  Due to your poor decision making, you lose the game.  Better luck next time!",
+  text: "After what seems like forever, Steve finally arrives with a crew of 41 Fire crew. They use their power tools to open the lift doors and you are finally free. You've been in the lift for so long that your shift has ended and you go home. All 41 of the Fire crew line up outside the centre and Steve makes you apologise to each one.  You'll probably get another file note for this, but you don't care.  Due to your poor decision making, you lose the game.  Better luck next time!",
   choices: [
     {
       text: "Try again?",
@@ -485,7 +485,7 @@ const wait4Scene = {
     },
     {
       text: "Wait to see if it starts moving again",
-      nextScene: 'floor1',
+      nextScene: 'wait5',
       action: incrementWrapMed,
       update: "yes"
     }
@@ -497,10 +497,9 @@ const wait5Scene = {
   choices: [
     {
       text: "Walk out of the lift",
-      nextScene: 'alarm',
-      action: NoAction,
+      nextScene: 'floor1',
+      action: incrementWrapLow,
       update: "yes"
-
     },
   ]
 };
@@ -618,9 +617,9 @@ const mick3Scene = {
   text: "You feel like you have no choice but to stand there and carry on listening to Mick,  when he suddenly stops telling you the story of the phantom shitter and pull out of his pocket a piece of paper and hands it to you.   I got this from Ollie,  it's an IT Ticket.  Apparently you can use this to say you had IT issues and they just clear your wrap.",
   choices: [
     {
-      text: "carry on what you were doing",
-      nextScene: 'floor1alt',
-      action: ITIssuesItem,
+      text: "Take the IT Ticket",
+      nextScene: 'ITissueItem',
+      action: NoAction,
       update: "yes"
     },
   ]
@@ -808,7 +807,7 @@ const lendScene = {
 
 const vendingScene = {
   title: "The vending machines",
-  text: "You walk over to the vending machines. There's the coffee machine and the snack machine.  A large coffee sounds good, but so does a bag of flaming hot Doritos. They are £2.50 each, What do you do?",
+  text: "You walk over to the vending machines. There's the coffee machine and the snack machine.  A large coffee sounds good, but so does a bag of Cheese and Onion McCoys. They are £2.50 each, What do you do?",
   choices: [
     {
       text: "Buy some crisps",
@@ -885,9 +884,7 @@ const maindoorScene = {
     {
       text: "Tell him you went to buy him a coffee",  // need to only show this option if you have the coffee
       nextScene: 'bribe',
-      action: () => {
-        HasCoffeeItem = false;
-      },
+      action: NoAction,
       update: "yes"
     },
   ]
@@ -1200,8 +1197,8 @@ const ITIssueItemScene = {
   text: "You have got a an IT issue item. You can use this to persuade a TM that the high wrap was because of IT issues and they will magically remove your wrap! Use this carefully as you can only use it once",
   choices: [
     {
-      text: "Go back to your desk",
-      nextScene: 'start',
+      text: "carry on what you were doing",
+      nextScene: 'floor1alt',
       action: ITIssuesItem,
       update: "yes"
 
@@ -1215,7 +1212,7 @@ const MoneyItemScene = {
   choices: [
     {
       text: "Go back to your desk",
-      nextScene: 'start',
+      nextScene: 'desk2',
       action: AddMoneyItem,
       update: "yes"
 
@@ -1315,12 +1312,12 @@ const leftcupboardScene = {
 
 const wrongpinScene = {
   title: "GAME OVER",
-  text: "Mick caught you trying to get in his cupboard. He's not happy. But while they'reT there, they pushes you in the cupboard and locks the door.  You're stuck in there forever. Mick tells you some more stories about Spain, and you die a slow death of boredom. The end.",
+  text: "Mick caught you trying to get in his cupboard. He's not happy. But while he's there, he pushes you in the cupboard and locks the door.  You're stuck in there forever. Mick tells you some more stories about Spain, and you die a slow death of boredom. The end.",
   choices: [
     {
-      text: "GAME OVER! Play Again!!",
-      nextScene: 'start',
-      action: reload,
+      text: "GAME OVER!",
+      nextScene: 'end',
+      action: NoAction,
       update: "yes"
 
     },
@@ -1359,8 +1356,8 @@ const CMUS = {
 };
 
 const gameoverScene = {
-  title: "GAME OVER",
-  text: "You had too many file notes and were sacked from the job! try again",
+  title: "Uh-oh....",
+  text: "This many file notes means you're going down the disciplinary route. As you sit back down at your desk, you feel a sharp tap on your shoulder.  You turn around and see Tony, Mark and James standing there.  You stand up and they walk you into the Brook meeting room and you know what's coming.  As you leave the building, you put your pass into the letter box and leave the building for the last time.   You are fired!!",
   choices: [
     {
       text: "GAME OVER! Play Again!!",
@@ -1809,6 +1806,7 @@ const scenes = {
   wait2: wait2Scene,
   wait3: wait3Scene,
   wait4: wait4Scene,
+  wait5: wait5Scene,  
   mick: mickScene,
   mick2: mick2Scene,
   mick3: mick3Scene,
@@ -1882,6 +1880,7 @@ window.onload = function () {
 
 
 var currentScene = "start";
+var removedChoices = [];
 
 var setup = true;
 var disclaimer = false;
@@ -1928,6 +1927,61 @@ const titleElement = document.createElement("div");
 
 
 function Selectbackground() {
+
+  // FILTERS
+
+  if (HasChemical) {
+    scenes["incupboard"].choices = scenes["incupboard"].choices.filter(choice => {
+      return choice.text !== "Take the Chemicals";
+    });
+  }
+
+  if (HasScrewDriver) {
+    scenes["incupboard"].choices = scenes["incupboard"].choices.filter(choice => {
+      return choice.text !== "Take the screwdriver";
+    });
+  }
+
+  if (HasPotion) {
+    scenes["incupboard"].choices = scenes["incupboard"].choices.filter(choice => {
+      return choice.text !== "Take the Glowing Potion";
+    });
+  }
+
+  if (Hasmoney) {
+    scenes["mate4"].choices = scenes["mate4"].choices.filter(choice => {
+      return choice.text !== "Keep Chatting";
+    });
+  }
+
+  if (!Hasmoney) {
+    scenes["tablemates2"].choices = scenes["tablemates2"].choices.filter(choice => {
+      return choice.text !== "Lend your mate £2.50";
+    });
+  }
+
+
+  // check if items have been used and to hide buttons if not. 
+  /*
+        scene.choices = scene.choices.filter(choice => {
+          console.log("Do i have money ? : " + Hasmoney);
+          return (choice.text !== "IT Issues" && !ITIssuesUsed) 
+          && (choice.text === "Take Money" && !Hasmoney) 
+          && (choice.text !== "Pay For Coffee" && !HasUsedMoney) 
+          && (choice.text === "Tell him you went to buy him a coffee" && HasCoffeeItem) 
+          && (choice.text === "Reset Wrap" && HasWrap) 
+          && (choice.text === "Remove 1 File Note" && HasFileNotes) 
+   
+  
+  
+  
+        });
+  
+        */
+
+
+  //BACK GROUNDS AND SCENE TEXT ALTERATIONS
+
   if (currentScene === "start") {
     //scene 1
     document.body.style.backgroundImage = "url('./images/start.png')"; //name of file where "invalid.jpg" is
@@ -1948,7 +2002,7 @@ function Selectbackground() {
     }
 
 
-    document.body.style.backgroundImage = "url('./images/wood.jpeg')"; // name of file where "invalid.jpg" is
+    document.body.style.backgroundImage = "url('./images/wood.jpeg')";
   } else if (currentScene === "pretend") {
     document.body.style.backgroundImage = "url('./images/onacall.jpg')";
   } else if (currentScene === "underdesk") {
@@ -1956,17 +2010,17 @@ function Selectbackground() {
   } else if (currentScene === "walkoff") {
     document.body.style.backgroundImage = "url('./images/whichway.png')";
   } else if (currentScene === "lift") {
-    document.body.style.backgroundImage = "url('./images/lift.png')";
+    document.body.style.backgroundImage = "url('./images/lift.gif')";
   } else if (currentScene === "start") {
     document.body.style.backgroundImage = "url('./images/start.png')";
   } else if (currentScene === "cleaningcupboard") {
-
+    // DONT FORGET ME!
   } else if (currentScene === "mick") {
-    document.body.style.backgroundImage = "url('./images/mick1.png')";
+      document.body.style.backgroundImage = "url('./images/mickslide.gif')";
   } else if (currentScene === "mick2") {
-    document.body.style.backgroundImage = "url('./images/mick2.png')";
+    document.body.style.backgroundImage = "url('./images/micktalk.gif')";
   } else if (currentScene === "mick3") {
-    document.body.style.backgroundImage = "url('./images/mick1.png')";
+    document.body.style.backgroundImage = "url('./images/mick2.gif')";
   } else if (currentScene === "onbreak") {
     document.body.style.backgroundImage = "url('./images/onbreak.jpg')";
   } else if (currentScene === "mate") {
@@ -1983,32 +2037,114 @@ function Selectbackground() {
     document.body.style.backgroundImage = "url('./images/mate2.jpg')";
   } else if (currentScene === "walk") {
     document.body.style.backgroundImage = "url('./images/walk.jpg')";
-  } else if (currentScene === "A SCENE NAME HERE") {
-
+  } else if (currentScene === "stairs") {
+    document.body.style.backgroundImage = "url('./images/stairs.jpg')";
+  } else if (currentScene === "floor1") {
+    document.body.style.backgroundImage = "url('./images/floor1.png')";
+  } else if (currentScene === "floor1alt") {
+    document.body.style.backgroundImage = "url('./images/floor1.jpg')";
+  } else if (currentScene === "floor1alt2") {
+    document.body.style.backgroundImage = "url('./images/floor1.png')";
+  } else if (currentScene === "maindoor") {
+    document.body.style.backgroundImage = "url('./images/maindoor.gif')";
+  } else if (currentScene === "cinema") {
+    document.body.style.backgroundImage = "url('./images/cinema.jpg')";
+  } else if (currentScene === "zzz") {
+    document.body.style.backgroundImage = "url('./images/zzz.gif')";
+  } else if (currentScene === "desk2") {
+    document.body.style.backgroundImage = "url('./images/start.png')";
+  } else if (currentScene === "canteen") {
+    document.body.style.backgroundImage = "url('./images/canteen.jpg')";
+  } else if (currentScene === "vending") {
+    document.body.style.backgroundImage = "url('./images/vending.jpg')";
+  } else if (currentScene === "moneyitem") {
+    document.body.style.backgroundImage = "url('./images/gotmoney.gif')";
+  } else if (currentScene === "filenote") {
+    document.body.style.backgroundImage = "url('./images/filenote.jpg')";
+  } else if (currentScene === "ITissueItem") {
+    document.body.style.backgroundImage = "url('./images/itticket.gif')";
+  } else if (currentScene === "nomoney") {
+    document.body.style.backgroundImage = "url('./images/skint.gif')";
+  } else if (currentScene === "fireexit") {
+    document.body.style.backgroundImage = "url('./images/fireexit.jpg')";
+  } else if (currentScene === "barriers") {
+    document.body.style.backgroundImage = "url('./images/barrier.gif')";
+  } else if (currentScene === "fagshed") {
+    document.body.style.backgroundImage = "url('./images/fagshed.gif')";
+  } else if (currentScene === "carpark") {
+    document.body.style.backgroundImage = "url('./images/carpark.gif')";
+  } else if (currentScene === "bush") {
+    document.body.style.backgroundImage = "url('./images/bush.gif')";
+  } else if (currentScene === "wait1") {
+    document.body.style.backgroundImage = "url('./images/lift.jpg')";
+  } else if (currentScene === "wait5") {
+    document.body.style.backgroundImage = "url('./images/lift.gif')";
+  } else if (currentScene === "coffee") {
+    document.body.style.backgroundImage = "url('./images/coffee.gif')";
+  } else if (currentScene === "hallway") {
+    document.body.style.backgroundImage = "url('./images/hallway.png')";
+  } else if (currentScene === "alarm") {
+    document.body.style.backgroundImage = "url('./images/alarm.gif')";
+  } else if (currentScene === "waitsteve") {
+    document.body.style.backgroundImage = "url('./images/waitsteve.gif')";
+  } else if (currentScene === "SCENENAME") {
+    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+  } else if (currentScene === "SCENENAME") {
+    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+  } else if (currentScene === "SCENENAME") {
+    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+  } else if (currentScene === "SCENENAME") {
+    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+  } else if (currentScene === "SCENENAME") {
+    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+  } else if (currentScene === "SCENENAME") {
+    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+  } else if (currentScene === "SCENENAME") {
+    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+  } else if (currentScene === "SCENENAME") {
+    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
   }
-
-} // DONT DELETE ME IM THE CLOSING FUNCTION CURLY
-
+}
+// DONT DELETE ME IM THE CLOSING FUNCTION CURLY
+var removedChoices = [];
 function render() {
+  Selectbackground();
+
+if (!HasCoffeeItem) {
+  const choicesToKeep = scenes["maindoor"].choices.filter(choice => {
+    if (choice.text == "Tell him you went to buy him a coffee") {
+      removedChoices.push(choice);
+      return false;
+    }
+    return true;
+  });
+  scenes["maindoor"].choices = choicesToKeep;
+} else {
+  scenes["maindoor"].choices = scenes["maindoor"].choices.concat(removedChoices);
+  removedChoices = [];
+}
+
+
+
+ 
   console.log("Your name in render " + names.yourname)
 
-  Selectbackground();
-  if (DMA) {
-    /* let heading = document.querySelector('#MainHeader h1');
-     heading.innerHTML = 'THE DEV MENU WAS USED TO CHEAT AT THE GAME!!';
-     const body = document.querySelector('body');
-     document.body.style.backgroundImage = "url('./images/invalid.jpg')";
-     document.body.style.backgroundRepeat = "repeat";
-     document.body.style.backgroundPosition = "top left";*/
-  }
 
 
   //set backgrounds for scenes
 
 
 
-
-
+  /*
+  if (DMA) {
+     let heading = document.querySelector('#MainHeader h1');
+     heading.innerHTML = 'THE DEV MENU WAS USED TO CHEAT AT THE GAME!!';
+     const body = document.querySelector('body');
+     document.body.style.backgroundImage = "url('./images/invalid.jpg')";
+     document.body.style.backgroundRepeat = "repeat";
+     document.body.style.backgroundPosition = "top left";
+  }
+*/
 
   if (CP) {
     currentScene = "CMU";
@@ -2028,6 +2164,7 @@ function render() {
 
   if (WrapCounter > MaxWrap) {
     currentScene = "WrapFilenote"
+    document.body.style.backgroundImage = "url('./images/filenote.jpg')";
   }
 
   const scene = scenes[currentScene];
@@ -2077,11 +2214,6 @@ function render() {
       clearInterval(intervalId);
       sceneElem.innerHTML += `<div id="choices">`;
 
-      // check if items have been used and to hide buttons if not. 
-
-      scene.choices = scene.choices.filter(choice => {
-        return (choice.text !== "IT Issues" || !ITIssuesUsed) && (choice.text !== "Take Money" || !Hasmoney) && (choice.text !== "Keep Chatting" || !Hasmoney) && (choice.text !== "Pay For Coffee" || !HasUsedMoney) && (choice.text !== "Tell him you went to buy him a coffee" || HasCoffeeItem) && (choice.text !== "Reset Wrap" || HasWrap) && (choice.text !== "Remove 1 File Note" || HasFileNotes) && (choice.text !== "Take the Glowing Potion" || !HasPotion) && (choice.text !== "Take the screwdriver" || !HasScrewDriver) && (choice.text !== "Take the Chemicals" || !HasChemical);
-      });
 
       scene.choices.forEach(choice => {
         const button = document.createElement("button");  // dev button thing
@@ -2159,20 +2291,20 @@ function ITIssuesItem() {
 
 
 
+// Declare the sessionIdElement variable outside of the function
+var sessionIdElement;
+
 function displaySessionId() {
-
-
-  let sessionIdDisplayed = false; // 
-
+  let sessionIdDisplayed = false;
+  
   var sessionId = Math.floor(Math.random() * 10000000000000000);
-  var sessionIdElement = document.createElement("div");
+  
+  // Assign the value of sessionIdElement to the newly created element
+  sessionIdElement = document.createElement("div");
   sessionIdElement.classList.add("white-text");
-
-
-
+  
   var TrueID = Math.round(sessionId)
-
-
+  
   let UPI = Math.floor(TrueID / 100000000);
   let IPU = Math.floor(UPI / 60)
   var V1 = Math.floor(IPU / 10000);
@@ -2182,35 +2314,47 @@ function displaySessionId() {
   var V5 = V4;
   V5 = V5.toString().padStart(4, "0");
   KP = V5;
-  console.log(KP);
-
-  if (!sessionIdDisplayed) {
-    sessionIdElement.style.position = "fixed";
-    sessionIdElement.style.bottom = "0";
-    sessionIdElement.style.left = "0";
-    document.body.appendChild(sessionIdElement);
-    if (TrueID % 2 == 0) {
-      sessionIdElement.innerHTML = "Session ID: " + TrueID;
-    } else {
-      TrueID++
-      sessionIdElement.innerHTML = "Session ID: " + TrueID;
-    }
-    sessionIdDisplayed = true;
-
-    let counter = 3;
-    document.getElementById("ConfirmPin").addEventListener("click", function () {
-      let pinInput = document.getElementById("pin");
-      for (let i = 0; i < 1; i++) {
-        if (pinInput.value == IPU) {
-          var helpPage = document.getElementById("helpButton");
-          document.getElementById("helpButton").style.visibility = "hidden";
-          var helpPage = document.getElementById("helpPage");
-          helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
+  
+  let wordArray = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  
+  let spokenV5 = "";
+  
+  for(let i = 0; i < KP.length; i++) {
+  let digit = parseInt(KP[i]);
+  spokenV5 += wordArray[digit] + " ";
+  }
+  
+  console.log(spokenV5);
 
 
-          // true statement
-          CP = true;
-          render();
+if (!sessionIdDisplayed) {
+  // Now that the sessionIdElement variable has been defined, it can be accessed here
+  sessionIdElement.style.position = "fixed";
+  sessionIdElement.style.bottom = "0";
+  sessionIdElement.style.left = "0";
+  document.body.appendChild(sessionIdElement);
+  if (TrueID % 2 == 0) {
+    sessionIdElement.innerHTML = "Session ID: " + TrueID;
+  } else {
+    TrueID++
+    sessionIdElement.innerHTML = "Session ID: " + TrueID;
+  }
+  sessionIdDisplayed = true;
+
+  let counter = 3;
+  document.getElementById("ConfirmPin").addEventListener("click", function () {
+    let pinInput = document.getElementById("pin");
+    for (let i = 0; i < 1; i++) {
+      if (pinInput.value == IPU) {
+        var helpPage = document.getElementById("helpButton");
+        document.getElementById("helpButton").style.visibility = "hidden";
+        var helpPage = document.getElementById("helpPage");
+        helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
+
+
+        // true statement
+        CP = true;
+        render();
           break;  // exit the loop
         } else {
           counter -= 1;  // decrease the counter
@@ -2309,15 +2453,17 @@ function AddCoffeeItem() {
     HasCoffeeItem = true;
     HasUsedMoney = true;
     RemoveMoney();
+
   } else {
 
     if (annoyedfriend == false) {
       coffeeScene.title = "You're skint pal..."
       coffeeScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  Your mate owes you some money, but you're not sure if you should ask him..."
+      document.body.style.backgroundImage = "url('./images/skint.gif')";
     } else {
       coffeeScene.title = "Oh no.."
       coffeeScene.text = "You are out of cash."
-
+      document.body.style.backgroundImage = "url('./images/skint.gif')";
 
     }
   }
@@ -2329,7 +2475,7 @@ function RemoveCoffee() {
   if (item) {
     li.remove();
     item.remove();
-    HasCoffeeItem = false;
+    HasCoffeeItem = false; 
   }
 }
 
@@ -2344,7 +2490,7 @@ function AddCrispsItem() {
     a.style.pointerEvents = "none";
     li.appendChild(a);  // Add the link element to the list item element
     inventoryList.appendChild(li);  // Add the list item to the inventory list element
-    HasCoffeeItem = true;
+    HasCrisps = true;
     HasUsedMoney = true;
     RemoveMoney();
   } else {
@@ -2357,6 +2503,7 @@ function AddCrispsItem() {
       crispsScene.text = "You are out of cash."
 
 
+
     }
   }
 }
@@ -2366,8 +2513,7 @@ function RemoveCrispsItem() {
   if (item) {
     li.remove();
     item.remove();
-    HasCrisps = false;
-
+HasCrisps = false;
   }
 }
 
@@ -2413,8 +2559,7 @@ function RemoveChemical() {
   if (item) {
     li.remove();
     item.remove();
-    HasChemical = false;
-
+    HasScrewDriver = false;
   }
 }
 
@@ -2437,6 +2582,7 @@ function RemoveGlowingPotion() {
     li.remove();
     item.remove();
     HasPotion = false;
+
 
   }
 }
@@ -2611,8 +2757,12 @@ enterButton.addEventListener("click", () => {
   counter++;
   if (counter === 1) {
     led1.classList.add("on");
+    CleaningCupboardScene.text = "Hmmm. Thats not quite right. Shall i continue?";
+    render();
   } else if (counter === 2) {
     led2.classList.add("on");
+    CleaningCupboardScene.text = "ahh! I need to be careful! If i do it wrong again it might draw attention to someone and then i will be in big trouble!!";
+    render();
   } else if (counter === 3) {
     led3.classList.add("on");
 
@@ -2812,7 +2962,7 @@ function createLoadingScreen() {
     const cleanerName = textBox5.value;
 
 
-  
+
 
     document.body.removeChild(loadingScreen);
     setup = true;
@@ -2864,15 +3014,5 @@ function createLoadingScreen() {
 
   });
 }
-
-
-
-
-// END OF DEV STUFF
-
-
-
-
-
 
 
