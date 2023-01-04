@@ -1950,7 +1950,7 @@ function Selectbackground() {
         action: incrementWrapLow,
         update: "yes"
       },
-      {
+      { 
         text: "Go and talk to " + matesName + "",
         nextScene: 'mate',
         action: incrementWrapLow,
