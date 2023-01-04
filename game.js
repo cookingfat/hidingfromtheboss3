@@ -1,40 +1,12 @@
-const names = {};
 
 
-console.log("start of code name thing : " + names.yourname)
 
-//#region Chapters
+let startScene = {
 
-const startScene = {
+
   title: "Your day begins...",
-  text: `Another day at the office.....  You sit at your desk contemplating life and trying to think of a way to skive off work. You've had an awful day and Tony is coming to check on you. What do you do?`,
-  choices: [
-    {
-      text: "Hide under the desk",
-      nextScene: "underdesk",
-      action: incrementWrapLow,
-      update: "yes",
-
-    },
-    {
-      text: "Pretend you are on a call",
-      nextScene: 'pretend',
-      action: incrementWrapLow,
-      update: "yes"
-    },
-    {
-      text: "Walk off and pretend you are on a break",
-      nextScene: 'onbreak',
-      action: incrementWrapLow,
-      update: "yes"
-    },
-    {
-      text: "Go and talk to your mate",
-      nextScene: 'mate',
-      action: incrementWrapLow,
-      update: "yes"
-    }
-  ]
+  text: "",
+  
 };
 
 
@@ -42,38 +14,13 @@ const startScene = {
 
 const desk2Scene = {
   title: "Back at your desk...", // THIS SETS THE GAME SCENE TITLE
-  text: "You sheepishly go back to your chair and sit down. You really need a vape,  but Tony is still on the prowl.  What do you do next?",  // this shows the text in the scene
-  choices: [
-    {
-      text: "Hide under the desk",        // this is the button text
-      nextScene: "underdesk",             // this is the id of the next scene
-      action: incrementWrapLow,
-      update: "yes"
-    },
-    {
-      text: "Pretend you are on a call",
-      nextScene: 'pretend',
-      action: incrementWrapLow,
-      update: "yes"
-    },
-    {
-      text: "Walk off and pretend you are on a break",
-      nextScene: 'onbreak',
-      action: incrementWrapLow,
-      update: "yes"
-    },
-    {
-      text: "Go and talk to your mate",
-      nextScene: 'mate',
-      action: incrementWrapLow,
-      update: "yes"
-    }
-  ]
+  text: "",
+
 };
 
 const underdeskScene = {
   title: "Under the desk",
-  text: "Thinking that no one can see you, you casually get off your chair, and crawl under the desk and hide.  Tony walks right up to you and sees you under the desk. Do you really think they are that stupid?",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -87,7 +34,7 @@ const underdeskScene = {
 
 const onbreakScene = {
   title: "Nice try....",
-  text: "Tony wonders where you are going, goes back to their desk and checks Verint and realises your break is not due for another 45 minutes!",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -100,29 +47,14 @@ const onbreakScene = {
 };
 
 const mateScene = {
-  title: "Talking to your mate",
-  text: "You walk over to speak to your mate.  They've just come off a call, so you talk about your day so far and what you're up to this weekend.  You should really get some work done, but you really don't feel up to it.  Do you...",
-  choices: [
-    {
-      text: "Carry on talking to your mate",
-      nextScene: 'mate2',
-      action: incrementWrapHigh,
-      update: "yes"
-
-    },
-    {
-      text: "Go back to your desk",
-      nextScene: 'desk2',
-      action: incrementWrapLow,
-      update: "yes"
-
-    }
-  ]
+  title: "",
+  text: "",
+  
 };
 
 const mate2Scene = {
   title: "having a chat",
-  text: "You continue to chat to your mate.  You talk about the new God of War game and how you can't wait to get home and play it.  You should really get some work done, but you really don't feel up to it.  Do you...",
+  text: "",
   choices: [
     {
       text: "Chat a little more",
@@ -143,7 +75,7 @@ const mate2Scene = {
 
 const mate3Scene = {
   title: "still chatting...",
-  text: "You chat to your mate for a bit longer.  You talk about the world cup, about how good a player Lionel Messi is.  Your wrap is going up and up.  Do you...",
+  text: "",
   choices: [
     {
       text: "Talk even more",
@@ -185,7 +117,7 @@ const mate4Scene = {
 
 const mate5Scene = {
   title: "A kind gesture",
-  text: "You continue to chat to your mate.......   Suddenly, they remember they owe you some money for that pint you bought at the pub last week.  They reach into their pocket and pull out £2.50 and hand it to you.  Your mate has a meeting in 5 minutes, so they say they need to go.",
+  text: "",
   choices: [
     {
       text: "Take the £2.50",
@@ -198,7 +130,7 @@ const mate5Scene = {
 };
 const pretendScene = {
   title: "On a call?",
-  text: `You quickly pull up an account in iCare and say to absolutely no one, "I am sorry to hear that Mrs Collins, you will have this amount refunded from your next bill...." Tony thinks you are working so walks off into the break room instead to warm up his salmon and asparagus. You are feeling cocky and try and sneak off for a quick vape, what do you do next?`,
+  text: ``,
   choices: [
     {
       text: "Make your way outside",
@@ -243,7 +175,7 @@ const walkoffScene = {
 };
 const toiletScene = {
   title: "In the toilet",
-  text: "You go into personal and walk to the toilet. Nobody else is here, so you pull out your mod and take a huge vape. Clouds of vapour come out through the door and fill the call centre.  Everyone thinks there is a fire and Tony comes in and finds you. You do the walk of shame back to your desk and get a sneaky feeling you are going to get another file note for this",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -256,7 +188,7 @@ const toiletScene = {
 };
 const breakroomScene = {
   title: "The Break Room",
-  text: "You walk in the break room and start vaping.  WHAT ARE YOU DOING VAPING INSIDE?  And you walked right into the break room where you I literally just told you Tony went to.   Omg you suck at this.",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -319,7 +251,7 @@ const fireexitScene = {
 };
 const barrierScene = {
   title: "Walking off....",
-  text: "With your head down,  you casually walk round the corner and through the barriers.  You've almost made it out of the building when you hear a familiar voice shout your name.    Steve the security guard was alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done.",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -332,7 +264,7 @@ const barrierScene = {
 };
 const fagshedScene = {
   title: "Up to the fag shed.",
-  text: "You look round and no one seemed to see you come out of the fire exit.  You really need a vape, so you walk up to the fag shelter.  You walk round the corner and Steve the security guard is waiting for you.  They were alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -345,7 +277,7 @@ const fagshedScene = {
 };
 const carparkScene = {
   title: "Down to the carpark.",
-  text: "You wisely walk down towards the car park as you are much less likely to be seen there.  You turn the corner and are greeted by Steve the security guard.  He was alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -358,7 +290,7 @@ const carparkScene = {
 };
 const bushScene = {
   title: "Hiding in a bush",
-  text: "Worried that you might have set off the alarm, you panic and don't know what to do,  so you find the nearest bush and hide in it.  Unfortunatelty, the bush you chose is only 2 feet tall and Steve the security guard easily sees you and wonders what on earth you are doing trying to hide in a very small bush. That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -390,10 +322,10 @@ const liftScene = {
 };
 const alarmScene = {
   title: "You press the emergency button....",
-  text: `"... and hear a loud "Dring".  You wait for what seems like eternity and just as you are about to give it another press, you suddenly hear a voice saying "hello?" You recognise Steve's voice and feel relieved that he is there.  He asks you what is wrong and you tell him that the lift has stopped.  He says he will be right there and you wait for him to arrive.`,
+  text: ``,
   choices: [
     {
-      text: "Wait for Steve",
+      text: "Wait for Security",
       nextScene: 'waitsteve',
       action: incrementWrapLow,
       update: "yes"
@@ -403,7 +335,7 @@ const alarmScene = {
 };
 const waitsteveScene = {
   title: "You wait.....",
-  text: "After what seems like forever, Steve finally arrives with a crew of 41 Fire crew. They use their power tools to open the lift doors and you are finally free. You've been in the lift for so long that your shift has ended and you go home. All 41 of the Fire crew line up outside the centre and Steve makes you apologise to each one.  You'll probably get another file note for this, but you don't care.  Due to your poor decision making, you lose the game.  Better luck next time!",
+  text: "",
   choices: [
     {
       text: "Try again?",
@@ -505,7 +437,7 @@ const wait5Scene = {
 };
 const floor1Scene = {
   title: "Into Sitel territory...",
-  text: "You are on the first floor.  Mick the cleaner is coming towards you and looks like he wants to tell you something. What do you do next?",
+  text: "",
   choices: [
     {
       text: "Talk to Mick",
@@ -541,7 +473,7 @@ const floor1Scene = {
 };
 const floor1alt2Scene = {
   title: "Into Sitel territory...",
-  text: "You were tempted to sneak off through the fire exit, but you carry on through the stairwell, through the door and onto the first floor. Mick the cleaner is coming towards you and looks like he wants to tell you something. What do you do next?",
+  text: "",
   choices: [
     {
       text: "Talk to Mick",
@@ -576,14 +508,16 @@ const floor1alt2Scene = {
     }
   ]
 };
+
 const mickScene = {
-  title: "You talk to Mick, the cleaner",
-  text: "You talk to Mick and he tells you all about his day and the scum that work downstairs in Sitel.  He tells you that he has been working there for 20 years and he hates it.  He says that he is going to retire in 2 years and he is going to go and live in Spain.  Mick tells you that he is going to buy a house with a pool and he is going to spend his days lounging by the pool and flirting with the ladies. He says that he is going to get a dog and he is going to call it 'Paco'. He says that he is going to get a motorbike and he is going to take it out for occasional rides. He says that he is going to get a girlfriend, but he isn't sure if he wants to settle down yet. He says that he is going to take up golf and join a local club. He says that he is going to start a small business selling handmade crafts online. He says that he is going to learn to speak Spanish fluently so he can impress the local ladies and say the first number is FIRST NUMBER. He says that he is going to visit all the major cities in Spain, but he's not sure if he wants to do any sightseeing. He says that he is going to start a book club, but only if it's full of attractive women. He says that he is going to join a local football team, but only if they have a good chance of winning and the second number is SECOND NUMBER. He says that he is going to take up yoga and meditation classes, but only if the instructor is attractive. He says that he is going to learn how to surf, but if the third number is THIRD NUMBER only if there are plenty of cute beach babes around. He says that he is going to visit the local wineries and learn about wine making, but only if there's a chance to meet some interesting women. He says that he is going to start a small business teaching English as a second language, but only if he can find some attractive students. He says that he is going to join a local gardening group, but only if there are some attractive green thumbs around. He says that he is going to visit all the local museums and art galleries, but only if there are some interesting ladies to chat with. He says that if the last number is LAST NUMBER he is going to take up scuba diving lessons and explore the Mediterranean Sea, but only if there are some cute fish to swim with.",
+  title: "",
+  text: "",
   choices: [
     {
       text: "carry on talking to Mick",
       nextScene: 'mick2',
       action: incrementWrapHigh,
+
       update: "yes"
     },
     {
@@ -595,8 +529,8 @@ const mickScene = {
   ]
 };
 const mick2Scene = {
-  title: "You carry on talking to Mick...",
-  text: "Mick waffles on about everything and anything and you are starting to get bored.  What do you do next?",
+  title: "",
+  text: "",
   choices: [
     {
       text: "carry on talking to Mick",
@@ -613,8 +547,8 @@ const mick2Scene = {
   ]
 };
 const mick3Scene = {
-  title: "You carry on talking to Mick...",
-  text: "You feel like you have no choice but to stand there and carry on listening to Mick,  when he suddenly stops telling you the story of the phantom shitter and pull out of his pocket a piece of paper and hands it to you.   I got this from Ollie,  it's an IT Ticket.  Apparently you can use this to say you had IT issues and they just clear your wrap.",
+  title: "",
+  text: "",
   choices: [
     {
       text: "Take the IT Ticket",
@@ -626,7 +560,7 @@ const mick3Scene = {
 };
 const floor1altScene = {
   title: "still waiting......",
-  text: "Feeling exhausted after your conversation with Mick, You realise you wrap has gone up massively and you still haven't been out for a vape.  What do you do next?",
+  text: "",
   choices: [
     {
       text: "Go into the canteen",
@@ -668,7 +602,7 @@ const cinemaScene = {
 };
 const zzzScene = {
   title: "Dreaming....",
-  text: "Suddenly, you wake up to the sound of the cinema room door opening and you open your eyes and see Tony stood in the doorway with his arms folded.  He doesn't look happy as he tells you you've been gone for 4 hours!!  You've really gone and done it this time...",
+  text: "",
   choices: [
     {
       text: "Back to your desk",
@@ -793,7 +727,7 @@ const lendScene = {
     {
       text: "Go back",
       nextScene: 'canteen',
-      action: incrementWrapLow,
+      action: RemoveMoney,
       update: "yes"
     },
     {
@@ -812,13 +746,13 @@ const vendingScene = {
     {
       text: "Buy some crisps",
       nextScene: 'crisps',
-      action: AddCrispsItem,
+      action: NoAction,
       update: "yes"
     },
     {
       text: "Buy a coffee",
       nextScene: 'coffee',
-      action: AddCoffeeItem,
+      action: NoAction,
       update: "yes"
     },
     {
@@ -831,12 +765,12 @@ const vendingScene = {
 };
 const crispsScene = {
   title: "The vending machines",
-  text: "You pull out your £2.50 and feed the coins into the slot. You press E5 and hope the bag of Doritos doesn't get stuck.  You're not sure if you should have bought the coffee, but you're hungry and you're not going to turn down a bag of crisps.  You can't even wait to eat them so you pull open the bag and stand there and munch all the crisps. Now what?",
+  text: "You pull out your £2.50 and feed the coins into the slot. You press E5 and hope the bag of McCoys doesn't get stuck.  You're not sure if you should have bought the coffee, but you're hungry and you're not going to turn down a bag of crisps.",
   choices: [
     {
       text: "Go back",
       nextScene: 'canteen',
-      action: incrementWrapLow,
+      action: AddCrispsItem,
       update: "yes"
     },
   ]
@@ -855,7 +789,7 @@ const coffeeScene = {
 };
 const nomoneyScene = {
   title: "You're skint pal...",
-  text: "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  It's a week to payday.  Your mate owes you £2.50 but you're not sure if you should ask him for it.",
+  text: "",
   choices: [
     {
       text: "Go back",
@@ -867,7 +801,7 @@ const nomoneyScene = {
 };
 const maindoorScene = {
   title: "You head towards the exit",
-  text: "You put your head down and walk past the canteen and towards the main exit.  As you turn the corner you bump into Tony.  He asks what you've been doing....",
+  text: "",
   choices: [
     {
       text: "Tell him you've been trying to skive off",
@@ -893,7 +827,7 @@ const maindoorScene = {
 
 const skiveScene = {
   title: "The confession",
-  text: "You be honest and tell Tony you've been trying to skive off.  He's not happy, but appreciates your honesty and sends you back to your desk and decides not to give you a file note this time.",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -906,7 +840,7 @@ const skiveScene = {
 
 const excuseScene = {
   title: "The excuse",
-  text: "You tell Tony that you've been doing an errand for Hazel. You try and make something up about a first aid kit, but you fumble your words and Tony sees right through your lie.  Lying to Tony is a big no no.  As you walk back to your desk, you're pretty sure Tony will be giving you a file note for this one.",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -918,7 +852,7 @@ const excuseScene = {
 };
 const bribeScene = {
   title: "The bribe",
-  text: `As you look at Tony, you feel the hot coffee in your hand and have a genius plan. "Just went to get you a coffee, Boss..." you proudly say as you thrust out your hand and pass Tony the coffee that you just bought from the canteen. `,
+  text: ``,
   choices: [
     {
       text: "Continue",
@@ -930,7 +864,7 @@ const bribeScene = {
 };
 const afterbribeScene = {
   title: "The bribe",
-  text: `Tony takes the coffee and goes back upstairs leaving you to it.  That was a close one!`,
+  text: ``,
   choices: [
     {
       text: "Carry on",
@@ -943,21 +877,8 @@ const afterbribeScene = {
 };
 const hallwayScene = {
   title: "In the hallway",
-  text: `You are in the hallway near the main exit.  You can see the main door and the door to Mick's cleaning cupboard.`,
-  choices: [
-    {
-      text: "Try Mick's cleaning cupboard",
-      nextScene: 'CleaningCupboard',
-      action: incrementWrapLow,
-      update: "yes"
-    },
-    {
-      text: "Head Outside",
-      nextScene: 'outside',
-      action: incrementWrapLow,
-      update: "yes"
-    },
-  ]
+  text: ``,
+  
 };
 
 const endScene = {
@@ -1026,10 +947,10 @@ const backinsideScene = {
 };
 const walkScene = {
   title: "Off you toddle",
-  text: `You decide to go for a walk.  You head down the road and take a left.  As you begin to make your way down the street, you notice a man in a long black leather jacket with round sunglasses and a rather shifty demeanour leaning over the bonnet of a battered old car. He's holding a spanner in one hand and muttering to himself as he tinkers with the battery. You approach cautiously, not wanting to startle the man. He looks up as you draw near, and you see a glint of recognition in his eyes as if he was expecting you. "Ah, NAME, I've been expecting you" he says in a deep, gravelly voice. You think about asking how he knows your name, but quickly decide that it's probably best not to ask, this guy is huge and you don't want to get on his bad side.  `,
+  text: "",
   choices: [
     {
-      text: "Give him your battery charger",
+      text: "Give him your toolbox",
       nextScene: 'blueorred',
       action: NoAction,
       update: "yes"
@@ -1044,7 +965,7 @@ const walkScene = {
 };
 const blueorredScene = {
   title: "An important decision",
-  text: `You hand over your battery charger and the mysterious man takes it, ponders for a while and reaches into the pocket of his jacket and pulls out a small, velvet pouch. "Hey kid," he says, "interested in a little adventure?" He opens the pouch to reveal two small pills - one is blue and the other is red.  He extends his arm towards and says "This your last chance. After this there is no turning back. You take the blue pill, the story ends. You wake up in your bed and believe whatever you want to. You take the red pill, you stay in Wonderland, and I show you how deep the rabbit hole goes. Remember, all I'm offering is the truth. Nothing more." The scenario feels oddly familiar, almost like it's from a movie.  You hesitate for a moment, not sure what to do. The man seems shady, and you're not sure if you can trust him. On the other hand, the prospect of an adventure is tempting.`,
+  text: `You hand over your toolbox and the mysterious man takes it, ponders for a while and reaches into the pocket of his jacket and pulls out a small, velvet pouch. "Hey kid," he says, "interested in a little adventure?" He opens the pouch to reveal two small pills - one is blue and the other is red.  He extends his arm towards and says "This your last chance. After this there is no turning back. You take the blue pill, the story ends. You wake up in your bed and believe whatever you want to. You take the red pill, you stay in Wonderland, and I show you how deep the rabbit hole goes. Remember, all I'm offering is the truth. Nothing more." The scenario feels oddly familiar, almost like it's from a movie.  You hesitate for a moment, not sure what to do. The man seems shady, and you're not sure if you can trust him. On the other hand, the prospect of an adventure is tempting.`,
   choices: [
     {
       text: "Take the blue pill",
@@ -1125,9 +1046,9 @@ const carScene = {
   text: `You jump in your car, turn the key and.................... Nothing.  You've left your lights on and the battery is flat.  You're going to have to walk.  Where do you go? `,
   choices: [
     {
-      text: "look for a charger",
-      nextScene: 'charger',
-      action: NoAction,  //add battery charger to inventory
+      text: "search your car",
+      nextScene: 'toolbox',
+      action: NoAction,  //add battery toolbox to inventory
       update: "yes"
     },
     {
@@ -1138,9 +1059,9 @@ const carScene = {
     },
   ]
 };
-const chargerScene = {
+const toolboxScene = {
   title: "rummaging ",
-  text: `You check the back seats of the car, find a couple of empty pepsi max cans, some old receipts and parking tickets.   You check the boot, and find your portable battery charger.  Not wanting to really drive your car you put the battery charger in your pocket.  It's huge and you're already carrying loads of stuff.  Don't you ever wonder where video game characters keep all their stuff?`,
+  text: `You check the back seats of the car, find a couple of empty pepsi max cans, some old receipts and parking tickets.   You check the boot, and find your toolbox.  It's not going to get your car started, but you put toolbox in your pocket.  It's huge and you're already carrying loads of stuff.  Don't you ever wonder where video game characters keep all their stuff?`,
   choices: [
     {
       text: "Go for a walk",
@@ -1166,7 +1087,7 @@ const TakeACallScene = {
 
 const filenoteScene = {
   title: "YOU GOT A FILE NOTE!!!",
-  text: "Tony gives you a file note for being such an idiot. You silly sausage.  You can now go back to your desk and get on with your work.",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -1208,7 +1129,7 @@ const ITIssueItemScene = {
 
 const MoneyItemScene = {
   title: "YOU GOT A NEW ITEM!!!",
-  text: "Your mate gives you £2.50!",
+  text: "",
   choices: [
     {
       text: "Go back to your desk",
@@ -1266,7 +1187,7 @@ const incupboardScene = {
 
 const screwdriverScene = {
   title: "YOU HAVE A NEW ITEM!!!",
-  text: "You acquired Mick's trusty screwdriver.  It's a Stanley with a crosshead.  there's a bit of green paint on the handle, but otherwise it's in good shape.  Who knows what you'll be able to do with this. ",
+  text: "",
   choices: [
     {
       text: "OK",
@@ -1279,7 +1200,7 @@ const screwdriverScene = {
 };
 const potionScene = {
   title: "YOU HAVE A NEW ITEM!!!",
-  text: "You acquired the potion! ",
+  text: "The potion looks like it's from a video game. It's a perfectly round glass potion bottle with a mysterious green and yellow liquid inside.  There's a cork in the top of the bottle and it seems to be glowing orange! ",
   choices: [
     {
       text: "OK",
@@ -1292,7 +1213,7 @@ const potionScene = {
 };
 const ChemicalsScene = {
   title: "YOU HAVE A NEW ITEM!!!",
-  text: "You acquired the Chemicals!",
+  text: "It's a glass chemistry bottle with a cork in, there's some weird grey liquid inside and there's a sticker with a skull and crossbones on.  You have no idea what it is and should probably leave it in the cupboard, but you slip it into your pocket instead.",
   choices: [
     {
       text: "OK",
@@ -1312,7 +1233,7 @@ const leftcupboardScene = {
 
 const wrongpinScene = {
   title: "GAME OVER",
-  text: "Mick caught you trying to get in his cupboard. He's not happy. But while he's there, he pushes you in the cupboard and locks the door.  You're stuck in there forever. Mick tells you some more stories about Spain, and you die a slow death of boredom. The end.",
+  text: "",
   choices: [
     {
       text: "GAME OVER!",
@@ -1357,7 +1278,7 @@ const CMUS = {
 
 const gameoverScene = {
   title: "Uh-oh....",
-  text: "This many file notes means you're going down the disciplinary route. As you sit back down at your desk, you feel a sharp tap on your shoulder.  You turn around and see Tony, Mark and James standing there.  You stand up and they walk you into the Brook meeting room and you know what's coming.  As you leave the building, you put your pass into the letter box and leave the building for the last time.   You are fired!!",
+  text: "",
   choices: [
     {
       text: "GAME OVER! Play Again!!",
@@ -1632,6 +1553,13 @@ const testScene = {
       update: "yes"
     },
     {
+      text: "In Cleaning Cupboard",
+      nextScene: "incupboard",
+      action: NoAction,
+      update: "yes"
+    },
+
+    {
       text: "Outside2 Scene",
       nextScene: 'outside2',
       action: NoAction,
@@ -1662,8 +1590,8 @@ const testScene = {
       update: "no"
     },
     {
-      text: "charger Scene",
-      nextScene: 'charger',
+      text: "toolbox Scene",
+      nextScene: 'toolbox',
       action: NoAction,
       update: "no"
     },
@@ -1712,6 +1640,12 @@ const testScene = {
       text: "Add Money",
       nextScene: 'dev',
       action: AddMoneyItem,
+      update: "no"
+    },
+    {
+      text: "Remove Money",
+      nextScene: 'dev',
+      action: RemoveMoney,
       update: "no"
     },
     {
@@ -1821,7 +1755,7 @@ const scenes = {
   wait2: wait2Scene,
   wait3: wait3Scene,
   wait4: wait4Scene,
-  wait5: wait5Scene,  
+  wait5: wait5Scene,
   mick: mickScene,
   mick2: mick2Scene,
   mick3: mick3Scene,
@@ -1864,7 +1798,7 @@ const scenes = {
   outside2: outside2Scene,
   car: carScene,
   backinside: backinsideScene,
-  charger: chargerScene,
+  toolbox: toolboxScene,
   blueorred: blueorredScene,
   bluepill: bluepillScene,
   redpill: redpillScene,
@@ -1883,21 +1817,12 @@ const scenes = {
 
 
 // Game Setings
-window.onload = function () {
-  if (!setup) {
-    createLoadingScreen();
-
-  } else {
-    displaySessionId();
-    render();
-  }
-};
 
 
 var currentScene = "start";
 var removedChoices = [];
 
-var setup = true;
+var setup = false;
 var disclaimer = false;
 var DMA = false;
 var CP = false;
@@ -1914,8 +1839,6 @@ var MaxWrap = 1000;
 var MaxFileNotes = 3;
 var HasWrap = false;
 var HasFileNotes = false;
-var HasWrap = false;
-var HasFileNotes = false;
 var KP = 0;
 var CKP = false;
 var LKP = false;
@@ -1928,7 +1851,6 @@ var HasCrisps = false;
 var Hasmoney = false;
 var HasUsedMoney = false;
 var HasCoffeeItem = false;
-var CanBuy = false;
 var HasChemical = false;
 var HasPotion = false;
 
@@ -1939,6 +1861,8 @@ const WrapStyling = document.getElementById("Wrap-Container");
 const filesNotesElem = document.getElementById("file-notes-container");
 const FileNoteElem = document.getElementById("file-notes");
 const titleElement = document.createElement("div");
+
+
 
 
 function Selectbackground() {
@@ -1969,11 +1893,7 @@ function Selectbackground() {
     });
   }
 
-  if (!Hasmoney) {
-    scenes["tablemates2"].choices = scenes["tablemates2"].choices.filter(choice => {
-      return choice.text !== "Lend your mate £2.50";
-    });
-  }
+
 
 
   // check if items have been used and to hide buttons if not. 
@@ -1997,12 +1917,58 @@ function Selectbackground() {
 
   //BACK GROUNDS AND SCENE TEXT ALTERATIONS
 
-  if (currentScene === "start") {
-    //scene 1
-    document.body.style.backgroundImage = "url('./images/start.png')"; //name of file where "invalid.jpg" is
-  } else if (currentScene === "incupboard") {
+  /* ----------------------------------- NAME REFERENCES ------------------------------------------------
+    yourName
+    teamManagerName
+    matesName
+    securityName
+    cleanerName
+  */
 
-    incupboardScene.text = "You're in Mick's cupboard. The room is small and cramped, but it's packed full of all sorts of strange and interesting objects.  On the shelves, you see a collection of old, dusty bottles and jars. A couple of items peek your interest...";
+
+
+  if (currentScene === "start") {
+    startScene.text = "Another day at the office, " + yourName + ".....You sit at your desk contemplating life and trying to think of a way to skive off work. You've had an awful day and " + teamManagerName + " is coming to check on you. What do you do?",
+      document.body.style.backgroundImage = "url('./images/start.png')";
+    startScene.choices = [
+      {
+        text: "Hide under the desk",
+        nextScene: "underdesk",
+        action: incrementWrapLow,
+        update: "yes",
+  
+      },
+      {
+        text: "Pretend you are on a call",
+        nextScene: 'pretend',
+        action: incrementWrapLow,
+        update: "yes"
+      },
+      {
+        text: "Walk off and pretend you are on a break",
+        nextScene: 'onbreak',
+        action: incrementWrapLow,
+        update: "yes"
+      },
+      {
+        text: "Go and talk to " + matesName + "",
+        nextScene: 'mate',
+        action: incrementWrapLow,
+        update: "yes"
+      }
+    ]
+  } else if (currentScene === "walk") {
+    walkScene.text = "You decide to go for a walk.  You head down the road and take a left.  As you begin to make your way down the street, you notice a man in a long black leather jacket with round sunglasses and a rather shifty demeanour leaning over the bonnet of a battered old car. He's holding a spanner in one hand and muttering to himself as he tinkers with the battery. You approach cautiously, not wanting to startle the man. He looks up as you draw near, and you see a glint of recognition in his eyes as if he was expecting you. Ah, " + yourName + ", I've been expecting you he says in a deep, gravelly voice. You think about asking how he knows your name, but quickly decide that it's probably best not to ask, this guy is huge and you don't want to get on his bad side."
+    document.body.style.backgroundImage = "url('./images/walk.jpg')";
+
+  } else if (currentScene === "mick") {
+    mickScene.title = "You talk to " + cleanerName + ", the cleaner"
+    mickScene.text = `You talk to the cleaner and they tell you all about their day and the scum that work downstairs in Sitel.  They tell you that they've been working there for 20 years and hate it.  They says that they're going to retire in 2 years and is going to go and live in Spain.  They tell you that they're going to buy a house with a pool and will spend their days lounging by the pool.  They say that they're going to get a dog and call it 'Paco'. They say that they will get a motorbike and take it out for occasional rides. They will make some friends, but they aren't sure if they want to settle down yet. They say that they are going to take up golf and join a local club. They also tell you they will start a small business selling handmade crafts online. They are going to learn to speak Spanish fluently so they can impress the locals and say the first number is ${spokenWord1}. They are going to visit all the major cities in Spain, but not sure if they want to do any sightseeing.  They say that they will start a book club, but only if it's full of interesting people.  They say that they are going to join a local football team, but only if they have a good chance of winning and the second number is ${spokenWord2}. They might take up yoga and meditation classes, but only if the instructor is attractive.  They say that they will learn how to surf, but if the third number is ${spokenWord3} and there are waves high enough.  Then they tell you all about going to visit the local wineries and learning about wine making, but only if there's is red wine. They tell you that they are going to start a small business teaching English as a second language and will join a local gardening group, but only if there are some attractive green thumbs around. They say that they will go to visit all the local museums and art galleries, but only if there are some interesting artifacts to look at. They say that if the last number is ${spokenWord4} they will take up scuba diving lessons and explore the Mediterranean Sea, but only if there are some cute fish to swim with.`,
+    document.body.style.backgroundImage = "url('./images/mickslide.gif')";
+  } else if (currentScene === "incupboard") {
+    document.body.style.backgroundImage = "url('./images/incupboard.jpg')";
+
+    incupboardScene.text = "You're in " + cleanerName + "'s cupboard. The room is small and cramped, but it's packed full of all sorts of strange and interesting objects.  On the shelves, you see a collection of old, dusty bottles and jars. A couple of items peek your interest...";
     if (!HasChemical) {
       incupboardScene.text += " A musky jar filled with unknown chemicals. ";
     }
@@ -2013,15 +1979,15 @@ function Selectbackground() {
       incupboardScene.text += " An old rusty screwdriver. "
     }
     if (HasScrewDriver && HasPotion && HasChemical) {
-      incupboardScene.text = "You search around the cupboard but cannot see anything else of interest. I think im done here";
+      incupboardScene.text = "You search around the cupboard but can't see anything else of interest. I think I'm done here.";
     }
 
-
-    document.body.style.backgroundImage = "url('./images/wood.jpeg')";
   } else if (currentScene === "pretend") {
     document.body.style.backgroundImage = "url('./images/onacall.jpg')";
+    pretendScene.text = "You quickly pull up an account in iCare and say to absolutely no one, `I am sorry to hear that Mrs Collins, you will have this amount refunded from your next bill....` " + teamManagerName + " thinks you are working so walks off into the break room instead to warm up their salmon and asparagus. You are feeling cocky and try and sneak off for a quick vape, what do you do next?"
   } else if (currentScene === "underdesk") {
     document.body.style.backgroundImage = "url('./images/underdesk.png')";
+    underdeskScene.text = "Thinking that no one can see you, you casually get off your chair, and crawl under the desk and hide.  " + teamManagerName + " walks right up to you and sees you under the desk. Do you really think they are that stupid?";
   } else if (currentScene === "walkoff") {
     document.body.style.backgroundImage = "url('./images/whichway.png')";
   } else if (currentScene === "lift") {
@@ -2029,89 +1995,230 @@ function Selectbackground() {
   } else if (currentScene === "start") {
     document.body.style.backgroundImage = "url('./images/start.png')";
   } else if (currentScene === "cleaningcupboard") {
-    // DONT FORGET ME!
-  } else if (currentScene === "mick") {
-      document.body.style.backgroundImage = "url('./images/mickslide.gif')";
+   // DONT FORGET ME!
   } else if (currentScene === "mick2") {
     document.body.style.backgroundImage = "url('./images/micktalk.gif')";
+    mick2Scene.title = "You carry on talking to " + cleanerName + "..."
+    mick2Scene.text = "" + cleanerName + " waffles on about everything and anything and you are starting to get bored.  What do you do next?"
   } else if (currentScene === "mick3") {
     document.body.style.backgroundImage = "url('./images/mick2.gif')";
+    mick3Scene.title = "You carry on talking to " + cleanerName + "..."
+    mick3Scene.text = "You feel like you have no choice but to stand there and carry on listening to " + cleanerName + ",  when they suddenly stop telling you the story of the phantom shitter and pull out of their pocket a piece of paper and hands it to you.   I got this from another manager,  it's an IT Ticket.  Apparently you can use this to say you had IT issues and they just clear your wrap."
   } else if (currentScene === "onbreak") {
     document.body.style.backgroundImage = "url('./images/onbreak.jpg')";
+    onbreakScene.text = teamManagerName + " wonders where you are going, goes back to their desk and checks Verint and realises your break is not due for another 45 minutes!";
   } else if (currentScene === "mate") {
     document.body.style.backgroundImage = "url('./images/mate.jpg')";
+    mateScene.title = "Talking to " + matesName + "...";
+    mateScene.text = "You walk over to speak to " + matesName + ".  They've just come off a call, so you talk about your day so far and what you're up to this weekend.  You should really get some work done, but you really don't feel up to it.  Do you..."
+    mateScene.choices = [
+      {
+        text: "Carry on talking to " + matesName + "",
+        nextScene: 'mate2',
+        action: incrementWrapHigh,
+        update: "yes"
+  
+      },
+      {
+        text: "Go back to your desk",
+        nextScene: 'desk2',
+        action: incrementWrapLow,
+        update: "yes"
+  
+      }
+    ]
   } else if (currentScene === "mate1") {
     document.body.style.backgroundImage = "url('./images/mate2.jpg')";
   } else if (currentScene === "mate2") {
     document.body.style.backgroundImage = "url('./images/mate.jpg')";
+    mate2Scene.text = "You continue to chat to " + matesName + ".  You talk about the new God of War game and how you can't wait to get home and play it.  You should really get some work done, but you really don't feel up to it.  Do you..."
   } else if (currentScene === "mate3") {
     document.body.style.backgroundImage = "url('./images/mate2.jpg')";
+    mate3Scene.text = "You chat to " + matesName + " for a bit longer.  You talk about the world cup, about how good a player Lionel Messi is.  Your wrap is going up and up.  Do you...";
   } else if (currentScene === "mate4") {
     document.body.style.backgroundImage = "url('./images/mate.jpg')";
   } else if (currentScene === "mate5") {
     document.body.style.backgroundImage = "url('./images/mate2.jpg')";
+    mate5Scene.text = "You continue to chat to " + matesName + ".......   Suddenly, they remember they owe you some money for that pint you bought at the pub last week.  They reach into their pocket and pull out £2.50 and hand it to you. " + matesName + " has a meeting in 5 minutes, so they say they need to go."
   } else if (currentScene === "walk") {
     document.body.style.backgroundImage = "url('./images/walk.jpg')";
   } else if (currentScene === "stairs") {
     document.body.style.backgroundImage = "url('./images/stairs.jpg')";
   } else if (currentScene === "floor1") {
     document.body.style.backgroundImage = "url('./images/floor1.png')";
+    floor1Scene.text = "You are on the first floor. " + cleanerName + " the cleaner is coming towards you and looks like they wants to tell you something. What do you do next?"
   } else if (currentScene === "floor1alt") {
     document.body.style.backgroundImage = "url('./images/floor1.jpg')";
+    floor1altScene.text = "Feeling exhausted after your conversation with " + cleanerName + ", You realise you wrap has gone up massively and you still haven't been out for a vape.  What do you do next?"
   } else if (currentScene === "floor1alt2") {
     document.body.style.backgroundImage = "url('./images/floor1.png')";
+    floor1alt2Scene.text = "You are on the first floor. " + cleanerName + " the cleaner is coming towards you and looks like they wants to tell you something. What do you do next?"
   } else if (currentScene === "maindoor") {
     document.body.style.backgroundImage = "url('./images/maindoor.gif')";
+    maindoorScene.text = "You put your head down and walk past the canteen and towards the main exit.  As you turn the corner you bump into " + teamManagerName + ".  They ask what you've been doing....";
   } else if (currentScene === "cinema") {
     document.body.style.backgroundImage = "url('./images/cinema.jpg')";
   } else if (currentScene === "zzz") {
     document.body.style.backgroundImage = "url('./images/zzz.gif')";
+    zzzScene.text = "Suddenly, you wake up to the sound of the cinema room door opening and you open your eyes and see " + teamManagerName + " stood in the doorway with their arms folded.  You've been gone for 4 hours!!  You've really gone and done it this time...";
   } else if (currentScene === "desk2") {
     document.body.style.backgroundImage = "url('./images/start.png')";
+    desk2Scene.text = "You sheepishly go back to your chair and sit down. You really need a vape, but " + teamManagerName + " is still on the prowl. What do you do next ? "
+    desk2Scene.choices = [
+      {
+        text: "Hide under the desk",        // this is the button text
+        nextScene: "underdesk",             // this is the id of the next scene
+        action: incrementWrapLow,
+        update: "yes"
+      },
+      {
+        text: "Pretend you are on a call",
+        nextScene: 'pretend',
+        action: incrementWrapLow,
+        update: "yes"
+      },
+      {
+        text: "Walk off and pretend you are on a break",
+        nextScene: 'onbreak',
+        action: incrementWrapLow,
+        update: "yes"
+      },
+      {
+        text: "Go and talk to " + matesName + "",
+        nextScene: 'mate',
+        action: incrementWrapLow,
+        update: "yes"
+      }
+    ]
+    
   } else if (currentScene === "canteen") {
     document.body.style.backgroundImage = "url('./images/canteen.jpg')";
   } else if (currentScene === "vending") {
     document.body.style.backgroundImage = "url('./images/vending.jpg')";
   } else if (currentScene === "moneyitem") {
     document.body.style.backgroundImage = "url('./images/gotmoney.gif')";
+    MoneyItemScene.text = matesName + " gives you £2.50!"
   } else if (currentScene === "filenote") {
     document.body.style.backgroundImage = "url('./images/filenote.jpg')";
+    filenoteScene.text = teamManagerName + " gives you a file note for being such an idiot. You silly sausage.  You can now go back to your desk and get on with your work.";
   } else if (currentScene === "ITissueItem") {
     document.body.style.backgroundImage = "url('./images/itticket.gif')";
   } else if (currentScene === "nomoney") {
     document.body.style.backgroundImage = "url('./images/skint.gif')";
+    nomoneyScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  It's a week to payday. " + matesName + " owes you £2.50 but you're not sure if you should ask them for it."
   } else if (currentScene === "fireexit") {
     document.body.style.backgroundImage = "url('./images/fireexit.jpg')";
   } else if (currentScene === "barriers") {
     document.body.style.backgroundImage = "url('./images/barrier.gif')";
+    barrierScene.text = "With your head down,  you casually walk round the corner and through the barriers.  You've almost made it out of the building when you hear a familiar voice shout your name.    " + securityName + " the security guard was alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  " + securityName + " tells you to go back to work and will be informing " + teamManagerName + " about what you've done.";
   } else if (currentScene === "fagshed") {
     document.body.style.backgroundImage = "url('./images/fagshed.gif')";
+    fagshedScene.text = "You look round and no one seemed to see you come out of the fire exit.  You really need a vape, so you walk up to the fag shelter.  You walk round the corner and " + securityName + " the security guard is waiting for you.  They were alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  " + securityName + " tells you to go back to work and will be informing " + teamManagerName + " about what you've done, "
   } else if (currentScene === "carpark") {
     document.body.style.backgroundImage = "url('./images/carpark.gif')";
+    carparkScene.text = "You wisely walk down towards the car park as you are much less likely to be seen there.  You turn the corner and are greeted by " + securityName + " the security guard.  They were alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  " + securityName + " tells you to go back to work and will be informing " + teamManagerName + " about what you've done, "
   } else if (currentScene === "bush") {
     document.body.style.backgroundImage = "url('./images/bush.gif')";
+    bushScene.text = "Worried that you might have set off the alarm, you panic and don't know what to do,  so you find the nearest bush and hide in it.  Unfortunately, the bush you chose is only 2 feet tall and " + securityName + " the security guard easily sees you and wonders what on earth you are doing trying to hide in a very small bush. That was a silly thing to do.  " + securityName + " tells you to go back to work and will be informing " + teamManagerName + " about what you've done, "
   } else if (currentScene === "wait1") {
     document.body.style.backgroundImage = "url('./images/lift.jpg')";
   } else if (currentScene === "wait5") {
     document.body.style.backgroundImage = "url('./images/lift.gif')";
+
   } else if (currentScene === "coffee") {
-    document.body.style.backgroundImage = "url('./images/coffee.gif')";
+    if (CanBuy) {
+      document.body.style.backgroundImage = "url('./images/coffee.gif')";
+    } else {
+      document.body.style.backgroundImage = "url('./images/skint.gif')";
+      coffeeScene.title = "Oh no.."
+      coffeeScene.text = "You dont have any money to buy this item!."
+    
+    }
+
   } else if (currentScene === "hallway") {
     document.body.style.backgroundImage = "url('./images/hallway.png')";
+    hallwayScene.text = "You are in the hallway near the main exit.  You can see the main door and the door to " + cleanerName + "'s cleaning cupboard."
+    hallwayScene.choices = [
+      {
+        text: "Try " + cleanerName + "'s cleaning cupboard",
+        nextScene: 'CleaningCupboard',
+        action: incrementWrapLow,
+        update: "yes"
+      },
+      {
+        text: "Head Outside",
+        nextScene: 'outside',
+        action: incrementWrapLow,
+        update: "yes"
+      },
+    ]
   } else if (currentScene === "alarm") {
     document.body.style.backgroundImage = "url('./images/alarm.gif')";
+    alarmScene.text = "... and hear a loud `Dring`.  You wait for what seems like eternity and just as you are about to give it another press, you suddenly hear a voice saying `hello?` You recognise " + securityName + "'s voice and feel relieved that they are there.  They ask you what is wrong and you say that the lift has stopped.  They say they will be right there and you wait...."
   } else if (currentScene === "waitsteve") {
     document.body.style.backgroundImage = "url('./images/waitsteve.gif')";
-  } else if (currentScene === "SCENENAME") {
+    waitsteveScene.text = "After what seems like forever, " + securityName + " finally arrives with a crew of 41 Fire crew. They use their power tools to open the lift doors and you are finally free. You've been in the lift for so long that your shift has ended and you go home. All 41 of the Fire crew line up outside the centre and " + securityName + " makes you apologise to each one.  You'll probably get another file note for this, but you don't care.  Due to your poor decision making, you lose the game.  Better luck next time!"
+  } else if (currentScene === "toilet") {
+    document.body.style.backgroundImage = "url('./images/toilet.gif')";
+    toiletScene.text = "You go into personal and walk to the toilet. Nobody else is here, so you pull out your mod and take a huge vape. Clouds of vapour come out through the door and fill the call centre.  Everyone thinks there is a fire and " + teamManagerName + " comes in and finds you. You do the walk of shame back to your desk and get a sneaky feeling you are going to get another file note for this"
+  } else if (currentScene === "skive") {
+    document.body.style.backgroundImage = "url('./images/skiveexcuse.gif')";
+    skiveScene.text = "You be honest and tell " + teamManagerName + " you've been trying to skive off.  He's not happy, but appreciates your honesty and sends you back to your desk and decides not to give you a file note this time.";
+  } else if (currentScene === "excuse") {
+    document.body.style.backgroundImage = "url('./images/skiveexcuse.gif')";
+    excuseScene.text = "You tell " + teamManagerName + " that you've been doing an errand for Hazel. You try and make something up about a first aid kit, but you fumble your words and " + teamManagerName + " sees right through your lie.  Lying to " + teamManagerName + " is a big no no.  As you walk back to your desk, you're pretty sure " + teamManagerName + " will be giving you a file note for this one.";
+  } else if (currentScene === "lindsay") {
+    document.body.style.backgroundImage = "url('./images/lindsay.gif')";
+  } else if (currentScene === "tablemates") {
+    document.body.style.backgroundImage = "url('./images/tablemates.png')";
+  } else if (currentScene === "tablemates2") {
+    document.body.style.backgroundImage = "url('./images/tablemates2.png')";
+  } else if (currentScene === "blueorred") {
+    document.body.style.backgroundImage = "url('./images/blueorred.jpg')";
+  } else if (currentScene === "crisps") {
+    if (CanBuy) {
+      document.body.style.backgroundImage = "url('./images/crisps.gif')";
+    } else {
+      document.body.style.backgroundImage = "url('./images/skint.gif')";
+      crispsScene.title = "Oh no.."
+      crispsScene.text = "You dont have any money to buy this item!."
+    
+    }
+  } else if (currentScene === "car") {
+    document.body.style.backgroundImage = "url('./images/car.gif')";
+  } else if (currentScene === "afterbribe") {
+    document.body.style.backgroundImage = "url('./images/afterbribe.gif')";
+    afterbribeScene.text = teamManagerName + " takes the coffee and goes back upstairs leaving you to it.  That was a close one!";
+  } else if (currentScene === "bribe") {
+    document.body.style.backgroundImage = "url('./images/bribe.gif')";
+    bribeScene.text = "As you look at " + teamManagerName + ", you feel the hot coffee in your hand and have a genius plan. `Just went to get you a coffee, Boss...` you proudly say as you thrust out your hand and pass " + teamManagerName + " the coffee that you just bought from the canteen. ";
+  } else if (currentScene === "outside") {
+    document.body.style.backgroundImage = "url('./images/outside.gif')";
+  } else if (currentScene === "toolbox") {
+    document.body.style.backgroundImage = "url('./images/toolbox.gif')";
+  } else if (currentScene === "lend") {
+    document.body.style.backgroundImage = "url('./images/lend.gif')";
+  } else if (currentScene === "wrongpin") {chemical
+    document.body.style.backgroundImage = "url('./images/wrongpin.gif')";
+    wrongpinScene.text = cleanerName + " caught you trying to get in their cupboard. They are not happy, and pushes you in the cupboard and locks the door.  You're stuck in there forever. " + cleanerName + " tells you some more stories about Spain, and you die a slow death of boredom. The end."
+  } else if (currentScene === "backinside") {
+    document.body.style.backgroundImage = "url('./images/backinside.gif')";
+  } else if (currentScene === "outside2") {
+    document.body.style.backgroundImage = "url('./images/outside2.jpg')";
+  } else if (currentScene === "gameover") {
+    gameover.text = "This many file notes means you're going down the disciplinary route. As you sit back down at your desk, you feel a sharp tap on your shoulder.  You turn around and see " + teamManagerName + ", Mark and James standing there.  You stand up and they walk you into the Brook meeting room and you know what's coming.  As you leave the building, you put your pass into the letter box and leave the building for the last time.   You are fired!!";
+  } else if (currentScene === "breakroom") {
     document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
-  } else if (currentScene === "SCENENAME") {
-    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
-  } else if (currentScene === "SCENENAME") {
-    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
-  } else if (currentScene === "SCENENAME") {
-    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
-  } else if (currentScene === "SCENENAME") {
-    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+    breakroomScene.text = "You walk in the break room and start vaping.  WHAT ARE YOU DOING VAPING INSIDE?  And you walked right into the break room where you I literally just told you " + teamManagerName + " went to.   Omg you suck at this."
+  } else if (currentScene === "screwdriver") {
+    document.body.style.backgroundImage = "url('./images/screwdriver.gif')";
+    screwdriverScene.text = "You acquired " + cleanerName + "'s trusty screwdriver.  It's a Stanley with a crosshead.  there's a bit of green paint on the handle, but otherwise it's in good shape.  Who knows what you'll be able to do with this. "
+  } else if (currentScene === "getlost") {
+    document.body.style.backgroundImage = "url('./images/getlost.gif')";
+  } else if (currentScene === "potion") {
+    document.body.style.backgroundImage = "url('./images/potion.gif')";
+  } else if (currentScene === "Chemicals") {
+    document.body.style.backgroundImage = "url('./images/chemicals.gif')";
   } else if (currentScene === "SCENENAME") {
     document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
   } else if (currentScene === "SCENENAME") {
@@ -2121,28 +2228,68 @@ function Selectbackground() {
   }
 }
 // DONT DELETE ME IM THE CLOSING FUNCTION CURLY
-var removedChoices = [];
+
 function render() {
+
+  console.log(`Render of Variables: ${spokenWord1}`)
+  console.log(`yourName: ${yourName}`);
+  console.log(`teamManagerName: ${teamManagerName}`);
+  console.log(`matesName: ${matesName}`);
+  console.log(`securityName: ${securityName}`);
+  console.log(`cleanerName: ${cleanerName}`);
+
+
+
   Selectbackground();
 
-if (!HasCoffeeItem) {
-  const choicesToKeep = scenes["maindoor"].choices.filter(choice => {
-    if (choice.text == "Tell him you went to buy him a coffee") {
-      removedChoices.push(choice);
-      return false;
-    }
-    return true;
-  });
-  scenes["maindoor"].choices = choicesToKeep;
-} else {
-  scenes["maindoor"].choices = scenes["maindoor"].choices.concat(removedChoices);
-  removedChoices = [];
-}
 
 
 
- 
-  console.log("Your name in render " + names.yourname)
+  let choiceText = "Tell him you went to buy him a coffee";
+  if (!HasCoffeeItem) {
+    const choicesToKeep = scenes["maindoor"].choices.filter(choice => {
+      if (choice.text == choiceText) {
+        removedChoices.push(choice);
+        return false;
+      }
+      return true;
+    });
+    scenes["maindoor"].choices = choicesToKeep;
+  } else if (HasCoffeeItem && removedChoices.length > 0) {
+    // Only add the choices back if they have been removed previously
+    scenes["maindoor"].choices = scenes["maindoor"].choices.concat(removedChoices);
+    removedChoices = [];
+  }
+/*
+  choiceText = "Lend your mate £2.50";
+  if (!Hasmoney) {
+    const choicesToKeep = scenes["tablemates2"].choices.filter(choice => {
+
+      if (choice.text == choiceText) {
+        removedChoices.push(choice);
+        return false;
+      }
+      return true;
+    });
+    scenes["tablemates2"].choices = choicesToKeep;
+  } else if (Hasmoney && removedChoices.length > 0) {
+    // Only add the choices back if they have been removed previously
+    scenes["tablemates2"].choices = scenes["tablemates2"].choices.concat(removedChoices);
+    removedChoices = [];
+  }
+*/
+
+
+
+
+
+  // Create the button
+
+
+  // Append the button to the body element
+
+
+
 
 
 
@@ -2213,6 +2360,7 @@ if (!HasCoffeeItem) {
   // Update the title
   const titleBox = document.querySelector("#title-box");
   titleBox.innerHTML = scene.title;
+
 
   const outputElement = document.createElement("div");
   outputElement.id = "output";
@@ -2305,21 +2453,27 @@ function ITIssuesItem() {
 
 
 
-
 // Declare the sessionIdElement variable outside of the function
 var sessionIdElement;
 
+window.spokenWord1;
+window.spokenWord2;
+window.spokenWord3;
+window.spokenWord4;
+
+
+
 function displaySessionId() {
   let sessionIdDisplayed = false;
-  
+
   var sessionId = Math.floor(Math.random() * 10000000000000000);
-  
+
   // Assign the value of sessionIdElement to the newly created element
   sessionIdElement = document.createElement("div");
   sessionIdElement.classList.add("white-text");
-  
+
   var TrueID = Math.round(sessionId)
-  
+
   let UPI = Math.floor(TrueID / 100000000);
   let IPU = Math.floor(UPI / 60)
   var V1 = Math.floor(IPU / 10000);
@@ -2329,51 +2483,59 @@ function displaySessionId() {
   var V5 = V4;
   V5 = V5.toString().padStart(4, "0");
   KP = V5;
-  
-  let wordArray = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-  
-  let spokenV5 = "";
-  
-  for(let i = 0; i < KP.length; i++) {
-  let digit = parseInt(KP[i]);
-  spokenV5 += wordArray[digit] + " ";
-  }
-  
-  console.log(spokenV5);
 
 
-if (!sessionIdDisplayed) {
-  // Now that the sessionIdElement variable has been defined, it can be accessed here
-  sessionIdElement.style.position = "fixed";
-  sessionIdElement.style.bottom = "0";
-  sessionIdElement.style.left = "0";
-  document.body.appendChild(sessionIdElement);
-  if (TrueID % 2 == 0) {
-    sessionIdElement.innerHTML = "Session ID: " + TrueID;
-  } else {
-    TrueID++
-    sessionIdElement.innerHTML = "Session ID: " + TrueID;
-  }
-  sessionIdDisplayed = true;
 
-  let counter = 3;
-  document.getElementById("ConfirmPin").addEventListener("click", function () {
-    let pinInput = document.getElementById("pin");
-    for (let i = 0; i < 1; i++) {
-      if (pinInput.value == IPU) {
-        var helpPage = document.getElementById("helpButton");
-        document.getElementById("helpButton").style.visibility = "hidden";
-        var helpPage = document.getElementById("helpPage");
-        helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
+  //petes code
+  const spokenWords = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+
+  window.spokenWord1 = spokenWords[V5[0]];
+  window.spokenWord2 = spokenWords[V5[1]];
+  window.spokenWord3 = spokenWords[V5[2]];
+  window.spokenWord4 = spokenWords[V5[3]];
 
 
-        // true statement
-        CP = true;
-        render();
+  console.log(`The four digits of V5 are ${spokenWord1}, ${spokenWord2}, ${spokenWord3}, and ${spokenWord4}`);
+  //end petes code
+
+
+
+
+
+
+  if (!sessionIdDisplayed) {
+    // Now that the sessionIdElement variable has been defined, it can be accessed here
+    sessionIdElement.style.position = "fixed";
+    sessionIdElement.style.bottom = "0";
+    sessionIdElement.style.left = "0";
+    document.body.appendChild(sessionIdElement);
+    if (TrueID % 2 == 0) {
+      sessionIdElement.innerHTML = "Session ID: " + TrueID;
+    } else {
+      TrueID++
+      sessionIdElement.innerHTML = "Session ID: " + TrueID;
+    }
+    sessionIdDisplayed = true;
+
+    let counter = 3;
+    document.getElementById("ConfirmPin").addEventListener("click", function () {
+      let pinInput = document.getElementById("pin");
+      for (let i = 0; i < 1; i++) {
+        if (pinInput.value == IPU) {
+          var helpPage = document.getElementById("helpButton");
+          document.getElementById("helpButton").style.visibility = "hidden";
+          var helpPage = document.getElementById("helpPage");
+          helpPage.style.visibility = (helpPage.style.visibility == "visible") ? "hidden" : "visible";
+
+
+          // true statement
+          CP = true;
+          render();
           break;  // exit the loop
         } else {
           counter -= 1;  // decrease the counter
           if (counter === 0) {
+            triggernomoney
             document.getElementById("helpButton").style.visibility = "hidden";
             document.getElementById("helpPage").style.visibility = "hidden";
 
@@ -2383,6 +2545,8 @@ if (!sessionIdDisplayed) {
     });
   }
 }
+
+
 
 
 document.getElementById("helpButton").addEventListener("click", function () {
@@ -2426,12 +2590,12 @@ function AddMoneyItem() {
     li.appendChild(a);  // Add the link element to the list item element
     inventoryList.appendChild(li);  // Add the list item to the inventory list element
     mateScene.text = 'Hey, I cant talk right now! I have a meeting ! Sorry..';
-    mateScene.title = 'Your friend seems annoyed'
-    mate2Scene.text = 'Your friend seems annoyed Do you talk or go back to your desk?';
+    mateScene.title =  matesName + " seems annoyed"
+    mate2Scene.text =  matesName + " seems annoyed Do you talk or go back to your desk?";
     mate2Scene.title = 'Annoyed Friend'
-    mate3Scene.text = 'Your friend has ignored you. What do you do now?';
+    mate3Scene.text = matesName + " has ignored you. What do you do now?";
     mate3Scene.title = 'You are ignored'
-    mate4Scene.text = 'You wait for your friend to reply but they are too busy. Whilst waiting you realise your wrap has gone even higher! You best go back!';
+    mate4Scene.text = "You wait for " + matesName + " to reply but they are too busy. Whilst waiting you realise your wrap has gone even higher! You best go back!";
     mate4Scene.title = 'You are blanked...'
   }
   else {
@@ -2468,17 +2632,16 @@ function AddCoffeeItem() {
     HasCoffeeItem = true;
     HasUsedMoney = true;
     RemoveMoney();
-
   } else {
 
     if (annoyedfriend == false) {
+      document.body.style.backgroundImage = "url('./images/skint.gif')";
       coffeeScene.title = "You're skint pal..."
-      coffeeScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  Your mate owes you some money, but you're not sure if you should ask him..."
-      document.body.style.backgroundImage = "url('./images/skint.gif')";
+      coffeeScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  " + matesName + " owes you some money, but you're not sure if you should ask him..."
+
     } else {
-      coffeeScene.title = "Oh no.."
-      coffeeScene.text = "You are out of cash."
-      document.body.style.backgroundImage = "url('./images/skint.gif')";
+
+     
 
     }
   }
@@ -2490,7 +2653,7 @@ function RemoveCoffee() {
   if (item) {
     li.remove();
     item.remove();
-    HasCoffeeItem = false; 
+    HasCoffeeItem = false;
   }
 }
 
@@ -2512,23 +2675,32 @@ function AddCrispsItem() {
 
     if (annoyedfriend == false) {
       crispsScene.title = "You're skint pal..."
-      crispsScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  Your mate owes you some money, but you're not sure if you should ask him..."
+      crispsScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  " + matesName + " owes you some money, but you're not sure if you should ask them..."
+
     } else {
       crispsScene.title = "Oh no.."
       crispsScene.text = "You are out of cash."
 
 
-
     }
+
+
   }
 }
+
+function triggernomoney() {
+  currentScene = "nomoney";
+  render();
+}
+
+
 function RemoveCrispsItem() {
   const item = document.querySelector("#inventory-box li a[href='Packet Of Crisps']");
   const li = item.parentElement;
   if (item) {
     li.remove();
     item.remove();
-HasCrisps = false;
+    HasCrisps = false;
   }
 }
 
@@ -2595,7 +2767,7 @@ function RemoveGlowingPotion() {
   const li = item.parentElement;
   if (item) {
     li.remove();
-    item.remove();
+    item.remove(); e
     HasPotion = false;
 
 
@@ -2814,6 +2986,8 @@ document.querySelectorAll(".keypad-container").forEach((button) => {
         led1.style.backgroundColor = "lime";
         led2.style.backgroundColor = "lime";
         led3.style.backgroundColor = "lime";
+        CleaningCupboardScene.text = "Verifying pin...";
+
         input.value = "CORRECT";
         setTimeout(function () {
           currentScene = "incupboard";
@@ -2852,25 +3026,12 @@ document.querySelectorAll(".keypad-container").forEach((button) => {
 //help 
 function createBlackoutPage() {
   let blackout = document.createElement("div");
-  blackout.style.position = "absolute";
-  blackout.style.top = "0";
-  blackout.style.left = "0";
-  blackout.style.width = "1000%";
-  blackout.style.height = "1000%";
-  blackout.style.backgroundColor = "black";
-  blackout.style.opacity = "0.5";
-  blackout.style.zIndex = "1000";
+
+  blackout.style.backdropFilter = "blur(5px)";
   document.body.appendChild(blackout);
   let inputContainer = document.createElement("div");
   inputContainer.style.position = "fixed";
-  inputContainer.style.top = "50%";
-  inputContainer.style.left = "50%";
-  inputContainer.style.transform = "translate(-50%, -50%)";
-  inputContainer.style.backgroundColor = "white";
-  inputContainer.style.padding = "20px";
-  inputContainer.style.borderRadius = "5px";
-  inputContainer.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
-  inputContainer.style.zIndex = "1001";
+
   document.body.appendChild(inputContainer);
   let inputField = document.createElement("input");
   inputField.type = "text";
@@ -2910,24 +3071,26 @@ function createBlackoutPage() {
 
 }
 
+
+
+
+
+
 function createLoadingScreen() {
+
   // Create the loading screen element
   var loadingScreen = document.createElement("div");
   loadingScreen.classList.add("loading-screen");
 
+  // Add a blurred background to the loading screen
+  loadingScreen.style.background = "rgba(0, 0, 0, 0.5)";
+
   // Create the title element
   const title = document.createElement("h1");
-  title.innerText = "Please set some names for the game. Remember this is for fun and is not any reflection on people you may or may not know!";
+  title.innerText = "Please enter a few names for the game! They do not depict any real person and just a bit of fun.";
   title.style.color = "white";
   title.style.textAlign = "center";
   title.style.marginBottom = "20px";
-
-  const noname = document.createElement("h1");
-  noname.innerText = "You must enter names in all boxes without any spaces";
-  noname.style.color = "red";
-  noname.style.fontWeight = "bold";
-  noname.style.textAlign = "center";
-  noname.style.marginBottom = "20px";
 
   // Create the text box elements
   const textBox1 = document.createElement("input");
@@ -2952,7 +3115,8 @@ function createLoadingScreen() {
 
   // Create the confirm button element
   const confirmButton = document.createElement("button");
-  confirmButton.innerText = "Confirm names";
+  confirmButton.innerText = "Confirm";
+
 
   // Append the text box and button elements to the loading screen element
   loadingScreen.appendChild(title); // Add the title element to the loading screen
@@ -2968,66 +3132,71 @@ function createLoadingScreen() {
 
   // Add an event listener to the confirm button
   confirmButton.addEventListener("click", () => {
-    // Get the names from the text boxes
+    yourName = textBox1.value;
+    window.yourName = yourName;
 
-    const yourname = textBox1.value;
-    const teamManagerName = textBox2.value;
-    const matesName = textBox3.value;
-    const securityName = textBox4.value;
-    const cleanerName = textBox5.value;
+    // Get the values from the text boxes
+    var yourName = textBox1.value;
 
 
+    window.yourName = textBox1.value;
+    window.teamManagerName = textBox2.value;
+    window.matesName = textBox3.value;
+    window.securityName = textBox4.value;
+    window.cleanerName = textBox5.value;
 
 
-    document.body.removeChild(loadingScreen);
-    setup = true;
-    console.log("Setup value was set to : " + setup);
-    console.log("Yourname: was set to : " + names.yourname);
-
-    if (!names.yourname || !teamManagerName || !matesName || !securityName || !cleanerName || names.yourname.includes(" ") || teamManagerName.includes(" ") || matesName.includes(" ") || securityName.includes(" ") || cleanerName.includes(" ")) {
-      loadingScreen.appendChild(noname);
+    // Check if any of the input values are empty or contain spaces
+    if (!window.yourName || !window.teamManagerName || !window.matesName || !window.securityName || !window.cleanerName || window.yourName.includes(" ") || window.teamManagerName.includes(" ") || window.matesName.includes(" ") || window.securityName.includes(" ") || window.cleanerName.includes(" ")) {
+      // If any of the input values are empty or contain spaces, display a message and highlight the input elements in red
+      const errorMessage = document.createElement("h1");
+      errorMessage.innerText = "You must enter names in all boxes without any spaces";
+      errorMessage.style.color = "red";
+      errorMessage.style.fontWeight = "bold";
+      errorMessage.style.textAlign = "center";
+      errorMessage.style.marginBottom = "20px";
+      loadingScreen.appendChild(errorMessage);
       textBox1.style.borderColor = "red";
       textBox2.style.borderColor = "red";
       textBox3.style.borderColor = "red";
       textBox4.style.borderColor = "red";
       textBox5.style.borderColor = "red";
-      textBox1.style.borderWidth = "5px";
-      textBox2.style.borderWidth = "5px";
-      textBox3.style.borderWidth = "5px";
-      textBox4.style.borderWidth = "5px";
-      textBox5.style.borderWidth = "5px";
 
 
-      setTimeout(() => {
-        textBox1.style.borderColor = "";
-        textBox2.style.borderColor = "";
-        textBox3.style.borderColor = "";
-        textBox4.style.borderColor = "";
-        textBox5.style.borderColor = "";
-        textBox1.style.borderWidth = "0px";
-        textBox2.style.borderWidth = "0px";
-        textBox3.style.borderWidth = "0px";
-        textBox4.style.borderWidth = "0px";
-        textBox5.style.borderWidth = "0px";
 
-      }, 1500);
+      return {
+        yourName: window.yourName,
+        teamManagerName: window.teamManagerName,
+        matesName: window.matesName,
+        securityName: window.securityName,
+        cleanerName: window.cleanerName
+      }
 
-      return;
+
     } else {
-      render();
-
-
-      names.yourname = textBox1.value;
-      teamManagerName = textBox2.value;
-      matesName = textBox3.value;
-      securityName = textBox4.value;
-      cleanerName = textBox5.value;
-
+      // The input values are valid, so remove the loading screen and set the global setup variable to true
+      document.body.removeChild(loadingScreen);
+      window.setup = true;
     }
-
-
-
   });
 }
 
+// Run the application
+async function runApplication() {
+  while (!setup) {
+    // The loading screen has not finished, so the application cannot run yet
+    console.log("Waiting for loading screen to finish...");
+    // Wait for 1 second before checking the value of the `setup` variable again
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+
+  // The loading screen has finished, so the application can run
+  console.log("Loading done..");
+  displaySessionId();
+  render();
+}
+
+
+createLoadingScreen();
+runApplication();
 
