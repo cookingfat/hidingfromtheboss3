@@ -139,7 +139,19 @@ body {
   font-size: 20px;
 }
 
+#mute-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 15%;
+  margin-top: 50px;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  background-image: url('assets/mute-button.png'); /* Add the image as the button's background */
+  background-size: cover; /* Scale the image to cover the button */
 
+}
 
 
 #scene {
