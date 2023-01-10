@@ -1474,6 +1474,7 @@ const bush = new Audio("assets/bush.mp3")
 const correctbeep = new Audio("assets/correctbeep.mp3")
 const wrong = new Audio("assets/wrong.mp3")
 const EEF = new Audio("assets/EEF.mp3")
+const wrap = new Audio("assets/.mp3")
 
 
 missionfailed.volume = 0.3;
