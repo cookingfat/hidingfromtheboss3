@@ -142,11 +142,11 @@ body {
 #mute-button {
   position: absolute;
   top: 0;
-  right: 0;
-  margin-right: 15%;
-  margin-top: 50px;
-  width: 120px;
-  height: 120px;
+  left: 0;
+  padding: 20px;
+  margin: 30px; 
+  width: 100px;
+  height: 100px;
   border-radius: 10px;
   background-image: url('assets/mute-button.png'); /* Add the image as the button's background */
   background-size: cover; /* Scale the image to cover the button */
