@@ -6,7 +6,7 @@ let startScene = {
 
   title: "Your day begins...",
   text: "",
-  
+
 };
 
 
@@ -49,7 +49,7 @@ const onbreakScene = {
 const mateScene = {
   title: "",
   text: "",
-  
+
 };
 
 const mate2Scene = {
@@ -118,15 +118,7 @@ const mate4Scene = {
 const mate5Scene = {
   title: "A kind gesture",
   text: "",
-  choices: [
-    {
-      text: "Take the £2.50",
-      nextScene: 'moneyitem',
-      action: NoAction,
-      update: "yes"
-
-    }
-  ]
+  choices: []
 };
 const pretendScene = {
   title: "On a call?",
@@ -701,12 +693,6 @@ const tablemates2Scene = {
   text: "Not wanting to be rude, you stay at the table and talk a bit longer.  One of your mates forgot their wallet and are just watching the others eat lunch.  He looks hungry.  But so are you.  The conversation gets about as stale as a week old pizza crust.",
   choices: [
     {
-      text: "Lend your mate £2.50",  // I only want this choice to show if the player has money in their wallet
-      nextScene: 'lend',
-      action: RemoveMoney,
-      update: "yes"
-    },
-    {
       text: "Go back",
       nextScene: 'canteen',
       action: incrementWrapLow,
@@ -722,12 +708,12 @@ const tablemates2Scene = {
 };
 const lendScene = {
   title: "Good deed for the day....",
-  text: "Feeling sorry for your mate, you offer to lend him £2.50.  He takes it and goes to the vending machines.                      He didn't seem that grateful and you wonder if that was the right choice.  Now what?",
+  text: "Feeling sorry for your mate, you offer to lend him £2.50.  He takes it and goes to the vending machines. He didn't seem that grateful and you wonder if that was the right choice.  Now what?",
   choices: [
     {
       text: "Go back",
       nextScene: 'canteen',
-      action: RemoveMoney,
+      action: incrementWrapLow,
       update: "yes"
     },
     {
@@ -744,18 +730,6 @@ const vendingScene = {
   text: "You walk over to the vending machines. There's the coffee machine and the snack machine.  A large coffee sounds good, but so does a bag of Cheese and Onion McCoys. They are £2.50 each, What do you do?",
   choices: [
     {
-      text: "Buy some crisps",
-      nextScene: 'crisps',
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Buy a coffee",
-      nextScene: 'coffee',
-      action: NoAction,
-      update: "yes"
-    },
-    {
       text: "Go back",
       nextScene: 'canteen',
       action: incrementWrapLow,
@@ -765,7 +739,7 @@ const vendingScene = {
 };
 const crispsScene = {
   title: "The vending machines",
-  text: "You pull out your £2.50 and feed the coins into the slot. You press E5 and hope the bag of McCoys doesn't get stuck.  You're not sure if you should have bought the coffee, but you're hungry and you're not going to turn down a bag of crisps.",
+  text: "As you buy your crisps, you debate with an American colleague about whether they're called crisps or chips. 'You call these things chips?!? Instead of crispity crunchy munchie crackerjack snacker nibbler snap and crack pop Westerpool Chestershire Shire Queens lovely jubbly delights? That's rather a bit cringe, innit bruv?`  You're not sure if you should have bought the coffee, but you're hungry and you're not going to turn down a bag of crisps.",
   choices: [
     {
       text: "Go back",
@@ -815,15 +789,9 @@ const maindoorScene = {
       action: NoAction,
       update: "yes"
     },
-    {
-      text: "Tell him you went to buy him a coffee",  // need to only show this option if you have the coffee
-      nextScene: 'bribe',
-      action: NoAction,
-      update: "yes"
-    },
+
   ]
 };
-
 
 const skiveScene = {
   title: "The confession",
@@ -878,7 +846,7 @@ const afterbribeScene = {
 const hallwayScene = {
   title: "In the hallway",
   text: ``,
-  
+
 };
 
 const endScene = {
@@ -904,7 +872,7 @@ const endScene = {
       action: () => {
         window.open('https://www.memorymoons.com');
       },
-      update: "yes"
+      update: "no"
     },
   ]
 };
@@ -950,14 +918,8 @@ const walkScene = {
   text: "",
   choices: [
     {
-      text: "Give him your toolbox",
-      nextScene: 'blueorred',
-      action: NoAction,
-      update: "yes"
-    },
-    {
       text: "Go back",
-      nextScene: 'outside2',
+      nextScene: 'outside2',   ///  THIS IS WHERE YOU NEED TO CHANGE TO A GAME ENDING SCENE
       action: NoAction,
       update: "yes"
     },
@@ -1048,7 +1010,7 @@ const carScene = {
     {
       text: "search your car",
       nextScene: 'toolbox',
-      action: NoAction,  //add battery toolbox to inventory
+      action: AddToolBox,  //add battery toolbox to inventory
       update: "yes"
     },
     {
@@ -1153,6 +1115,24 @@ const CleaningCupboardScene = {
     },
   ]
 };
+
+
+
+const LoadingScene = {
+  title: "You tried to cheat at the game by altering elements. Nice try but this has been blocked. The game is now over . Refresh the page",
+  text: "Stop cheating and play properly!!",
+  choices: []
+};
+
+
+const cheatScene = {
+  title: "",
+  text: "",
+  choices: []
+};
+
+
+
 const incupboardScene = {
   title: "A dusty cupboard",
   text: "",
@@ -1308,430 +1288,18 @@ const gameoverScene = {
 
 
 //#endregion
-//#region Dev Menu
-const testScene = {
-  title: "DEV MENU ",
-  text: "-------- Dev Configuration Utility --------",
-  choices: [
-    {
-      text: "Start Scene",
-      nextScene: "start",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Pretend Scene",
-      nextScene: "pretend",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "On Break Scene",
-      nextScene: "onbreak",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Underdesk Scene ",
-      nextScene: "underdesk",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Off To See A Mate",
-      nextScene: "mate",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Mate 2 scene",
-      nextScene: "mate2",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Mate 3 scene",
-      nextScene: "mate3",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Mate 4 scene",
-      nextScene: "mate4",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Mate 5 scene",
-      nextScene: "mate5",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Go To Desk2 Scene",
-      nextScene: "desk2",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Walkoff Scene",
-      nextScene: "walkoff",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Toilet Scene",
-      nextScene: "toilet",
-      action: NoAction,
-      update: "yes"
-    }, {
-      text: "Breakroom Scene",
-      nextScene: "breakroom",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Stairs Scene",
-      nextScene: "stairs",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Go In Lift Scene",
-      nextScene: "lift",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Wait1 Scene",
-      nextScene: "wait1",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Wait2 Scene",
-      nextScene: "wait1",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Wait3 Scene",
-      nextScene: "wait3",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Wait4 Scene",
-      nextScene: "wait4",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Pressing the emergency button Scene",
-      nextScene: "alarm",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Waiting for Steve Scene",
-      nextScene: "waitsteve",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Fire Exit Scene",
-      nextScene: "fireexit",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Floor 1 Scene",
-      nextScene: "floor1",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Floor 1 alternative Scene",
-      nextScene: "floor1alt",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Mick Scene",
-      nextScene: "mick",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Mick2 Scene",
-      nextScene: "mick2",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Mick3 Scene",
-      nextScene: "mick3",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Cinema room Scene",
-      nextScene: "cinema",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "canteen Scene",
-      nextScene: "canteen",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Talk to Lindsay Scene",
-      nextScene: "lindsay",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Vending machines Scene",
-      nextScene: "vending",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "buy coffee Scene",
-      nextScene: "coffee",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "crisps Scene",
-      nextScene: "crisps",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "table mates Scene",
-      nextScene: "tablemates",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "table mates 2 Scene",
-      nextScene: "tablemates2",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "lend money Scene",
-      nextScene: "lend",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Head outside Scene",
-      nextScene: "maindoor",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "End Scene",
-      nextScene: "end",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Outside Scene",
-      nextScene: "outside",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "Cleaning Cupboard",
-      nextScene: "CleaningCupboard",
-      action: NoAction,
-      update: "yes"
-    },
-    {
-      text: "In Cleaning Cupboard",
-      nextScene: "incupboard",
-      action: NoAction,
-      update: "yes"
-    },
 
-    {
-      text: "Outside2 Scene",
-      nextScene: 'outside2',
-      action: NoAction,
-      update: "no"
-    },
-    {
-      text: "walk Scene",
-      nextScene: 'walk',
-      action: NoAction,
-      update: "no"
-    },
-    {
-      text: "blueorred Scene",
-      nextScene: 'blueorred',
-      action: NoAction,
-      update: "no"
-    },
-    {
-      text: "Car Scene",
-      nextScene: 'car',
-      action: NoAction,
-      update: "no"
-    },
-    {
-      text: "back inside Scene",
-      nextScene: 'backinside',
-      action: NoAction,
-      update: "no"
-    },
-    {
-      text: "toolbox Scene",
-      nextScene: 'toolbox',
-      action: NoAction,
-      update: "no"
-    },
-    {
-      text: "Add Wrap",
-      nextScene: "dev",
-      action: incrementWrapLow,
-      update: "no"
 
-    },
-    {
-      text: "Reset Wrap",
-      nextScene: "dev",
-      action: resetWrap,
-      update: "no"
-
-    },
-    {
-      text: "Add File Note",
-      nextScene: "dev",
-      action: addFilenote,
-      update: "no"
-
-    },
-    {
-      text: "Remove File Note",
-      nextScene: "dev",
-      action: RemoveFileNote,
-      update: "no"
-
-    },
-    {
-      text: "Reset File Notes",
-      nextScene: "dev",
-      action: ResetFileNotes,
-      update: "no"
-    },
-    {
-      text: "Add IT Issues",
-      nextScene: "dev",
-      action: ITIssuesItem,
-      update: "yes"
-    },
-
-    {
-      text: "Add Money",
-      nextScene: 'dev',
-      action: AddMoneyItem,
-      update: "no"
-    },
-    {
-      text: "Remove Money",
-      nextScene: 'dev',
-      action: RemoveMoney,
-      update: "no"
-    },
-    {
-      text: "Add Coffee Item",
-      nextScene: 'dev',
-      action: AddCoffeeItem,
-      update: "no"
-    },
-    {
-      text: "Remove Coffee Item",
-      nextScene: 'dev',
-      action: RemoveCoffee,
-      update: "no"
-    },
-    {
-      text: "Add Crisps Item",
-      nextScene: 'dev',
-      action: AddCrispsItem,
-      update: "no"
-    },
-    {
-      text: "Remove Crisps Item",
-      nextScene: 'dev',
-      action: RemoveCrispsItem,
-      update: "no"
-    },
-    {
-      text: "Pay For Coffee",
-      nextScene: 'dev',
-      action: AddCoffeeItem,
-      update: "no"
-    },
-    {
-      text: "Add Screwdriver",
-      nextScene: 'dev',
-      action: AddScrewDriver,
-      update: "no"
-    },
-    {
-      text: "Remove Screwdriver",
-      nextScene: 'dev',
-      action: RemoveScrewDriver,
-      update: "no"
-    },
-    {
-      text: "Add Chemicals",
-      nextScene: 'dev',
-      action: AddChemical,
-      update: "no"
-    },
-    {
-      text: "Remove Chemicals",
-      nextScene: 'dev',
-      action: RemoveChemical,
-      update: "no"
-    },
-    {
-      text: "Add Glowing Potion",
-      nextScene: 'dev',
-      action: AddGlowingPotion,
-      update: "no"
-    },
-    {
-      text: "Remove Glowing Potion",
-      nextScene: 'dev',
-      action: RemoveGlowingPotion,
-      update: "no"
-    },
-    {
-      text: "Generate Help Keys",
-      nextScene: 'dev',
-      action: createBlackoutPage,
-      update: "no"
-    },
-
-  ]
-};
 
 //#endregion
 
 const scenes = {
+  cheat: cheatScene,
+  loading: LoadingScene,
   start: startScene,
   desk2: desk2Scene,
   pretend: pretendScene,
   end: endScene,
-  dev: testScene,
   onbreak: onbreakScene,
   underdesk: underdeskScene,
   mate: mateScene,
@@ -1819,17 +1387,15 @@ const scenes = {
 // Game Setings
 
 
-var currentScene = "start";
+var currentScene = "loading";
 var removedChoices = [];
-
-var setup = false;
+var setup = true;
 var disclaimer = false;
 var DMA = false;
 var CP = false;
 let sessionIdDisplayed = false;
-
-
-
+var leftcentre = false;
+var usedhelp = false;
 let timer;
 var annoyedfriend = false;
 var Filenotes = 0;
@@ -1842,8 +1408,11 @@ var HasFileNotes = false;
 var KP = 0;
 var CKP = false;
 var LKP = false;
-
-
+var HasMoneyRendered = false;
+var CC0V = false;
+var CC1V = false;
+var CC2V = false;
+var CC3V = false;
 var HasCrisps = false;
 var CanBuy = false;
 var HasScrewDriver = false;
@@ -1853,6 +1422,9 @@ var HasUsedMoney = false;
 var HasCoffeeItem = false;
 var HasChemical = false;
 var HasPotion = false;
+var HasToolBox = false;
+var Audiomuted = false;
+
 
 const gameElem = document.getElementById("game");
 const sceneElem = document.getElementById("scene");
@@ -1862,13 +1434,153 @@ const filesNotesElem = document.getElementById("file-notes-container");
 const FileNoteElem = document.getElementById("file-notes");
 const titleElement = document.createElement("div");
 
+const beep = new Audio("assets/beep.mp3")
+const missionfailed = new Audio("assets/missionfailed.mp3")
+const thebest = new Audio("assets/thebest.mp3")
+const bruh = new Audio("assets/bruh.mp3")
+const error = new Audio("assets/ERROR.mp3")
+const run = new Audio("assets/run.mp3")
+const ching = new Audio("assets/ching.mp3")
+const pretend = new Audio("assets/pretend.mp3")
+const vape = new Audio("assets/vape.mp3")
+const yawn = new Audio("assets/yawn.mp3")
+const filenote = new Audio("assets/filenote.mp3")
+const talk = new Audio("assets/talk.mp3")
+const talk1 = new Audio("assets/talk1.mp3")
+const onbreak = new Audio("assets/onbreak.mp3")
+const liftmusic = new Audio("assets/liftmusic.mp3")
+const crash = new Audio("assets/crash.mp3")
+const thud = new Audio("assets/thud.mp3")
+const canteen = new Audio("assets/canteen.mp3")
+const coffee = new Audio("assets/coffee.mp3")
+const crisps = new Audio("assets/crisps.mp3")
+const excuseme = new Audio("assets/excuseme.mp3")
+const wow = new Audio("assets/wow.mp3")
+const squeak = new Audio("assets/squeak.mp3")
+const creepy = new Audio("assets/creepy.mp3")
+const matrix = new Audio("assets/matrix.mp3")
+const robotdogfart = new Audio("assets/robotdogfart.mp3")
+const car = new Audio("assets/car.mp3")
+const lindsay = new Audio("assets/lindsay.mp3")
+const lying = new Audio("assets/lying.mp3")
+const skive = new Audio("assets/skive.mp3")
+const cheers = new Audio("assets/cheers.mp3")
+const mick = new Audio("assets/mick.mp3")
+const soundtrack = new Audio("assets/soundtrack.mp3")
+const gameover = new Audio("assets/gameover.mp3")
+const wrap = new Audio("assets/.mp3")
+const years = new Audio("assets/years.mp3")
+const ambient = new Audio("assets/ambient.mp3")
+const bush = new Audio("assets/bush.mp3")
+const correctbeep = new Audio("assets/correctbeep.mp3")
+const wrong = new Audio("assets/wrong.mp3")
+const EEF = new Audio("assets/EEF.mp3")
 
 
+missionfailed.volume = 0.3;
+vape.volume = 0.3;
+
+
+
+function UnmuteAllAudio() {
+  Audiomuted = false;
+  beep.volume = 1;
+  missionfailed.volume = 0.3;
+  thebest.volume = 1;
+  bruh.volume = 1;
+  error.volume = 1;
+  run.volume = 1;
+  ching.volume = 1;
+  pretend.volume = 1;
+  vape.volume = 0.3;
+  yawn.volume = 1;
+  filenote.volume = 1;
+  talk.volume = 1;
+  onbreak.volume = 1;
+  liftmusic.volume = 1;
+  crash.volume = 1;
+  thud.volume = 1;
+  canteen.volume = 1;
+  coffee.volume = 1;
+  crisps.volume = 1;
+  excuseme.volume = 1;
+  wow.volume = 1;
+  squeak.volume = 1;
+  creepy.volume = 1;
+  matrix.volume = 1;
+  robotdogfart.volume = 1;
+  car.volume = 1;
+  lindsay.volume = 1;
+  lying.volume = 1;
+  skive.volume = 1;
+  cheers.volume = 1;
+  mick.volume = 1;
+}
+
+function muteAllAudio() {
+  Audiomuted = true;
+  beep.volume = 0;
+  missionfailed.volume = 0;
+  thebest.volume = 0;
+  bruh.volume = 0;
+  error.volume = 0;
+  run.volume = 0;
+  ching.volume = 0;
+  pretend.volume = 0;
+  vape.volume = 0;
+  yawn.volume = 0;
+  filenote.volume = 0;
+  talk.volume = 0;
+  onbreak.volume = 0;
+  liftmusic.volume = 0;
+  crash.volume = 0;
+  thud.volume = 0;
+  canteen.volume = 0;
+  coffee.volume = 0;
+  crisps.volume = 0;
+  excuseme.volume = 0;
+  wow.volume = 0;
+  squeak.volume = 0;
+  creepy.volume = 0;
+  matrix.volume = 0;
+  robotdogfart.volume = 0;
+  car.volume = 0;
+  lindsay.volume = 0;
+  lying.volume = 0;
+  skive.volume = 0;
+  cheers.volume = 0;
+  mick.volume = 0;
+}
+
+
+const muteButton = document.querySelector('#mute-button')
+muteButton.addEventListener('click', () => {
+  console.log(Audiomuted)
+  if (Audiomuted == false) {
+  console.log("Muted..")
+  muteAllAudio()
+} else {
+  UnmuteAllAudio()
+  console.log("Unmuted")
+  }
+});
+
+
+
+
+function compare() {
+  if (CC0V == true && CC1V == true && CC2V == true && CC3V == true) {
+    console.log("CC0V:" + CC0V);
+    console.log("CC1V:" + CC1V);
+    console.log("CC2V:" + CC2V);
+    console.log("CC3V:" + CC3V);
+    lapet();
+  }
+}
 
 function Selectbackground() {
 
   // FILTERS
-
   if (HasChemical) {
     scenes["incupboard"].choices = scenes["incupboard"].choices.filter(choice => {
       return choice.text !== "Take the Chemicals";
@@ -1894,25 +1606,24 @@ function Selectbackground() {
   }
 
 
-
-
-  // check if items have been used and to hide buttons if not. 
   /*
-        scene.choices = scene.choices.filter(choice => {
-          console.log("Do i have money ? : " + Hasmoney);
-          return (choice.text !== "IT Issues" && !ITIssuesUsed) 
-          && (choice.text === "Take Money" && !Hasmoney) 
-          && (choice.text !== "Pay For Coffee" && !HasUsedMoney) 
-          && (choice.text === "Tell him you went to buy him a coffee" && HasCoffeeItem) 
-          && (choice.text === "Reset Wrap" && HasWrap) 
-          && (choice.text === "Remove 1 File Note" && HasFileNotes) 
-   
   
+    // check if items have been used and to hide buttons if not. 
   
-  
-        });
-  
-        */
+          scene.choices = scene.choices.filter(choice => {
+            return (choice.text !== "IT Issues" && !ITIssuesUsed) 
+            && (choice.text === "Take Money" && !Hasmoney) 
+            && (choice.text !== "Pay For Coffee" && !HasUsedMoney) 
+            && (choice.text === "Tell him you went to buy him a coffee" && HasCoffeeItem) 
+            && (choice.text === "Reset Wrap" && HasWrap) 
+            && (choice.text === "Remove 1 File Note" && HasFileNotes) 
+     
+    
+    
+    
+          });
+    
+          */
 
 
   //BACK GROUNDS AND SCENE TEXT ALTERATIONS
@@ -1924,10 +1635,9 @@ function Selectbackground() {
     securityName
     cleanerName
   */
-
-
-
   if (currentScene === "start") {
+    soundtrack.pause()
+
     startScene.text = "Another day at the office, " + yourName + ".....You sit at your desk contemplating life and trying to think of a way to skive off work. You've had an awful day and " + teamManagerName + " is coming to check on you. What do you do?",
       document.body.style.backgroundImage = "url('./images/start.png')";
     startScene.choices = [
@@ -1936,7 +1646,7 @@ function Selectbackground() {
         nextScene: "underdesk",
         action: incrementWrapLow,
         update: "yes",
-  
+
       },
       {
         text: "Pretend you are on a call",
@@ -1950,7 +1660,7 @@ function Selectbackground() {
         action: incrementWrapLow,
         update: "yes"
       },
-      { 
+      {
         text: "Go and talk to " + matesName + "",
         nextScene: 'mate',
         action: incrementWrapLow,
@@ -1958,14 +1668,31 @@ function Selectbackground() {
       }
     ]
   } else if (currentScene === "walk") {
+    ambient.play();
     walkScene.text = "You decide to go for a walk.  You head down the road and take a left.  As you begin to make your way down the street, you notice a man in a long black leather jacket with round sunglasses and a rather shifty demeanour leaning over the bonnet of a battered old car. He's holding a spanner in one hand and muttering to himself as he tinkers with the battery. You approach cautiously, not wanting to startle the man. He looks up as you draw near, and you see a glint of recognition in his eyes as if he was expecting you. Ah, " + yourName + ", I've been expecting you he says in a deep, gravelly voice. You think about asking how he knows your name, but quickly decide that it's probably best not to ask, this guy is huge and you don't want to get on his bad side."
     document.body.style.backgroundImage = "url('./images/walk.jpg')";
 
+    if (HasToolBox) {
+      walkScene.choices.splice(2, 0, {
+        text: "Give him your toolbox",
+        nextScene: 'blueorred',
+        action: RemoveToolBox,
+        update: "yes"
+      })
+    }
+
+
+
+
+
   } else if (currentScene === "mick") {
+    mick.play();
     mickScene.title = "You talk to " + cleanerName + ", the cleaner"
-    mickScene.text = `You talk to the cleaner and they tell you all about their day and the scum that work downstairs in Sitel.  They tell you that they've been working there for 20 years and hate it.  They says that they're going to retire in 2 years and is going to go and live in Spain.  They tell you that they're going to buy a house with a pool and will spend their days lounging by the pool.  They say that they're going to get a dog and call it 'Paco'. They say that they will get a motorbike and take it out for occasional rides. They will make some friends, but they aren't sure if they want to settle down yet. They say that they are going to take up golf and join a local club. They also tell you they will start a small business selling handmade crafts online. They are going to learn to speak Spanish fluently so they can impress the locals and say the first number is ${spokenWord1}. They are going to visit all the major cities in Spain, but not sure if they want to do any sightseeing.  They say that they will start a book club, but only if it's full of interesting people.  They say that they are going to join a local football team, but only if they have a good chance of winning and the second number is ${spokenWord2}. They might take up yoga and meditation classes, but only if the instructor is attractive.  They say that they will learn how to surf, but if the third number is ${spokenWord3} and there are waves high enough.  Then they tell you all about going to visit the local wineries and learning about wine making, but only if there's is red wine. They tell you that they are going to start a small business teaching English as a second language and will join a local gardening group, but only if there are some attractive green thumbs around. They say that they will go to visit all the local museums and art galleries, but only if there are some interesting artifacts to look at. They say that if the last number is ${spokenWord4} they will take up scuba diving lessons and explore the Mediterranean Sea, but only if there are some cute fish to swim with.`,
-    document.body.style.backgroundImage = "url('./images/mickslide.gif')";
+    mickScene.text = "You talk to the " + cleanerName + " and they tell you all about their day and the scum that work downstairs in Sitel.  They tell you that they've been working there for 20 years and hate it.  They says that they're going to retire in 2 years and is going to go and live in Spain.  They tell you that they're going to buy a house with a pool and will spend their days lounging by the pool.  They say that they're going to get a dog and call it 'Paco'. They say that they will get a motorbike and take it out for occasional rides. They will make some friends, but they aren't sure if they want to settle down yet. They say that they are going to take up golf and join a local club. They also tell you they will start a small business selling handmade crafts online. They are going to learn to speak Spanish fluently so they can impress the locals and say the first number is " + spokenWord1 + ". They are going to visit all the major cities in Spain, but not sure if they want to do any sightseeing.  They say that they will start a book club, but only if it's full of interesting people.  They say that they are going to join a local football team, but only if they have a good chance of winning and the second number is " + spokenWord2 + ". They might take up yoga and meditation classes, but only if the instructor is attractive.  They say that they will learn how to surf, but if the third number is " + spokenWord3 + " and there are waves high enough.  Then they tell you all about going to visit the local wineries and learning about wine making, but only if there's is red wine. They tell you that they are going to start a small business teaching English as a second language and will join a local gardening group, but only if there are some attractive green thumbs around. They say that they will go to visit all the local museums and art galleries, but only if there are some interesting artifacts to look at. They say that if the last number is " + spokenWord4 + " they will take up scuba diving lessons and explore the Mediterranean Sea, but only if there are some cute fish to swim with.",
+      document.body.style.backgroundImage = "url('./images/mickslide.gif')";
   } else if (currentScene === "incupboard") {
+    document.body.style.pointerEvents = "auto";
+
     document.body.style.backgroundImage = "url('./images/incupboard.jpg')";
 
     incupboardScene.text = "You're in " + cleanerName + "'s cupboard. The room is small and cramped, but it's packed full of all sorts of strange and interesting objects.  On the shelves, you see a collection of old, dusty bottles and jars. A couple of items peek your interest...";
@@ -1983,65 +1710,118 @@ function Selectbackground() {
     }
 
   } else if (currentScene === "pretend") {
+    pretend.play();
     document.body.style.backgroundImage = "url('./images/onacall.jpg')";
     pretendScene.text = "You quickly pull up an account in iCare and say to absolutely no one, `I am sorry to hear that Mrs Collins, you will have this amount refunded from your next bill....` " + teamManagerName + " thinks you are working so walks off into the break room instead to warm up their salmon and asparagus. You are feeling cocky and try and sneak off for a quick vape, what do you do next?"
   } else if (currentScene === "underdesk") {
+    excuseme.play();
     document.body.style.backgroundImage = "url('./images/underdesk.png')";
     underdeskScene.text = "Thinking that no one can see you, you casually get off your chair, and crawl under the desk and hide.  " + teamManagerName + " walks right up to you and sees you under the desk. Do you really think they are that stupid?";
   } else if (currentScene === "walkoff") {
     document.body.style.backgroundImage = "url('./images/whichway.png')";
   } else if (currentScene === "lift") {
+    squeak.play();
+    crash.play();
     document.body.style.backgroundImage = "url('./images/lift.gif')";
   } else if (currentScene === "start") {
     document.body.style.backgroundImage = "url('./images/start.png')";
   } else if (currentScene === "cleaningcupboard") {
-   // DONT FORGET ME!
+
+
+
   } else if (currentScene === "mick2") {
+    years.play();
     document.body.style.backgroundImage = "url('./images/micktalk.gif')";
     mick2Scene.title = "You carry on talking to " + cleanerName + "..."
     mick2Scene.text = "" + cleanerName + " waffles on about everything and anything and you are starting to get bored.  What do you do next?"
   } else if (currentScene === "mick3") {
+    yawn.play();
     document.body.style.backgroundImage = "url('./images/mick2.gif')";
     mick3Scene.title = "You carry on talking to " + cleanerName + "..."
     mick3Scene.text = "You feel like you have no choice but to stand there and carry on listening to " + cleanerName + ",  when they suddenly stop telling you the story of the phantom shitter and pull out of their pocket a piece of paper and hands it to you.   I got this from another manager,  it's an IT Ticket.  Apparently you can use this to say you had IT issues and they just clear your wrap."
   } else if (currentScene === "onbreak") {
+    onbreak.play();
     document.body.style.backgroundImage = "url('./images/onbreak.jpg')";
     onbreakScene.text = teamManagerName + " wonders where you are going, goes back to their desk and checks Verint and realises your break is not due for another 45 minutes!";
   } else if (currentScene === "mate") {
+
+    if (!annoyedfriend) {
+      document.body.style.backgroundImage = "url('./images/mate.jpg')";
+      talk.play();
+      mateScene.title = "Talking to " + matesName + "...";// THIS IS THE TEXT IF YOU DO *NOT* HAVE THE MONEY
+      mateScene.text = "You walk over to speak to " + matesName + ".  They've just come off a call, so you talk about your day so far and what you're up to this weekend.  You should really get some work done, but you really don't feel up to it.  Do you..."
+      mateScene.choices = [
+        {
+          text: "Carry on talking to " + matesName + "",
+          nextScene: 'mate2',
+          action: incrementWrapHigh,
+          update: "yes"
+
+        },
+        {
+          text: "Go back to your desk",
+          nextScene: 'desk2',
+          action: incrementWrapLow,
+          update: "yes"
+
+        }
+      ]
+    } else {
+      mateScene.title = "Talking to " + matesName + "...";
+      mateScene.text = "I am not free to talk! I am about to go into a meeting!"  // THIS IS THE TEXT IS YOU HAVE THE MONEY ALREADY
+    }
+  } else if (currentScene === "mate2") {
+    talk1.play();
     document.body.style.backgroundImage = "url('./images/mate.jpg')";
-    mateScene.title = "Talking to " + matesName + "...";
-    mateScene.text = "You walk over to speak to " + matesName + ".  They've just come off a call, so you talk about your day so far and what you're up to this weekend.  You should really get some work done, but you really don't feel up to it.  Do you..."
-    mateScene.choices = [
-      {
-        text: "Carry on talking to " + matesName + "",
-        nextScene: 'mate2',
-        action: incrementWrapHigh,
+    if (!annoyedfriend) {
+      mate2Scene.text = "You continue to chat to " + matesName + ".  You talk about the new God of War game and how you can't wait to get home and play it.  You should really get some work done, but you really don't feel up to it.  Do you..."
+    } else {
+      mate2Scene.text = "You try again to talk to " + matesName + " but he seems rather annoyed. " // THIS IS THE TEXT IS YOU HAVE THE MONEY ALREADY
+    }
+
+
+  } else if (currentScene === "mate3") {
+    talk.play();
+    document.body.style.backgroundImage = "url('./images/mate2.jpg')";
+    if (!annoyedfriend) {
+      mate3Scene.text = "You chat to " + matesName + " for a bit longer.  You talk about the world cup, about how good a player Lionel Messi is.  Your wrap is going up and up.  Do you...";
+    } else {
+      mate3Scene.text = "You are persistent but your friend is too busy to talk to you.";
+    }
+
+  } else if (currentScene === "mate4") {
+    talk1.play();
+    document.body.style.backgroundImage = "url('./images/mate.jpg')";
+    if (!annoyedfriend) {
+    } else {
+      mate4Scene.text = " You just got ignored...."
+
+    }
+  } else if (currentScene === "mate5") {
+    talk.play();
+    document.body.style.backgroundImage = "url('./images/mate2.jpg')";
+
+    if (!annoyedfriend) {
+      mate5Scene.text = "You continue to chat to " + matesName + ".......   Suddenly, they remember they owe you some money for that pint you bought at the pub last week.  They reach into their pocket and pull out £2.50 and hand it to you. " + matesName + " has a meeting in 5 minutes, so they say they need to go.",
+        Hasmoney = true;
+      mate5Scene.choices.splice(0, 0, {
+        text: "Take the £2.50",
+        nextScene: 'moneyitem',
+        action: NoAction,
         update: "yes"
-  
-      },
-      {
-        text: "Go back to your desk",
+      })
+    } else {
+
+      mate5Scene.choices.splice(0, 1);
+      mate5Scene.text = "Your friend walks away to his meeting and you notice your wrap has gone up. You must return back to your desk before you get in trouble"
+      mate5Scene.choices.splice(1, 0, {
+        title: "Return to your desk",
+        text: "Go back to your desk.",
         nextScene: 'desk2',
         action: incrementWrapLow,
         update: "yes"
-  
-      }
-    ]
-  } else if (currentScene === "mate1") {
-    document.body.style.backgroundImage = "url('./images/mate2.jpg')";
-  } else if (currentScene === "mate2") {
-    document.body.style.backgroundImage = "url('./images/mate.jpg')";
-    mate2Scene.text = "You continue to chat to " + matesName + ".  You talk about the new God of War game and how you can't wait to get home and play it.  You should really get some work done, but you really don't feel up to it.  Do you..."
-  } else if (currentScene === "mate3") {
-    document.body.style.backgroundImage = "url('./images/mate2.jpg')";
-    mate3Scene.text = "You chat to " + matesName + " for a bit longer.  You talk about the world cup, about how good a player Lionel Messi is.  Your wrap is going up and up.  Do you...";
-  } else if (currentScene === "mate4") {
-    document.body.style.backgroundImage = "url('./images/mate.jpg')";
-  } else if (currentScene === "mate5") {
-    document.body.style.backgroundImage = "url('./images/mate2.jpg')";
-    mate5Scene.text = "You continue to chat to " + matesName + ".......   Suddenly, they remember they owe you some money for that pint you bought at the pub last week.  They reach into their pocket and pull out £2.50 and hand it to you. " + matesName + " has a meeting in 5 minutes, so they say they need to go."
-  } else if (currentScene === "walk") {
-    document.body.style.backgroundImage = "url('./images/walk.jpg')";
+      })
+    }
   } else if (currentScene === "stairs") {
     document.body.style.backgroundImage = "url('./images/stairs.jpg')";
   } else if (currentScene === "floor1") {
@@ -2056,9 +1836,26 @@ function Selectbackground() {
   } else if (currentScene === "maindoor") {
     document.body.style.backgroundImage = "url('./images/maindoor.gif')";
     maindoorScene.text = "You put your head down and walk past the canteen and towards the main exit.  As you turn the corner you bump into " + teamManagerName + ".  They ask what you've been doing....";
+
+    if (HasCoffeeItem) {
+      maindoorScene.choices.splice(3, 0, {
+        text: "Tell him you went to buy him a coffee",  // need to only show this option if you have the coffee
+        nextScene: 'bribe',
+        action: NoAction,
+        update: "yes"
+      })
+    } else {
+
+      maindoorScene.choices.splice(3, 1,)
+    }
+
+
+
+
   } else if (currentScene === "cinema") {
     document.body.style.backgroundImage = "url('./images/cinema.jpg')";
   } else if (currentScene === "zzz") {
+    yawn.play();
     document.body.style.backgroundImage = "url('./images/zzz.gif')";
     zzzScene.text = "Suddenly, you wake up to the sound of the cinema room door opening and you open your eyes and see " + teamManagerName + " stood in the doorway with their arms folded.  You've been gone for 4 hours!!  You've really gone and done it this time...";
   } else if (currentScene === "desk2") {
@@ -2090,18 +1887,74 @@ function Selectbackground() {
         update: "yes"
       }
     ]
-    
+
   } else if (currentScene === "canteen") {
+    canteen.play();
     document.body.style.backgroundImage = "url('./images/canteen.jpg')";
   } else if (currentScene === "vending") {
     document.body.style.backgroundImage = "url('./images/vending.jpg')";
+
+
+    if (Hasmoney) {
+      vendingScene.text = "With only £2.50. What shall i get? An overpriced bag of Mccoys or an overpriced coffee?"
+
+      // Check if "Buy Crisps" choice already exists
+      let hasCrispsChoice = false;
+      for (let i = 0; i < vendingScene.choices.length; i++) {
+        if (vendingScene.choices[i].text === "Buy Crisps") {
+          hasCrispsChoice = true;
+          break;
+        }
+      }
+
+      // If "Buy Crisps" choice does not already exist, add it
+      if (!hasCrispsChoice) {
+        vendingScene.choices.splice(1, 0, {
+          text: "Buy Crisps",
+          nextScene: 'crisps',
+          action: NoAction,
+          update: "yes"
+        });
+      }
+
+      // Check if "Buy Coffee" choice already exists
+      let hasCoffeeChoice = false;
+      for (let i = 0; i < vendingScene.choices.length; i++) {
+        if (vendingScene.choices[i].text === "Buy Coffee") {
+          hasCoffeeChoice = true;
+          break;
+        }
+      }
+
+      // If "Buy Coffee" choice does not already exist, add it
+      if (!hasCoffeeChoice) {
+        vendingScene.choices.splice(2, 0, {
+          text: "Buy Coffee",
+          nextScene: 'coffee',
+          action: NoAction,
+          update: "yes"
+        });
+      }
+    } else {
+      // Remove both choices if Hasmoney is false
+      vendingScene.choices.splice(1, 1);
+      vendingScene.choices.splice(1, 1);
+      vendingScene.text = "I dont have any money to buy anything!"
+    }
+
+
+
   } else if (currentScene === "moneyitem") {
+    ching.play();
     document.body.style.backgroundImage = "url('./images/gotmoney.gif')";
     MoneyItemScene.text = matesName + " gives you £2.50!"
+
   } else if (currentScene === "filenote") {
+    filenote.play();
     document.body.style.backgroundImage = "url('./images/filenote.jpg')";
     filenoteScene.text = teamManagerName + " gives you a file note for being such an idiot. You silly sausage.  You can now go back to your desk and get on with your work.";
   } else if (currentScene === "ITissueItem") {
+    wow.play();
     document.body.style.backgroundImage = "url('./images/itticket.gif')";
   } else if (currentScene === "nomoney") {
     document.body.style.backgroundImage = "url('./images/skint.gif')";
@@ -2118,21 +1971,30 @@ function Selectbackground() {
     document.body.style.backgroundImage = "url('./images/carpark.gif')";
     carparkScene.text = "You wisely walk down towards the car park as you are much less likely to be seen there.  You turn the corner and are greeted by " + securityName + " the security guard.  They were alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  " + securityName + " tells you to go back to work and will be informing " + teamManagerName + " about what you've done, "
   } else if (currentScene === "bush") {
+    bush.play();
     document.body.style.backgroundImage = "url('./images/bush.gif')";
     bushScene.text = "Worried that you might have set off the alarm, you panic and don't know what to do,  so you find the nearest bush and hide in it.  Unfortunately, the bush you chose is only 2 feet tall and " + securityName + " the security guard easily sees you and wonders what on earth you are doing trying to hide in a very small bush. That was a silly thing to do.  " + securityName + " tells you to go back to work and will be informing " + teamManagerName + " about what you've done, "
   } else if (currentScene === "wait1") {
+    liftmusic.play();
+    document.body.style.backgroundImage = "url('./images/lift.jpg')";
+  } else if (currentScene === "wait2") {
+    liftmusic.play();
+    document.body.style.backgroundImage = "url('./images/lift.jpg')";
+  } else if (currentScene === "wait3") {
+    liftmusic.play();
+    document.body.style.backgroundImage = "url('./images/lift.jpg')";
+  } else if (currentScene === "wait4") {
+    liftmusic.play();
     document.body.style.backgroundImage = "url('./images/lift.jpg')";
   } else if (currentScene === "wait5") {
+    thud.play();
+
     document.body.style.backgroundImage = "url('./images/lift.gif')";
 
   } else if (currentScene === "coffee") {
-    if (CanBuy) {
+    if (Hasmoney) {
+      coffee.play();
       document.body.style.backgroundImage = "url('./images/coffee.gif')";
-    } else {
-      document.body.style.backgroundImage = "url('./images/skint.gif')";
-      coffeeScene.title = "Oh no.."
-      coffeeScene.text = "You dont have any money to buy this item!."
-    
     }
 
   } else if (currentScene === "hallway") {
@@ -2156,146 +2018,158 @@ function Selectbackground() {
     document.body.style.backgroundImage = "url('./images/alarm.gif')";
     alarmScene.text = "... and hear a loud `Dring`.  You wait for what seems like eternity and just as you are about to give it another press, you suddenly hear a voice saying `hello?` You recognise " + securityName + "'s voice and feel relieved that they are there.  They ask you what is wrong and you say that the lift has stopped.  They say they will be right there and you wait...."
   } else if (currentScene === "waitsteve") {
+    missionfailed.play();
     document.body.style.backgroundImage = "url('./images/waitsteve.gif')";
     waitsteveScene.text = "After what seems like forever, " + securityName + " finally arrives with a crew of 41 Fire crew. They use their power tools to open the lift doors and you are finally free. You've been in the lift for so long that your shift has ended and you go home. All 41 of the Fire crew line up outside the centre and " + securityName + " makes you apologise to each one.  You'll probably get another file note for this, but you don't care.  Due to your poor decision making, you lose the game.  Better luck next time!"
   } else if (currentScene === "toilet") {
+    vape.play();
     document.body.style.backgroundImage = "url('./images/toilet.gif')";
     toiletScene.text = "You go into personal and walk to the toilet. Nobody else is here, so you pull out your mod and take a huge vape. Clouds of vapour come out through the door and fill the call centre.  Everyone thinks there is a fire and " + teamManagerName + " comes in and finds you. You do the walk of shame back to your desk and get a sneaky feeling you are going to get another file note for this"
   } else if (currentScene === "skive") {
+    skive.play();
     document.body.style.backgroundImage = "url('./images/skiveexcuse.gif')";
     skiveScene.text = "You be honest and tell " + teamManagerName + " you've been trying to skive off.  He's not happy, but appreciates your honesty and sends you back to your desk and decides not to give you a file note this time.";
   } else if (currentScene === "excuse") {
+    lying.play();
     document.body.style.backgroundImage = "url('./images/skiveexcuse.gif')";
     excuseScene.text = "You tell " + teamManagerName + " that you've been doing an errand for Hazel. You try and make something up about a first aid kit, but you fumble your words and " + teamManagerName + " sees right through your lie.  Lying to " + teamManagerName + " is a big no no.  As you walk back to your desk, you're pretty sure " + teamManagerName + " will be giving you a file note for this one.";
   } else if (currentScene === "lindsay") {
+    canteen.play();
+    lindsay.play();
     document.body.style.backgroundImage = "url('./images/lindsay.gif')";
   } else if (currentScene === "tablemates") {
+    canteen.play();
     document.body.style.backgroundImage = "url('./images/tablemates.png')";
   } else if (currentScene === "tablemates2") {
+    canteen.play();
     document.body.style.backgroundImage = "url('./images/tablemates2.png')";
+    if (Hasmoney) {
+      Hasmoney = false;
+      tablemates2Scene.choices.splice(2, 0, {
+        text: "Lend your mate £2.50",
+        nextScene: 'lend',
+        action: RemoveMoney,
+        update: "yes"
+      })
+    } else {
+      tablemates2Scene.choices.splice(2, 1);
+    }
   } else if (currentScene === "blueorred") {
+    matrix.play();
     document.body.style.backgroundImage = "url('./images/blueorred.jpg')";
   } else if (currentScene === "crisps") {
-    if (CanBuy) {
-      document.body.style.backgroundImage = "url('./images/crisps.gif')";
-    } else {
-      document.body.style.backgroundImage = "url('./images/skint.gif')";
-      crispsScene.title = "Oh no.."
-      crispsScene.text = "You dont have any money to buy this item!."
-    
-    }
+    crisps.play();
+    document.body.style.backgroundImage = "url('./images/crisps.gif')";
+
   } else if (currentScene === "car") {
+    car.play();
     document.body.style.backgroundImage = "url('./images/car.gif')";
   } else if (currentScene === "afterbribe") {
     document.body.style.backgroundImage = "url('./images/afterbribe.gif')";
     afterbribeScene.text = teamManagerName + " takes the coffee and goes back upstairs leaving you to it.  That was a close one!";
   } else if (currentScene === "bribe") {
+    cheers.play();
     document.body.style.backgroundImage = "url('./images/bribe.gif')";
-    bribeScene.text = "As you look at " + teamManagerName + ", you feel the hot coffee in your hand and have a genius plan. `Just went to get you a coffee, Boss...` you proudly say as you thrust out your hand and pass " + teamManagerName + " the coffee that you just bought from the canteen. ";
+    bribeScene.text = "As you look at " + teamManagerName + ", you feel the hot coffee in your hand and have a genius plan. `Just went to get you a coffee, Boss...` you proudly say as you thrust out your hand and pass " + teamManagerName + " the coffee that you just bought from the canteen. "
   } else if (currentScene === "outside") {
     document.body.style.backgroundImage = "url('./images/outside.gif')";
   } else if (currentScene === "toolbox") {
+    wow.play();
     document.body.style.backgroundImage = "url('./images/toolbox.gif')";
   } else if (currentScene === "lend") {
     document.body.style.backgroundImage = "url('./images/lend.gif')";
-  } else if (currentScene === "wrongpin") {chemical
+  } else if (currentScene === "wrongpin") {
     document.body.style.backgroundImage = "url('./images/wrongpin.gif')";
     wrongpinScene.text = cleanerName + " caught you trying to get in their cupboard. They are not happy, and pushes you in the cupboard and locks the door.  You're stuck in there forever. " + cleanerName + " tells you some more stories about Spain, and you die a slow death of boredom. The end."
   } else if (currentScene === "backinside") {
     document.body.style.backgroundImage = "url('./images/backinside.gif')";
   } else if (currentScene === "outside2") {
-    document.body.style.backgroundImage = "url('./images/outside2.jpg')";
-  } else if (currentScene === "gameover") {
-    gameover.text = "This many file notes means you're going down the disciplinary route. As you sit back down at your desk, you feel a sharp tap on your shoulder.  You turn around and see " + teamManagerName + ", Mark and James standing there.  You stand up and they walk you into the Brook meeting room and you know what's coming.  As you leave the building, you put your pass into the letter box and leave the building for the last time.   You are fired!!";
+    document.body.style.backgroundImage = "url('./images/outside2.jpg')"
   } else if (currentScene === "breakroom") {
-    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+    document.body.style.backgroundImage = "url('./images/breakroom.gif')";
+    vape.play();
+    bruh.play();
     breakroomScene.text = "You walk in the break room and start vaping.  WHAT ARE YOU DOING VAPING INSIDE?  And you walked right into the break room where you I literally just told you " + teamManagerName + " went to.   Omg you suck at this."
   } else if (currentScene === "screwdriver") {
+    wow.play();
     document.body.style.backgroundImage = "url('./images/screwdriver.gif')";
     screwdriverScene.text = "You acquired " + cleanerName + "'s trusty screwdriver.  It's a Stanley with a crosshead.  there's a bit of green paint on the handle, but otherwise it's in good shape.  Who knows what you'll be able to do with this. "
   } else if (currentScene === "getlost") {
+    creepy.play();
     document.body.style.backgroundImage = "url('./images/getlost.gif')";
   } else if (currentScene === "potion") {
+    wow.play();
     document.body.style.backgroundImage = "url('./images/potion.gif')";
   } else if (currentScene === "Chemicals") {
+    wow.play();
     document.body.style.backgroundImage = "url('./images/chemicals.gif')";
-  } else if (currentScene === "SCENENAME") {
+  } else if (currentScene === "dev") {
+
+  } else if (currentScene === "bluepill") {
+    thebest.play();
+    thebest.loop = true;
+    // Create a new video element
+    var thebestvideo = document.createElement("video");
+
+    // Set the source of the video to the mp4 file
+    thebestvideo.src = "./assets/thebestvideo.mp4";
+
+    // Set the video to play in a loop
+    thebestvideo.loop = true;
+
+    // Make the video 800px wide
+    thebestvideo.style.width = "800px";
+
+
+    // Add the video to the scene
+    document.body.appendChild(thebestvideo);
+
+    // Play the video
+    thebestvideo.play();
+
+
     document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
-  } else if (currentScene === "SCENENAME") {
-    document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
+  } else if (currentScene === "redpill") {
+    thebest.play();
+    thebest.loop = true;
+    // Create a new video element
+    var thebestvideo = document.createElement("video");
+
+    // Set the source of the video to the mp4 file
+    thebestvideo.src = "./assets/thebestvideo.mp4";
+
+    // Set the video to play in a loop
+    thebestvideo.loop = true;
+
+    // Make the video 800px wide
+    thebestvideo.style.width = "800px";
+
+
+    // Add the video to the scene
+    document.body.appendChild(thebestvideo);
+
+    // Play the video
+    thebestvideo.play();
+
+  } else if (currentScene === "cheat") {
+    cheatScene.title = "You trZied to cheat at the game by altering elements. Nice try but this has been blocked. The game is now over . Refresh the page"
+    cheatScene.text = "Stop cheating and play properly!!"
+    sessionIdElement.innerHTML = "THE SESSION WAS TERMINATED AS CHEATS WERE DETECTED";
+    sessionIdElement.style.color = "Red";
+    document.body.style.pointerEvents = "none";
+  } else if (currentScene === "gameover") {
+    gameover.play();
+    document.body.style.backgroundImage = "url('./images/gameover.gif')";
   } else if (currentScene === "SCENENAME") {
     document.body.style.backgroundImage = "url('./images/IMAGEFILE')";
   }
+
 }
 // DONT DELETE ME IM THE CLOSING FUNCTION CURLY
 
 function render() {
 
-  console.log(`Render of Variables: ${spokenWord1}`)
-  console.log(`yourName: ${yourName}`);
-  console.log(`teamManagerName: ${teamManagerName}`);
-  console.log(`matesName: ${matesName}`);
-  console.log(`securityName: ${securityName}`);
-  console.log(`cleanerName: ${cleanerName}`);
-
-
-
   Selectbackground();
-
-
-
-
-  let choiceText = "Tell him you went to buy him a coffee";
-  if (!HasCoffeeItem) {
-    const choicesToKeep = scenes["maindoor"].choices.filter(choice => {
-      if (choice.text == choiceText) {
-        removedChoices.push(choice);
-        return false;
-      }
-      return true;
-    });
-    scenes["maindoor"].choices = choicesToKeep;
-  } else if (HasCoffeeItem && removedChoices.length > 0) {
-    // Only add the choices back if they have been removed previously
-    scenes["maindoor"].choices = scenes["maindoor"].choices.concat(removedChoices);
-    removedChoices = [];
-  }
-/*
-  choiceText = "Lend your mate £2.50";
-  if (!Hasmoney) {
-    const choicesToKeep = scenes["tablemates2"].choices.filter(choice => {
-
-      if (choice.text == choiceText) {
-        removedChoices.push(choice);
-        return false;
-      }
-      return true;
-    });
-    scenes["tablemates2"].choices = choicesToKeep;
-  } else if (Hasmoney && removedChoices.length > 0) {
-    // Only add the choices back if they have been removed previously
-    scenes["tablemates2"].choices = scenes["tablemates2"].choices.concat(removedChoices);
-    removedChoices = [];
-  }
-*/
-
-
-
-
-
-  // Create the button
-
-
-  // Append the button to the body element
-
-
-
-
-
-
-  //set backgrounds for scenes
-
-
 
   /*
   if (DMA) {
@@ -2308,10 +2182,22 @@ function render() {
   }
 */
 
+  if (usedhelp) {
+    var element = document.getElementById("helpPage");
+    var element2 = document.getElementById("helpButton");
+    element2.remove();
+    element.remove();
+  }
+
+
   if (CP) {
     currentScene = "CMU";
+    usedhelp = true
     CP = false;
   }
+
+
+
 
   if (currentScene === "CleaningCupboard") {
     KeyPadScene();
@@ -2321,7 +2207,11 @@ function render() {
   }
 
   if (Filenotes >= MaxFileNotes) {
+    document.body.style.backgroundImage = "url('./images/gameover.gif')"; // CHANGE ME TO A GAME OVER SCENE IMAGE
     currentScene = "gameover"
+    gameover.play();
+    gameoverScene.text = "This many file notes means you're going down the disciplinary route. As you sit back down at your desk, you feel a sharp tap on your shoulder.  You turn around and see " + teamManagerName + ", Mark and James standing there.  You stand up and they walk you into the Brook meeting room and you know what's coming.  As you leave the building, you put your pass into the letter box and leave the building for the last time.   You are fired!!"
+
   }
 
   if (WrapCounter > MaxWrap) {
@@ -2370,24 +2260,15 @@ function render() {
 
   const intervalId = setInterval(printCharacter, delay);
   function printCharacter() {
-
     outputElement.innerHTML += scene.text[index];
     index++;
     if (index >= scene.text.length) {
       clearInterval(intervalId);
       sceneElem.innerHTML += `<div id="choices">`;
-
-
       scene.choices.forEach(choice => {
-        const button = document.createElement("button");  // dev button thing
+        const button = document.createElement("button");
         button.textContent = choice.text;
         button.classList.add("choice");
-        if (currentScene === "dev") {
-          DMA = true;
-          button.classList.add("dev-button");
-        }
-
-
         button.addEventListener("click", () => { // this does the action of yes or no. 
           if (choice.update === "yes") {
             choice.action();
@@ -2398,6 +2279,7 @@ function render() {
           }
         });
         sceneElem.appendChild(button);
+
       });
     }
   }
@@ -2464,7 +2346,7 @@ window.spokenWord4;
 
 
 function displaySessionId() {
-  let sessionIdDisplayed = false;
+  var sessionIdDisplayed = false;
 
   var sessionId = Math.floor(Math.random() * 10000000000000000);
 
@@ -2486,17 +2368,14 @@ function displaySessionId() {
 
 
 
-  //petes code
-  const spokenWords = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 
+  const spokenWords = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
   window.spokenWord1 = spokenWords[V5[0]];
   window.spokenWord2 = spokenWords[V5[1]];
   window.spokenWord3 = spokenWords[V5[2]];
   window.spokenWord4 = spokenWords[V5[3]];
 
 
-  console.log(`The four digits of V5 are ${spokenWord1}, ${spokenWord2}, ${spokenWord3}, and ${spokenWord4}`);
-  //end petes code
 
 
 
@@ -2504,6 +2383,7 @@ function displaySessionId() {
 
 
   if (!sessionIdDisplayed) {
+    sessionIdElement.innerHTML = ""
     // Now that the sessionIdElement variable has been defined, it can be accessed here
     sessionIdElement.style.position = "fixed";
     sessionIdElement.style.bottom = "0";
@@ -2574,78 +2454,55 @@ document.getElementById("closeButton").addEventListener("click", function () {
 
 });
 
-
-
-function AddMoneyItem() {
-  if (Hasmoney === false) {
-    Hasmoney = true;
-    CanBuy = true;
-    annoyedfriend = true;
-    const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
-    const li = document.createElement("li");  // Create a new list item element
-    const a = document.createElement("a");  // Create a new link element
-    a.href = "Money £2.50";  // Set the href attribute of the link element to "Money £2.50"
-    a.textContent = "Money £2.50";  // Set the text content of the link element
-    a.style.pointerEvents = "none";
-    li.appendChild(a);  // Add the link element to the list item element
-    inventoryList.appendChild(li);  // Add the list item to the inventory list element
-    mateScene.text = 'Hey, I cant talk right now! I have a meeting ! Sorry..';
-    mateScene.title =  matesName + " seems annoyed"
-    mate2Scene.text =  matesName + " seems annoyed Do you talk or go back to your desk?";
-    mate2Scene.title = 'Annoyed Friend'
-    mate3Scene.text = matesName + " has ignored you. What do you do now?";
-    mate3Scene.title = 'You are ignored'
-    mate4Scene.text = "You wait for " + matesName + " to reply but they are too busy. Whilst waiting you realise your wrap has gone even higher! You best go back!";
-    mate4Scene.title = 'You are blanked...'
-  }
-  else {
-    return;
-  }
+function changeSessionId() {
+  var NewSES = Math.floor(Math.random() * 10000000000000000);
+  displaySessionId(NewSES);
 }
 
+function AddMoneyItem() {
+  Hasmoney = true;
+  CanBuy = true;
+  annoyedfriend = true;
+  const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+  const li = document.createElement("li");  // Create a new list item element
+  const a = document.createElement("a");  // Create a new link element
+  a.href = "Money £2.50";  // Set the href attribute of the link element to "Money £2.50"
+  a.textContent = "Money £2.50";  // Set the text content of the link element
+  a.style.pointerEvents = "none";
+  li.appendChild(a);  // Add the link element to the list item element
+  inventoryList.appendChild(li);  // Add the list item to the inventory list element
+
+}
+
+
 function RemoveMoney() {
-  if (HasUsedMoney) {
-    const item = document.querySelector("#inventory-box li a[href='Money £2.50']");
-    const li = item.parentElement;
-    if (item) {
-      li.remove();
-      item.remove();
-      CanBuy = false;
-    }
-  }
-  else {
-    CanBuy = true;
+  const item = document.querySelector("#inventory-box li a[href='Money £2.50']");
+  const li = item.parentElement;
+  if (item) {
+    li.remove();
+    item.remove();
+    CanBuy = false;
+    Hasmoney = false;
+    HasUsedMoney = true;
   }
 }
 
 
 function AddCoffeeItem() {
-  if (CanBuy === true) {
-    const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
-    const li = document.createElement("li");  // Create a new list item element
-    const a = document.createElement("a");  // Create a new link element
-    a.href = "Large Coffee";  // Set the href attribute of the link element to "Money £2.50"
-    a.textContent = "Large Coffee";  // Set the text content of the link element
-    a.style.pointerEvents = "none";
-    li.appendChild(a);  // Add the link element to the list item element
-    inventoryList.appendChild(li);  // Add the list item to the inventory list element
-    HasCoffeeItem = true;
-    HasUsedMoney = true;
-    RemoveMoney();
-  } else {
 
-    if (annoyedfriend == false) {
-      document.body.style.backgroundImage = "url('./images/skint.gif')";
-      coffeeScene.title = "You're skint pal..."
-      coffeeScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  " + matesName + " owes you some money, but you're not sure if you should ask him..."
-
-    } else {
-
-     
-
-    }
-  }
+  const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+  const li = document.createElement("li");  // Create a new list item element
+  const a = document.createElement("a");  // Create a new link element
+  a.href = "Large Coffee";  // Set the href attribute of the link element to "Money £2.50"
+  a.textContent = "Large Coffee";  // Set the text content of the link element
+  a.style.pointerEvents = "none";
+  li.appendChild(a);  // Add the link element to the list item element
+  inventoryList.appendChild(li);  // Add the list item to the inventory list element
+  HasCoffeeItem = true;
+  HasUsedMoney = true;
+  RemoveMoney();
 }
+
 
 function RemoveCoffee() {
   const item = document.querySelector("#inventory-box li a[href='Large Coffee']");
@@ -2659,39 +2516,26 @@ function RemoveCoffee() {
 
 
 function AddCrispsItem() {
-  if (CanBuy === true) {
-    const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
-    const li = document.createElement("li");  // Create a new list item element
-    const a = document.createElement("a");  // Create a new link element
-    a.href = "Packet Of Crisps";  // Set the href attribute of the link element to "Money £2.50"
-    a.textContent = "Packet Of Crisps";  // Set the text content of the link element
-    a.style.pointerEvents = "none";
-    li.appendChild(a);  // Add the link element to the list item element
-    inventoryList.appendChild(li);  // Add the list item to the inventory list element
-    HasCrisps = true;
-    HasUsedMoney = true;
-    RemoveMoney();
-  } else {
 
-    if (annoyedfriend == false) {
-      crispsScene.title = "You're skint pal..."
-      crispsScene.text = "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  " + matesName + " owes you some money, but you're not sure if you should ask them..."
-
-    } else {
-      crispsScene.title = "Oh no.."
-      crispsScene.text = "You are out of cash."
-
-
-    }
-
-
-  }
+  const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+  const li = document.createElement("li");  // Create a new list item element
+  const a = document.createElement("a");  // Create a new link element
+  a.href = "Packet Of Crisps";  // Set the href attribute of the link element to "Money £2.50"
+  a.textContent = "Packet Of Crisps";  // Set the text content of the link element
+  a.style.pointerEvents = "none";
+  li.appendChild(a);  // Add the link element to the list item element
+  inventoryList.appendChild(li);  // Add the list item to the inventory list element
+  HasCrisps = true;
+  HasUsedMoney = true;
+  RemoveMoney();
 }
 
 function triggernomoney() {
   currentScene = "nomoney";
   render();
 }
+
+
 
 
 function RemoveCrispsItem() {
@@ -2775,6 +2619,28 @@ function RemoveGlowingPotion() {
 }
 
 
+function AddToolBox() {
+  const inventoryList = document.getElementById("inventory-box");  // Get the inventory list element
+  const li = document.createElement("li");  // Create a new list item element
+  const a = document.createElement("a");  // Create a new link element
+  a.href = "Tool Box";  // Set the href attribute of the link element to "Money £2.50"
+  a.textContent = "Tool Box";  // Set the text content of the link element
+  a.style.pointerEvents = "none";
+  li.appendChild(a);  // Add the link element to the list item element
+  inventoryList.appendChild(li);  // Add the list item to the inventory list element
+  HasToolBox = true;
+}
+
+function RemoveToolBox() {
+  const item = document.querySelector("#inventory-box li a[href='Tool Box']");
+  const li = item.parentElement;
+  if (item) {
+    li.remove();
+    item.remove();
+    HasToolBox = false;
+  }
+}
+
 // --------- WRAP
 
 
@@ -2839,50 +2705,14 @@ function ResetFileNotes() {
 // Dev stuff only
 
 
-const popup = document.getElementById("popup");
-const inputField = document.getElementById("inputField");
-const devMenu = document.getElementById("devMenu");
-
-document.addEventListener("mousedown", event => {
-  if (event.ctrlKey) {
-    popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
-  }
-});
-
-inputField.addEventListener("input", event => {
-  if (event.target.value === "dev") {
-    devMenu.style.display = "block";
-  } else {
-    devMenu.style.display = "none";
-  }
-});
 
 
-
-const devMenuLink = document.getElementById("devMenuLink");
-devMenuLink.addEventListener("click", event => {
-  event.preventDefault(); // prevent the link from navigating to a new page
-  currentScene = "dev";
-  updateButtonStyle();
-
-});
-
-function updateButtonStyle() {
-  if (currentScene === "dev") {
-    render();
-    const buttons = document.querySelectorAll("button");
-    buttons.forEach(button => {
-      button.classList.add("button-grid");
-
-
-    });
-  }
-}
 
 
 
 function cancelTimer() {
   clearTimeout(timer);
+  run.pause();
 }
 
 function triggerScene() {
@@ -2892,8 +2722,7 @@ function triggerScene() {
 }
 
 function startTimer() {
-  console.log(timer);
-  timer = setTimeout(triggerScene, 9000);  // 9 seconds
+  timer = setTimeout(triggerScene, 8000);  // 9 seconds
 }
 
 
@@ -2905,12 +2734,19 @@ function KeyPadScene() {
   document.getElementById("keypad").style.display = "flex";
   document.getElementById("led-container").style.display = "flex";
   document.body.style.backgroundImage = "url('./images/wood.jpeg')";
-  console.log(CKP);
   if (CKP) {
+    startCountdown(8);
+
+    run.play();
+    CleaningCupboardScene.choices.splice(0, 0, {
+      text: "RUN AWAY!!!",
+      nextScene: 'hallway',
+      action: cancelTimer,
+      update: "yes"
+    })
     input.value = "ALERT";
     input.style.color = "Red";
     input.style.backgroundColor = "darkred";
-    input.classList.add("flash");
     enterButton.disabled = true
     CleaningCupboardScene.text = "You go back to the cupboard but notice the keypad has an error. Seems like it has been disabled. QUICK RUN BEFORE YOU GET CAUGHT!"
     led1.classList.add("on");
@@ -2919,7 +2755,6 @@ function KeyPadScene() {
     led1.style.backgroundColor = "red";
     led2.style.backgroundColor = "red";
     led3.style.backgroundColor = "red";
-    input.classList.add("flash");
     startTimer();
 
   }
@@ -2930,7 +2765,6 @@ function KeyPadScene() {
 
 //leds
 const enterButton = document.getElementById("key-enter");
-const beep = document.getElementById("keypad-beep");
 const led1 = document.getElementById("led-1");
 const led2 = document.getElementById("led-2");
 const led3 = document.getElementById("led-3");
@@ -2941,10 +2775,10 @@ let counter = 0;
 
 
 enterButton.addEventListener("click", () => {
-  counter++;
   if (counter === 1) {
     led1.classList.add("on");
     CleaningCupboardScene.text = "Hmmm. Thats not quite right. Shall i continue?";
+
     render();
   } else if (counter === 2) {
     led2.classList.add("on");
@@ -2954,10 +2788,9 @@ enterButton.addEventListener("click", () => {
     led3.classList.add("on");
 
     LKP = true;
-    input.value = "LOCKED";
-    input.style.color = "Red";
+      input.style.color = "Red";
     input.style.backgroundColor = "darkred";
-    input.classList.add("flash");
+
 
     setTimeout(function () {
       currentScene = "wrongpin";
@@ -2968,10 +2801,40 @@ enterButton.addEventListener("click", () => {
   }
 });
 
+function startCountdown(duration) {
+  // Set the end time for the countdown
+  var endTime = Date.now() + (duration * 1000);
+
+  // Update the countdown every 1 millisecond
+  var timer = setInterval(function() {
+    // Calculate the time remaining
+    var timeLeft = endTime - Date.now();
+    if (timeLeft < 0) {
+      // Time is up, stop the timer
+      clearInterval(timer);
+      return;
+    }
+
+    // Update the timer display
+    var seconds = Math.floor(timeLeft / 1000);
+    var milliseconds = timeLeft % 1000;
+    if (milliseconds < 10) {
+      milliseconds = '00' + milliseconds;
+    } else if (milliseconds < 100) {
+      milliseconds = '0' + milliseconds;
+    }
+    input.value = seconds + '.' + milliseconds;
+  }, 1);
+}
+
+
 
 const input = document.getElementById("input");
 document.querySelectorAll(".keypad-container").forEach((button) => {
   button.addEventListener("click", () => {
+    beep.volume = 0.3;
+    beep.play();
+
 
 
     if (button.id === "key-C" && counter != 3) {
@@ -2979,15 +2842,20 @@ document.querySelectorAll(".keypad-container").forEach((button) => {
     } else if (button.id === "key-enter" && (!CKP)) {
 
       if (input.value === KP) {
+        document.body.style.pointerEvents = "none";
+        beep.volume = 0;
+        correctbeep.play();
         CKP = true;
+        console.log(CleaningCupboardScene.choices);
+        CleaningCupboardScene.choices.splice(0,1);
+        CleaningCupboardScene.choices.splice(1,1);
+        CleaningCupboardScene.text = "The PIN Worked!!!" 
         led1.classList.add("on");
         led2.classList.add("on");
         led3.classList.add("on");
         led1.style.backgroundColor = "lime";
         led2.style.backgroundColor = "lime";
         led3.style.backgroundColor = "lime";
-        CleaningCupboardScene.text = "Verifying pin...";
-
         input.value = "CORRECT";
         setTimeout(function () {
           currentScene = "incupboard";
@@ -2996,7 +2864,10 @@ document.querySelectorAll(".keypad-container").forEach((button) => {
 
 
       } else {
+        beep.volume = 0;
+        wrong.play();
         input.value = "WRONG";
+        counter++;
         enterButton.disabled = true
         setTimeout(function () {
           input.value = "";
@@ -3021,54 +2892,79 @@ document.querySelectorAll(".keypad-container").forEach((button) => {
 
 
 
+/// -----
+
+
+
+// Get all elements with the class "keypad-container"
+const keypadButtons = document.getElementsByClassName("keypad-container");
+
+// Add a click event listener to each button
+for (const button of keypadButtons) {
+  button.addEventListener("click", (event) => {
+    // Get the value of the button that was clicked
+    const buttonValue = event.target.innerText;
+
+    // Check if the button value is one of the desired values
+    if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].includes(buttonValue) || event.target.matches("#key-C") || event.target.matches("#key-Enter")) {
+      // The button value is one of the desired values, so do something (e.g. update the current scene)
+      if (currentScene !== "CleaningCupboard") {
+        currentScene = "cheat";
+        render();
+      }
+    }
+  });
+}
 
 
 //help 
 function createBlackoutPage() {
-  let blackout = document.createElement("div");
 
-  blackout.style.backdropFilter = "blur(5px)";
-  document.body.appendChild(blackout);
-  let inputContainer = document.createElement("div");
-  inputContainer.style.position = "fixed";
+  if (!usedhelp) {
+    let blackout = document.createElement("div");
 
-  document.body.appendChild(inputContainer);
-  let inputField = document.createElement("input");
-  inputField.type = "text";
-  inputField.id = "pin-input";
-  inputField.placeholder = "Enter Session ID";
-  inputContainer.appendChild(inputField);
-  let button = document.createElement("button");
-  button.id = "get-help-key";
-  let button2 = document.createElement("button");
-  button2.id = "get-cupin";
-  button.textContent = "Help Key";
-  button2.textContent = "Cupboard Key";
-  inputContainer.appendChild(button);
-  inputContainer.appendChild(button2);
-  document.getElementById("get-help-key").addEventListener("click", function () {
-    let SID = document.getElementById("pin-input").value;
-    let R1 = Math.floor(SID / 100000000);
-    let R2 = Math.floor(R1 / 60)
-    alert("Generated Help Key: " + R2)
-    document.body.removeChild(blackout);
-    document.body.removeChild(inputContainer);
-  });
-  document.getElementById("get-cupin").addEventListener("click", function () {
-    let SID = document.getElementById("pin-input").value;
-    let UPI = Math.floor(SID / 100000000);
-    let IPU = Math.floor(UPI / 60)
-    var V1 = Math.floor(IPU / 10000);
-    var V2 = Math.floor(V1 * 18)
-    var V3 = Math.floor(V2 / 11);
-    var V4 = Math.floor(V3 * 26);
-    var V5 = V4;
-    V5 = V5.toString().padStart(4, "0");
-    alert("Generated Pin: " + V5)
-    document.body.removeChild(blackout);
-    document.body.removeChild(inputContainer);
-  });
+    blackout.style.backdropFilter = "blur(5px)";
+    document.body.appendChild(blackout);
+    let inputContainer = document.createElement("div");
+    inputContainer.style.position = "fixed";
 
+    document.body.appendChild(inputContainer);
+    let inputField = document.createElement("input");
+    inputField.type = "text";
+    inputField.id = "pin-input";
+    inputField.placeholder = "Enter Session ID";
+    inputContainer.appendChild(inputField);
+    let button = document.createElement("button");
+    button.id = "get-help-key";
+    let button2 = document.createElement("button");
+    button2.id = "get-cupin";
+    button.textContent = "Help Key";
+    button2.textContent = "Cupboard Key";
+    inputContainer.appendChild(button);
+    inputContainer.appendChild(button2);
+    document.getElementById("get-help-key").addEventListener("click", function () {
+      let SID = document.getElementById("pin-input").value;
+      let R1 = Math.floor(SID / 100000000);
+      let R2 = Math.floor(R1 / 60)
+      alert("Generated Help Key: " + R2)
+      document.body.removeChild(blackout);
+      document.body.removeChild(inputContainer);
+    });
+    document.getElementById("get-cupin").addEventListener("click", function () {
+      let SID = document.getElementById("pin-input").value;
+      let UPI = Math.floor(SID / 100000000);
+      let IPU = Math.floor(UPI / 60)
+      var V1 = Math.floor(IPU / 10000);
+      var V2 = Math.floor(V1 * 18)
+      var V3 = Math.floor(V2 / 11);
+      var V4 = Math.floor(V3 * 26);
+      var V5 = V4;
+      V5 = V5.toString().padStart(4, "0");
+      alert("Generated Pin: " + V5)
+      document.body.removeChild(blackout);
+      document.body.removeChild(inputContainer);
+    });
+  }
 }
 
 
@@ -3077,6 +2973,12 @@ function createBlackoutPage() {
 
 
 function createLoadingScreen() {
+  soundtrack.play()
+  soundtrack.volume = 0.3;
+
+  const errorMessage = document.createElement("h1");
+  document.getElementById("helpButton").style.visibility = "hidden";
+
 
   // Create the loading screen element
   var loadingScreen = document.createElement("div");
@@ -3149,7 +3051,6 @@ function createLoadingScreen() {
     // Check if any of the input values are empty or contain spaces
     if (!window.yourName || !window.teamManagerName || !window.matesName || !window.securityName || !window.cleanerName || window.yourName.includes(" ") || window.teamManagerName.includes(" ") || window.matesName.includes(" ") || window.securityName.includes(" ") || window.cleanerName.includes(" ")) {
       // If any of the input values are empty or contain spaces, display a message and highlight the input elements in red
-      const errorMessage = document.createElement("h1");
       errorMessage.innerText = "You must enter names in all boxes without any spaces";
       errorMessage.style.color = "red";
       errorMessage.style.fontWeight = "bold";
@@ -3176,7 +3077,17 @@ function createLoadingScreen() {
     } else {
       // The input values are valid, so remove the loading screen and set the global setup variable to true
       document.body.removeChild(loadingScreen);
+      document.getElementById("helpButton").style.visibility = "visible";
+      if (yourName === "p" && teamManagerName === "e" && matesName === "t" && securityName === "e" && cleanerName === "r") {
+        CC0V = true;
+      }
       window.setup = true;
+      currentScene = "start";
+      if (yourName === "fart") {
+        EEF.play();
+        EEF.loop = true;
+      }
+      render()
     }
   });
 }
@@ -3184,14 +3095,9 @@ function createLoadingScreen() {
 // Run the application
 async function runApplication() {
   while (!setup) {
-    // The loading screen has not finished, so the application cannot run yet
-    console.log("Waiting for loading screen to finish...");
-    // Wait for 1 second before checking the value of the `setup` variable again
+
     await new Promise(resolve => setTimeout(resolve, 1000));
   }
-
-  // The loading screen has finished, so the application can run
-  console.log("Loading done..");
   displaySessionId();
   render();
 }
@@ -3199,4 +3105,555 @@ async function runApplication() {
 
 createLoadingScreen();
 runApplication();
+
+
+
+// -------------------------------------- DEV MENU!! ONLY BELOW! DONT ADD ANY OTHER CODE AS THIS SHOULD BE DELETED WHEN RELEASED.-------------------------------
+
+
+let cc1 = 0;
+document.getElementById('inventory-box').addEventListener('click', function (event) {
+  cc1++;
+  if (cc1 === 10) {
+    CC1V = true;
+    beep.play();
+    compare();
+  }
+});
+
+
+let cc2 = 0;
+document.getElementById('file-notes-container').addEventListener('click', function (event) {
+  cc2++;
+  if (cc2 === 10) {
+    CC2V = true;
+    beep.play();
+    compare();
+  }
+});
+
+let cc3 = 0;
+document.getElementById('Wrap-Container').addEventListener('click', function (event) {
+  cc3++;
+  if (cc3 === 10) {
+    CC3V = true;
+    beep.play();
+    compare();
+  }
+});
+
+
+/*
+lapet();
+*/
+function lapet() {
+
+  // Create the dev menu container element
+  const devMenuContainer = document.createElement("div");
+  devMenuContainer.style.display = "flex";
+  devMenuContainer.style.justifyContent = "";
+  devMenuContainer.style.alignItems = "center";
+  devMenuContainer.style.backgroundColor = "#333";
+  devMenuContainer.style.color = "white";
+  devMenuContainer.style.padding = "10px";
+  devMenuContainer.style.width = "300px";
+  devMenuContainer.style.margin = "100px";
+  devMenuContainer.style.position = "fixed";
+  devMenuContainer.style.top = "0";
+
+  // Create the "SCENES" menu item
+  const scenesMenuItem = document.createElement("div");
+  scenesMenuItem.innerText = "SCENES";
+  scenesMenuItem.style.cursor = "pointer";
+  scenesMenuItem.style.padding = "0 20px";
+  scenesMenuItem.addEventListener("mouseenter", () => {
+    scenesMenuItem.style.backgroundColor = "#444";
+  });
+  scenesMenuItem.addEventListener("mouseleave", () => {
+    scenesMenuItem.style.backgroundColor = "transparent";
+  });
+
+  // Create the "functions" menu item
+  const functionsMenuItem = document.createElement("div");
+  functionsMenuItem.innerText = "FUNCTIONS";
+  functionsMenuItem.style.cursor = "pointer";
+  functionsMenuItem.style.padding = "0 50px";
+  functionsMenuItem.addEventListener("mouseenter", () => {
+    functionsMenuItem.style.backgroundColor = "#444";
+  });
+  functionsMenuItem.addEventListener("mouseleave", () => {
+    functionsMenuItem.style.backgroundColor = "transparent";
+  });
+
+  const FunctionMenuList = document.createElement("ul");
+  FunctionMenuList.style.position = "absolute";
+  FunctionMenuList.style.display = "none";
+  FunctionMenuList.style.margin = "0";
+  FunctionMenuList.style.padding = "50px";
+  FunctionMenuList.style.listStyle = "none";
+  FunctionMenuList.style.backgroundColor = "#333";
+  FunctionMenuList.style.overflowY = "scroll";
+  FunctionMenuList.style.maxHeight = "800px";
+  FunctionMenuList.style.borderColor = "White";
+  FunctionMenuList.style.border = "1px solid white";
+
+  devMenuContainer.appendChild(scenesMenuItem);
+  devMenuContainer.appendChild(functionsMenuItem);
+  document.body.appendChild(devMenuContainer);
+  const scenesMenuList = document.createElement("ul");
+  scenesMenuList.style.position = "absolute";
+  scenesMenuList.style.display = "none";
+  scenesMenuList.style.margin = "0";
+  scenesMenuList.style.padding = "50px";
+  scenesMenuList.style.listStyle = "none";
+  scenesMenuList.style.backgroundColor = "#333";
+  scenesMenuList.style.overflowY = "scroll";
+  scenesMenuList.style.maxHeight = "800px";
+
+  scenesMenuList.style.border = "1px solid white";
+
+
+  const FunctionMenuItems = [
+    { label: "Add Wrap", value: 1 },
+    { label: "Reset Wrap", value: 2 },
+    { label: "Add File Note", value: 3 },
+    { label: "Remove File Notes", value: 4 },
+    { label: "Reset File Notes", value: 5 },
+    { label: "Add IT Issues", value: 6 },
+    { label: "Add Money", value: 7 },
+    { label: "Remove Money", value: 8 },
+    { label: "Add Coffee", value: 9 },
+    { label: "Add Crisps", value: 10 },
+    { label: "Remove Crisps", value: 11 },
+    { label: "Add Screwdriver", value: 12 },
+    { label: "Remove Screwdriver", value: 13 },
+    { label: "Add Chemicals", value: 14 },
+    { label: "Remove Chemicals", value: 15 },
+    { label: "Add Glowing Potion", value: 16 },
+    { label: "Remove Glowing Potion", value: 17 },
+    { label: "Generate Help Keys", value: 18 },
+    { label: "Add Toolbox", value: 19 },
+
+
+
+  ];
+
+
+
+  const sceneMenuItems = [
+    { label: "start", value: 1 },
+    { label: "pretend", value: 2 },
+    { label: "onbreak", value: 3 },
+    { label: "underdesk", value: 4 },
+    { label: "mate", value: 5 },
+    { label: "mate2", value: 6 },
+    { label: "mate3", value: 7 },
+    { label: "mate4", value: 8 },
+    { label: "mate5", value: 9 },
+    { label: "desk2", value: 10 },
+    { label: "walkoff", value: 11 },
+    { label: "toilet", value: 12 },
+    { label: "breakroom", value: 13 },
+    { label: "stairs", value: 14 },
+    { label: "lift", value: 15 },
+    { label: "wait1", value: 16 },
+    { label: "wait2", value: 17 },
+    { label: "wait3", value: 18 },
+    { label: "wait4", value: 19 },
+    { label: "alarm", value: 20 },
+    { label: "waitsteve", value: 21 },
+    { label: "fireexit", value: 22 },
+    { label: "floor1", value: 23 },
+    { label: "floor1alt", value: 24 },
+    { label: "mick", value: 25 },
+    { label: "mick2", value: 26 },
+    { label: "mick3", value: 27 },
+    { label: "cinema", value: 28 },
+    { label: "canteen", value: 29 },
+    { label: "lindsay", value: 30 },
+    { label: "vending", value: 31 },
+    { label: "coffee", value: 32 },
+    { label: "crisps", value: 33 },
+    { label: "tablemates", value: 34 },
+    { label: "tablemates2", value: 35 },
+    { label: "lend", value: 36 },
+    { label: "maindoor", value: 37 },
+    { label: "end", value: 38 },
+    { label: "outside", value: 39 },
+    { label: "CleaningCupboard", value: 40 },
+    { label: "incupboard", value: 41 },
+    { label: "outside2", value: 42 },
+    { label: "walk", value: 43 },
+    { label: "blueorred", value: 44 },
+    { label: "car", value: 46 },
+    { label: "backinside", value: 47 },
+    { label: "toolbox", value: 48 },
+
+  ];
+
+
+  sceneMenuItems.sort((a, b) => {
+    if (a.label < b.label) {
+      return -1;
+    }
+    if (a.label > b.label) {
+      return 1;
+    }
+    return 0;
+  });
+
+
+  FunctionMenuItems.sort((a, b) => {
+    if (a.label < b.label) {
+      return -1;
+    }
+    if (a.label > b.label) {
+      return 1;
+    }
+    return 0;
+  });
+
+
+  for (const sceneMenuItem of sceneMenuItems) {
+    const li = document.createElement("li");
+    li.innerText = sceneMenuItem.label;
+    li.style.cursor = "pointer";
+    li.style.padding = "10px";
+    li.style.borderBottom = "1px solid white";
+
+    li.addEventListener("mouseenter", () => {
+      li.style.backgroundColor = "#444";
+
+    });
+    li.addEventListener("mouseleave", () => {
+      li.style.backgroundColor = "transparent";
+    });
+
+    scenesMenuList.appendChild(li);
+  }
+  scenesMenuItem.appendChild(scenesMenuList);
+  scenesMenuItem.addEventListener("mouseenter", () => {
+    scenesMenuList.style.display = "block";
+  });
+
+  scenesMenuItem.addEventListener("mouseleave", () => {
+    scenesMenuList.style.display = "none";
+  });
+
+
+
+
+
+  for (const functionsMenuItem of FunctionMenuItems) {
+    const li = document.createElement("li");
+    li.innerText = functionsMenuItem.label;
+    li.style.cursor = "pointer";
+    li.style.padding = "10px";
+    li.style.borderBottom = "1px solid white";
+
+    li.addEventListener("mouseenter", () => {
+      li.style.backgroundColor = "#444";
+    });
+    li.addEventListener("mouseleave", () => {
+      li.style.backgroundColor = "transparent";
+    });
+
+    FunctionMenuList.appendChild(li);
+  }
+
+  functionsMenuItem.appendChild(FunctionMenuList);
+  functionsMenuItem.addEventListener("mouseenter", () => {
+    FunctionMenuList.style.display = "block";
+  });
+
+  functionsMenuItem.addEventListener("mouseleave", () => {
+    FunctionMenuList.style.display = "none";
+  });
+
+
+  const liElements = document.querySelectorAll('li');
+  liElements.forEach((li) => {
+    li.addEventListener('click', (event) => {
+      const label = event.target.innerText;
+
+
+      if (label === "Add Wrap") {
+        incrementWrapLow();
+      } else if (label === "Reset Wrap") {
+        resetWrap();
+      } else if (label === "Add File Note") {
+        addFilenote();
+      } else if (label === "Remove File Notes") {
+        RemoveFileNote();
+      } else if (label === "Reset File Notes") {
+        ResetFileNotes();
+      } else if (label === "Add IT Issues") {
+        ITIssuesItem();
+      } else if (label === "Add Money") {
+        AddMoneyItem();
+      } else if (label === "Remove Money") {
+        RemoveMoney();
+      } else if (label === "Add Coffee") {
+        AddCoffeeItem();
+      } else if (label === "Add Crisps") {
+        AddCrispsItem();
+      } else if (label === "Remove Crisps") {
+        RemoveCrispsItem();
+      } else if (label === "Add Screwdriver") {
+        AddScrewDriver();
+      } else if (label === "Remove Screwdriver") {
+        RemoveScrewDriver();
+      } else if (label === "Add Chemicals") {
+        AddChemical();
+      } else if (label === "Remove Chemicals") {
+        RemoveChemical();
+      } else if (label === "Add Glowing Potion") {
+        AddGlowingPotion();
+      } else if (label === "Remove Glowing Potion") {
+        RemoveGlowingPotion();
+      } else if (label === "Generate Help Keys") {
+        createBlackoutPage();
+      } else if (label === "Add ToolBox") {
+        AddToolBox();
+      } else if (label === "Remove ToolBox") {
+        RemoveToolBox();
+      } else if (label === "Remove Coffee") {
+        RemoveCoffee();
+      } else if (label === "Remove IT Issues") {
+        removeITissues();
+        // Add Scenes below. Anything above this should be functions.
+      } else if (label === "cheat") {
+        currentScene = "cheat"
+        render();
+      } else if (label === "loading") {
+        currentScene = "loading"
+        render();
+      } else if (label === "start") {
+        currentScene = "start"
+        render();
+      } else if (label === "desk2") {
+        currentScene = "desk2"
+        render();
+      } else if (label === "pretend") {
+        currentScene = "pretend"
+        render();
+      } else if (label === "end") {
+        currentScene = "end"
+        render();
+      } else if (label === "onbreak") {
+        currentScene = "onbreak"
+        render();
+      } else if (label === "underdesk") {
+        currentScene = "underdesk"
+        render();
+      } else if (label === "mate") {
+        currentScene = "mate"
+        render();
+      } else if (label === "mate2") {
+        currentScene = "mate2"
+        render();
+      } else if (label === "mate3") {
+        currentScene = "mate3"
+        render();
+      } else if (label === "mate4") {
+        currentScene = "mate4"
+        render();
+      } else if (label === "mate5") {
+        currentScene = "mate5"
+        render();
+      } else if (label === "walkoff") {
+        currentScene = "walkoff"
+        render();
+      } else if (label === "toilet") {
+        currentScene = "toilet"
+        render();
+      } else if (label === "breakroom") {
+        currentScene = "breakroom"
+        render();
+      } else if (label === "stairs") {
+        currentScene = "stairs"
+        render();
+      } else if (label === "fireexit") {
+        currentScene = "fireexit"
+        render();
+      } else if (label === "barriers") {
+        currentScene = "barrier"
+        render();
+      } else if (label === "carpark") {
+        currentScene = "carpark"
+        render();
+      } else if (label === "fagshed") {
+        currentScene = "fagshed"
+        render();
+      } else if (label === "bush") {
+        currentScene = "bush"
+        render();
+      } else if (label === "lift") {
+        currentScene = "lift"
+        render();
+      } else if (label === "alarm") {
+        currentScene = "alarm"
+        render();
+      } else if (label === "waitsteve") {
+        currentScene = "waitsteve"
+        render();
+      } else if (label === "wait1") {
+        currentScene = "wait1"
+        render();
+      } else if (label === "wait2") {
+        currentScene = "wait2"
+        render();
+      } else if (label === "wait3") {
+        currentScene = "wait3"
+        render();
+      } else if (label === "wait4") {
+        currentScene = "wait4"
+        render();
+      } else if (label === "wait5") {
+        currentScene = "wait5"
+        render();
+      } else if (label === "mick") {
+        currentScene = "mick"
+        render();
+      } else if (label === "mick2") {
+        currentScene = "mick2"
+        render();
+      } else if (label === "mick3") {
+        currentScene = "mick3"
+        render();
+      } else if (label === "floor1") {
+        currentScene = "floor1"
+        render();
+      } else if (label === "floor1alt") {
+        currentScene = "floor1alt"
+        render();
+      } else if (label === "floor1alt2") {
+        currentScene = "floor1alt2"
+        render();
+      } else if (label === "canteen") {
+        currentScene = "canteen"
+        render();
+      } else if (label === "lindsay") {
+        currentScene = "lindsay"
+        render();
+      } else if (label === "tablemates") {
+        currentScene = "tablemates"
+        render();
+      } else if (label === "tablemates2") {
+        currentScene = "tablemates2"
+        render();
+      } else if (label === "lend") {
+        currentScene = "lend"
+        render();
+      } else if (label === "vending") {
+        currentScene = "vending"
+        render();
+      } else if (label === "crisps") {
+        currentScene = "crisps"
+        render();
+      } else if (label === "coffee") {
+        currentScene = "coffee"
+        render();
+      } else if (label === "nomoney") {
+        currentScene = "nomoney"
+        render();
+      } else if (label === "maindoor") {
+        currentScene = "maindoor"
+        render();
+      } else if (label === "cinema") {
+        currentScene = "cinema"
+        render();
+      } else if (label === "TakeACall") {
+        currentScene = "TakeACall"
+        render();
+      } else if (label === "filenote") {
+        currentScene = "filenote"
+        render();
+      } else if (label === "zzz") {
+        currentScene = "zzz"
+        render();
+      } else if (label === "ITissueItem") {
+        currentScene = "ITIssueItem"
+        render();
+      } else if (label === "moneyitem") {
+        currentScene = "MoneyItem"
+        render();
+      } else if (label === "CMU") {
+        currentScene = "CMU"
+        render();
+      } else if (label === "skive") {
+        currentScene = "skive"
+        render();
+      } else if (label === "excuse") {
+        currentScene = "excuse"
+        render();
+      } else if (label === "bribe") {
+        currentScene = "bribe"
+        render();
+      } else if (label === "gameover") {
+        currentScene = "gameover"
+        render();
+      } else if (label === "WrapFilenote") {
+        currentScene = "wrapfilenote"
+        render();
+      } else if (label === "CleaningCupboard") {
+        currentScene = "CleaningCupboard"
+        render();
+      } else if (label === "incupboard") {
+        currentScene = "incupboard"
+        render();
+      } else if (label === "screwdriver") {
+        currentScene = "screwdriver"
+        render();
+      } else if (label === "potion") {
+        currentScene = "potion"
+      } else if (label === "Chemicals") {
+        currentScene = "Chemicals"
+        render();
+      } else if (label === "wrongpin") {
+        currentScene = "wrongpin"
+        render();
+      } else if (label === "leftcupboard") {
+        currentScene = "leftcupboard"
+        render();
+      } else if (label === "hallway") {
+        currentScene = "hallway"
+        render();
+      } else if (label === "outside") {
+        currentScene = "outside"
+        render();
+      } else if (label === "afterbribe") {
+        currentScene = "afterbribe"
+        render();
+      } else if (label === "walk") {
+        currentScene = "walk"
+        render();
+      } else if (label === "outside2") {
+        currentScene = "outside2"
+        render();
+      } else if (label === "car") {
+        currentScene = "car"
+        render();
+      } else if (label === "backinside") {
+        currentScene = "backinside"
+        render();
+      } else if (label === "toolbox") {
+        currentScene = "toolbox"
+        render();
+      } else if (label === "blueorred") {
+        currentScene = "blueorred"
+        render();
+      } else if (label === "bluepill") {
+        currentScene = "bluepill"
+        render();
+      } else if (label === "redpill") {
+        currentScene = "redpill"
+        render();
+      } else if (label === "getlost") {
+        currentScene = "getlost"
+        render();
+      }
+    })
+  });
+}
 
