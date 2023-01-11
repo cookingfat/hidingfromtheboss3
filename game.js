@@ -428,7 +428,7 @@ const wait5Scene = {
   ]
 };
 const floor1Scene = {
-  title: "Into Sitel territory...",
+  title: "On the first floor",
   text: "",
   choices: [
     {
@@ -464,7 +464,7 @@ const floor1Scene = {
   ]
 };
 const floor1alt2Scene = {
-  title: "Into Sitel territory...",
+  title: "On the first floor",
   text: "",
   choices: [
     {
@@ -1688,7 +1688,7 @@ function Selectbackground() {
   } else if (currentScene === "mick") {
     mick.play();
     mickScene.title = "You talk to " + cleanerName + ", the cleaner"
-    mickScene.text = "You talk to the " + cleanerName + " and they tell you all about their day and the scum that work downstairs in Sitel.  They tell you that they've been working there for 20 years and hate it.  They says that they're going to retire in 2 years and is going to go and live in Spain.  They tell you that they're going to buy a house with a pool and will spend their days lounging by the pool.  They say that they're going to get a dog and call it 'Paco'. They say that they will get a motorbike and take it out for occasional rides. They will make some friends, but they aren't sure if they want to settle down yet. They say that they are going to take up golf and join a local club. They also tell you they will start a small business selling handmade crafts online. They are going to learn to speak Spanish fluently so they can impress the locals and say the first number is " + spokenWord1 + ". They are going to visit all the major cities in Spain, but not sure if they want to do any sightseeing.  They say that they will start a book club, but only if it's full of interesting people.  They say that they are going to join a local football team, but only if they have a good chance of winning and the second number is " + spokenWord2 + ". They might take up yoga and meditation classes, but only if the instructor is attractive.  They say that they will learn how to surf, but if the third number is " + spokenWord3 + " and there are waves high enough.  Then they tell you all about going to visit the local wineries and learning about wine making, but only if there's is red wine. They tell you that they are going to start a small business teaching English as a second language and will join a local gardening group, but only if there are some attractive green thumbs around. They say that they will go to visit all the local museums and art galleries, but only if there are some interesting artifacts to look at. They say that if the last number is " + spokenWord4 + " they will take up scuba diving lessons and explore the Mediterranean Sea, but only if there are some cute fish to swim with.",
+    mickScene.text = "You talk to the " + cleanerName + " and they tell you all about their day and the scum that work downstairs.  They tell you that they've been working there for 20 years and hate it.  They says that they're going to retire in 2 years and is going to go and live in Spain.  They tell you that they're going to buy a house with a pool and will spend their days lounging by the pool.  They say that they're going to get a dog and call it 'Paco'. They say that they will get a motorbike and take it out for occasional rides. They will make some friends, but they aren't sure if they want to settle down yet. They say that they are going to take up golf and join a local club. They also tell you they will start a small business selling handmade crafts online. They are going to learn to speak Spanish fluently so they can impress the locals and say the first number is " + spokenWord1 + ". They are going to visit all the major cities in Spain, but not sure if they want to do any sightseeing.  They say that they will start a book club, but only if it's full of interesting people.  They say that they are going to join a local football team, but only if they have a good chance of winning and the second number is " + spokenWord2 + ". They might take up yoga and meditation classes, but only if the instructor is attractive.  They say that they will learn how to surf, but if the third number is " + spokenWord3 + " and there are waves high enough.  Then they tell you all about going to visit the local wineries and learning about wine making, but only if there's is red wine. They tell you that they are going to start a small business teaching English as a second language and will join a local gardening group, but only if there are some attractive green thumbs around. They say that they will go to visit all the local museums and art galleries, but only if there are some interesting artifacts to look at. They say that if the last number is " + spokenWord4 + " they will take up scuba diving lessons and explore the Mediterranean Sea, but only if there are some cute fish to swim with.",
       document.body.style.backgroundImage = "url('./images/mickslide.gif')";
   } else if (currentScene === "incupboard") {
     document.body.style.pointerEvents = "auto";
